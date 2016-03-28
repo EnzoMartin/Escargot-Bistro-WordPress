@@ -191,15 +191,15 @@ function bones_theme_support() {
 	// adding post format support
 	add_theme_support( 'post-formats',
 		array(
-			'aside',             // title less blurb
+			//'aside',             // title less blurb
 			'gallery',           // gallery of images
-			'link',              // quick link to other site
+			//'link',              // quick link to other site
 			'image',             // an image
 			'quote',             // a quick quote
-			'status',            // a Facebook like status update
+			//'status',            // a Facebook like status update
 			'video',             // video
-			'audio',             // audio
-			'chat'               // chat transcript
+			//'audio',             // audio
+			//'chat'               // chat transcript
 		)
 	);
 
@@ -209,8 +209,10 @@ function bones_theme_support() {
 	// registering wp3+ menus
 	register_nav_menus(
 		array(
-			'main-nav' => __( 'The Main Menu', 'bonestheme' ),   // main nav in header
-			'footer-links' => __( 'Footer Links', 'bonestheme' ) // secondary nav in footer
+			'main-nav-left' => __( 'Menu Left', 'bonestheme' ),
+			'main-nav-right' => __( 'Menu Right', 'bonestheme' ),
+			'footer-links-left' => __( 'Footer Left', 'bonestheme' ),
+			'footer-links-right' => __( 'Footer Right', 'bonestheme' )
 		)
 	);
 
