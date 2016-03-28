@@ -936,6 +936,32 @@ them however you see fit.
     width: 8.33%;
   }
 }
+.container {
+  border-radius: 4px;
+  background: #FFF;
+  padding: 35px 15px 25px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+.container.decorated:before, .container.decorated:after {
+  border-top: 1px solid #ffa600;
+  border-bottom: 1px solid #00897b;
+  top: 5px;
+  content: '';
+  position: absolute;
+  height: 3px;
+  width: 25px;
+}
+.container.decorated:before {
+  right: -5px;
+  transform: rotate(45deg);
+}
+.container.decorated:after {
+  left: -5px;
+  transform: rotate(-45deg);
+}
+
 /*********************
 IMPORTING MODULES
 Modules are reusable blocks or elements we use throughout the project.
@@ -1006,7 +1032,7 @@ http://www.youtube.com/watch?v=hwdVpKiJzac
 .blue-btn, .comment-reply-link, #submit {
   display: inline-block;
   position: relative;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   text-decoration: none;
   color: #fff;
   font-size: 0.9em;
@@ -1087,14 +1113,14 @@ textarea,
   padding: 0 12px;
   margin-bottom: 14px;
   font-size: 1em;
-  color: #5c6b80;
+  color: #4a4f5c;
   border-radius: 3px;
   vertical-align: middle;
   box-shadow: none;
   border: 0;
   width: 100%;
   max-width: 400px;
-  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
   background-color: #eaedf2;
   -webkit-transition: background-color 0.24s ease-in-out;
   transition: background-color 0.24s ease-in-out;
@@ -1364,10 +1390,10 @@ and will be used across all viewports.
 GENERAL STYLES
 *********************/
 body {
-  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-size: 100%;
   line-height: 1.5;
-  color: #5c6b80;
+  color: #4a4f5c;
   background-color: #eaedf2;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -1549,12 +1575,6 @@ POSTS & CONTENT STYLES
   margin-top: 1.5em;
 }
 
-.hentry {
-  background-color: #fff;
-  border-radius: 3px;
-  margin-bottom: 1.5em;
-  border: 1px solid #ccc;
-}
 .hentry header {
   border-bottom: 1px solid #f8f9fa;
   padding: 1.5em;
@@ -1592,7 +1612,6 @@ POSTS & CONTENT STYLES
 
 /* entry content */
 .entry-content {
-  padding: 1.5em 1.5em 0;
   /*
   image alignment on a screen this size may be
   a bit difficult. It's set to start aligning
@@ -1742,11 +1761,11 @@ PAGE NAVI STYLES
 }
 .pagination .current {
   cursor: default;
-  color: #5c6b80;
+  color: #4a4f5c;
 }
 .pagination .current:hover, .pagination .current:focus {
   background-color: #fff;
-  color: #5c6b80;
+  color: #4a4f5c;
 }
 
 /* end .bones_page_navi */
@@ -1883,7 +1902,7 @@ COMMENT FORM STYLES
   margin: 0;
 }
 .logged-in-as a {
-  color: #5c6b80;
+  color: #4a4f5c;
 }
 
 .comment-form-comment {
