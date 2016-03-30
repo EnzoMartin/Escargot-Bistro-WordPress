@@ -484,7 +484,7 @@ use the best ampersand
 http://simplebits.com/notebook/2008/08/14/ampersands-2/
 */
 span.amp {
-  font-family: Baskerville,'Goudy Old Style',Palatino,'Book Antiqua',serif !important;
+  font-family: Baskerville, 'Goudy Old Style', Palatino, 'Book Antiqua', serif !important;
   font-style: italic;
 }
 
@@ -1394,9 +1394,35 @@ body {
   font-size: 100%;
   line-height: 1.5;
   color: #4a4f5c;
-  background-color: #eaedf2;
+  background-color: #eff3f6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+body:before, body:after {
+  content: '';
+  position: fixed;
+  display: block;
+  z-index: 1;
+}
+body:before {
+  background: transparent url("../images/bg_top_left.jpg") no-repeat;
+  top: 0;
+  left: 0;
+  width: 814px;
+  height: 500px;
+}
+body:after {
+  background: transparent url("../images/bg_bottom_right.jpg") no-repeat;
+  bottom: 0;
+  right: 0;
+  width: 562px;
+  height: 625px;
+}
+
+#container {
+  z-index: 2;
+  position: relative;
 }
 
 /********************

@@ -20,9 +20,39 @@ body {
     font-size: 100%;
     line-height: 1.5;
     color: $text-color;
-    background-color: $gray;
+    background-color: #eff3f6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
+
+    &:before,
+    &:after {
+        content: '';
+        position: fixed;
+        display: block;
+        z-index: 1;
+    }
+
+    &:before {
+        background: transparent url('../images/bg_top_left.jpg') no-repeat;
+        top: 0;
+        left: 0;
+        width: 814px;
+        height: 500px;
+    }
+
+    &:after {
+        background: transparent url('../images/bg_bottom_right.jpg') no-repeat;
+        bottom: 0;
+        right: 0;
+        width: 562px;
+        height: 625px;
+    }
+}
+
+#container {
+    z-index: 2;
+    position: relative;
 }
 
 /********************
