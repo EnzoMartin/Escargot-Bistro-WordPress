@@ -278,7 +278,7 @@ NAVIGATION STYLES
   /* end current highlighters */
 }
 .nav ul {
-  background: #323944;
+  background: #1c202b;
   margin-top: 0;
 }
 .nav li {
@@ -297,7 +297,6 @@ NAVIGATION STYLES
   */
 }
 .nav li a:hover, .nav li a:focus {
-  color: #fff;
   text-decoration: underline;
 }
 .nav li ul.sub-menu,

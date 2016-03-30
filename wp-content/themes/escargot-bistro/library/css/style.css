@@ -1450,13 +1450,13 @@ LAYOUT & GRID STYLES
 LINK STYLES
 *********************/
 a, a:visited {
-  color: #f01d4f;
+  color: #00897b;
   /* on hover */
   /* on click */
   /* mobile tap color */
 }
 a:hover, a:focus, a:visited:hover, a:visited:focus {
-  color: #d10e3c;
+  color: #005b52;
 }
 a:link, a:visited:link {
   /*
@@ -1513,15 +1513,8 @@ h5, .h5 {
 /*********************
 HEADER STYLES
 *********************/
-.header {
-  background-color: #323944;
-}
-
 #logo {
   margin: 0.75em 0;
-}
-#logo a {
-  color: #fff;
 }
 
 /*********************
@@ -1552,7 +1545,6 @@ and more scalable.
 }
 .nav li a {
   display: block;
-  color: #fff;
   text-decoration: none;
   padding: 0.75em;
   /*
@@ -1561,6 +1553,9 @@ and more scalable.
   the style.scss file where it's relevant. We want to
   keep this file as small as possible!
   */
+}
+.nav li a:not(:hover):not(:focus) {
+  color: #1c202b;
 }
 .nav li ul.sub-menu li a,
 .nav li ul.children li a {
@@ -1682,7 +1677,7 @@ POSTS & CONTENT STYLES
   height: auto;
 }
 .entry-content pre {
-  background: #323944;
+  background: #1c202b;
   color: #f8f9fa;
   font-size: 0.9em;
   padding: 1.5em;
@@ -1959,7 +1954,7 @@ FOOTER STYLES
 *********************/
 .footer {
   clear: both;
-  background-color: #323944;
+  background-color: #1c202b;
   color: #f8f9fa;
 }
 
@@ -2104,7 +2099,7 @@ you can add resource intensive styles.
     /* end current highlighters */
   }
   .nav ul {
-    background: #323944;
+    background: #1c202b;
     margin-top: 0;
   }
   .nav li {
@@ -2123,7 +2118,6 @@ you can add resource intensive styles.
     */
   }
   .nav li a:hover, .nav li a:focus {
-    color: #fff;
     text-decoration: underline;
   }
   .nav li ul.sub-menu,
