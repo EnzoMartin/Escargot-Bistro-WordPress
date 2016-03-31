@@ -32,9 +32,67 @@ HEADER STYLES
 *********************/
 
 .header {
+    #nav {
+        width: 100%;
+
+        #nav-left {
+            text-align: left;
+        }
+
+        #nav-center {
+            text-align: center;
+        }
+
+        #nav-right {
+            text-align: right;
+
+            #menu-menu-right {
+                float: right;
+            }
+        }
+    }
+
+    .nav {
+        padding-top: 30px;
+
+        li {
+            padding-left: 15px;
+
+            &:before {
+                border-top: 2px solid #ffa600;
+                border-bottom: 2px solid #00897b;
+                transform: rotate(-75deg) skewX(-25deg);
+                top: 12px;
+                content: '';
+                position: absolute;
+                height: 5px;
+                width: 20px;
+                left: 0;
+            }
+
+            &:first-of-type {
+                padding-left: 0;
+
+                &:before {
+                    display: none;
+                }
+
+                a {
+                    padding-left: 0;
+                }
+            }
+
+            &:last-of-type {
+                a {
+                    padding-right: 0;
+                }
+            }
+        }
+    }
 }
 
 #logo {
+    margin: 30px 0 0;
 }
 
 /*********************
@@ -43,24 +101,20 @@ NAVIGATION STYLES
 
 .nav {
     border: 0;
+    float: left;
+    overflow: hidden;
+
     ul {
         background: $black;
         margin-top: 0;
     }
+
     li {
         float: left;
         position: relative;
 
         a {
             border-bottom: 0;
-
-            /*
-            you can use hover styles here even though this size
-            has the possibility of being a mobile device.
-            */
-            &:hover, &:focus {
-                text-decoration: underline;
-            }
         }
 
         &:first-child {

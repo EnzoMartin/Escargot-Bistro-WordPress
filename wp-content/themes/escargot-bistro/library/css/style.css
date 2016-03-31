@@ -1482,7 +1482,7 @@ a, a:visited {
   /* mobile tap color */
 }
 a:hover, a:focus, a:visited:hover, a:visited:focus {
-  color: #005b52;
+  color: #26A69A;
 }
 a:link, a:visited:link {
   /*
@@ -1572,7 +1572,10 @@ and more scalable.
 .nav li a {
   display: block;
   text-decoration: none;
-  padding: 0.75em;
+  padding: 8px 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #1c202b;
   /*
   remember this is for mobile ONLY, so there's no need
   to even declare hover styles here, you can do it in
@@ -1580,12 +1583,17 @@ and more scalable.
   keep this file as small as possible!
   */
 }
-.nav li a:not(:hover):not(:focus) {
-  color: #1c202b;
+.nav li a:hover, .nav li a:focus {
+  color: #26A69A;
 }
 .nav li ul.sub-menu li a,
 .nav li ul.children li a {
   padding-left: 30px;
+}
+.nav li.current-menu-item a,
+.nav li.current_page_item a,
+.nav li.current_page_ancestor a {
+  color: #00695C;
 }
 
 /* end .nav */
@@ -2115,11 +2123,62 @@ you can add resource intensive styles.
   /*********************
   HEADER STYLES
   *********************/
+  .header #nav {
+    width: 100%;
+  }
+  .header #nav #nav-left {
+    text-align: left;
+  }
+  .header #nav #nav-center {
+    text-align: center;
+  }
+  .header #nav #nav-right {
+    text-align: right;
+  }
+  .header #nav #nav-right #menu-menu-right {
+    float: right;
+  }
+  .header .nav {
+    padding-top: 30px;
+  }
+  .header .nav li {
+    padding-left: 15px;
+  }
+  .header .nav li:before {
+    border-top: 2px solid #ffa600;
+    border-bottom: 2px solid #00897b;
+    transform: rotate(-75deg) skewX(-25deg);
+    top: 12px;
+    content: '';
+    position: absolute;
+    height: 5px;
+    width: 20px;
+    left: 0;
+  }
+  .header .nav li:first-of-type {
+    padding-left: 0;
+  }
+  .header .nav li:first-of-type:before {
+    display: none;
+  }
+  .header .nav li:first-of-type a {
+    padding-left: 0;
+  }
+  .header .nav li:last-of-type a {
+    padding-right: 0;
+  }
+
+  #logo {
+    margin: 30px 0 0;
+  }
+
   /*********************
   NAVIGATION STYLES
   *********************/
   .nav {
     border: 0;
+    float: left;
+    overflow: hidden;
     /* end .menu ul li */
     /* highlight current page */
     /* end current highlighters */
@@ -2138,13 +2197,6 @@ you can add resource intensive styles.
   }
   .nav li a {
     border-bottom: 0;
-    /*
-    you can use hover styles here even though this size
-    has the possibility of being a mobile device.
-    */
-  }
-  .nav li a:hover, .nav li a:focus {
-    text-decoration: underline;
   }
   .nav li ul.sub-menu,
   .nav li ul.children {

@@ -320,7 +320,10 @@ and more scalable.
         a {
             display: block;
             text-decoration: none;
-            padding: 0.75em;
+            padding: 8px 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: $black;
 
             /*
             remember this is for mobile ONLY, so there's no need
@@ -328,15 +331,10 @@ and more scalable.
             the style.scss file where it's relevant. We want to
             keep this file as small as possible!
             */
-            &:not(:hover):not(:focus) {
-                color: $black;
+            &:hover,
+            &:focus {
+                color: $link-hover;
             }
-        }
-
-        &:first-child {
-        }
-
-        &:last-child {
         }
 
         /*
@@ -382,6 +380,7 @@ and more scalable.
     li.current_page_ancestor {
 
         a {
+            color: $link-active;
         }
 
     }

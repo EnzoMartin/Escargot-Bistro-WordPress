@@ -44,37 +44,49 @@
 			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 				<div id="inner-header" class="wrap cf">
 					<nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-						<?php wp_nav_menu(array(
-    					         'container' => false,                           // remove nav container
-    					         'container_class' => 'menu cf',                 // class of container (should you choose to use it)
-    					         'menu' => __( 'Menu Left', 'bonestheme' ),  // nav name
-    					         'menu_class' => 'nav top-nav cf',               // adding custom nav class
-    					         'theme_location' => 'main-nav-left',                 // where it's located in the theme
-    					         'before' => '',                                 // before the menu
-        			               'after' => '',                                  // after the menu
-        			               'link_before' => '',                            // before each link
-        			               'link_after' => '',                             // after each link
-        			               'depth' => 0,                                   // limit the depth of the nav
-    					         'fallback_cb' => ''                             // fallback function (if there is one)
-						)); ?>
-						<div id="logo" class="h1" itemscope itemtype="http://schema.org/Organization">
-							<a href="<?php echo home_url(); ?>" rel="nofollow">
-								<img src="<?php echo get_template_directory_uri(); ?>/library/images/logo.png"/>
-							</a>
-						</div>
-						<?php wp_nav_menu(array(
-    					         'container' => false,                           // remove nav container
-    					         'container_class' => 'menu cf',                 // class of container (should you choose to use it)
-    					         'menu' => __( 'Menu Right', 'bonestheme' ),  // nav name
-    					         'menu_class' => 'nav top-nav cf',               // adding custom nav class
-    					         'theme_location' => 'main-nav-right',                 // where it's located in the theme
-    					         'before' => '',                                 // before the menu
-        			               'after' => '',                                  // after the menu
-        			               'link_before' => '',                            // before each link
-        			               'link_after' => '',                             // after each link
-        			               'depth' => 0,                                   // limit the depth of the nav
-    					         'fallback_cb' => ''                             // fallback function (if there is one)
-						)); ?>
+						<table id="nav" cellpadding="0" cellspacing="0" border="0">
+							<tbody>
+							<tr>
+								<td id="nav-left">
+									<?php wp_nav_menu(array(
+			                                 'container' => false,                           // remove nav container
+			                                 'container_class' => 'menu cf',                 // class of container (should you choose to use it)
+			                                 'menu' => __( 'Menu Left', 'bonestheme' ),  // nav name
+			                                 'menu_class' => 'nav top-nav cf',               // adding custom nav class
+			                                 'theme_location' => 'main-nav-left',                 // where it's located in the theme
+			                                 'before' => '',                                 // before the menu
+			                                   'after' => '',                                  // after the menu
+			                                   'link_before' => '',                            // before each link
+			                                   'link_after' => '',                             // after each link
+			                                   'depth' => 0,                                   // limit the depth of the nav
+			                                 'fallback_cb' => ''                             // fallback function (if there is one)
+									)); ?>
+								</td>
+								<td id="nav-center">
+									<div id="logo" class="h1" itemscope itemtype="http://schema.org/Organization">
+										<a href="<?php echo home_url(); ?>" rel="nofollow">
+											<img src="<?php echo get_template_directory_uri(); ?>/library/images/logo.png"/>
+										</a>
+									</div>
+								</td>
+								<td id="nav-right">
+									<?php wp_nav_menu(array(
+			                                 'container' => false,                           // remove nav container
+			                                 'container_class' => 'menu cf',                 // class of container (should you choose to use it)
+			                                 'menu' => __( 'Menu Right', 'bonestheme' ),  // nav name
+			                                 'menu_class' => 'nav top-nav cf',               // adding custom nav class
+			                                 'theme_location' => 'main-nav-right',                 // where it's located in the theme
+			                                 'before' => '',                                 // before the menu
+			                                   'after' => '',                                  // after the menu
+			                                   'link_before' => '',                            // before each link
+			                                   'link_after' => '',                             // after each link
+			                                   'depth' => 0,                                   // limit the depth of the nav
+			                                 'fallback_cb' => ''                             // fallback function (if there is one)
+									)); ?>
+								</td>
+							</tr>
+							</tbody>
+						</table>
 					</nav>
 				</div>
 			</header>
