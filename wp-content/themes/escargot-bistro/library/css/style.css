@@ -1604,6 +1604,16 @@ POSTS & CONTENT STYLES
   margin-top: 1.5em;
 }
 
+#stamp {
+  position: absolute;
+  bottom: 0;
+  right: 16px;
+}
+#stamp img {
+  margin: 0;
+  display: block;
+}
+
 .hentry header {
   border-bottom: 1px solid #f8f9fa;
   padding: 1.5em;

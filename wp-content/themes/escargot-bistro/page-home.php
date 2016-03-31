@@ -38,6 +38,7 @@
 						</section> <?php // end article section ?>
 					</article>
 				<?php endwhile; endif; ?>
+				<div id="stamp"><img src="<?php echo get_template_directory_uri(); ?>/library/images/stamp.jpg"/></div>
 			</main>
 			<div class="m-all t-2of-3 d-5of7">
 				<div class="container">
