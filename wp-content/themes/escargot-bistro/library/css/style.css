@@ -2031,8 +2031,20 @@ FOOTER STYLES
 *********************/
 .footer {
   clear: both;
-  background-color: #1c202b;
-  color: #f8f9fa;
+  color: #1c202b;
+}
+.footer h3 {
+  font-weight: bold;
+}
+.footer table {
+  width: 100%;
+}
+.footer table td, .footer table th {
+  width: 33%;
+  text-align: center;
+}
+.footer table a {
+  display: block;
 }
 
 /*
