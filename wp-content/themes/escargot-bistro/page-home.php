@@ -41,8 +41,10 @@
 				<div id="stamp"><img src="<?php echo get_template_directory_uri(); ?>/library/images/stamp.jpg"/></div>
 			</main>
 			<div class="m-all t-2of-3 d-5of7">
-				<div class="container">
-					Operating hours
+				<div id="operating-hours" class="container">
+					<h2>Opening Hours &amp; Address</h2>
+					<?php the_field('opening_hours'); ?>
+					<address>1506 E.Commercial Blvd Oakland Park, FL, 33334</address>
 				</div>
 			</div>
 		</div>
