@@ -2052,6 +2052,7 @@ FOOTER STYLES
 .footer table td, .footer table th {
   width: 33%;
   text-align: center;
+  vertical-align: top;
 }
 .footer table a {
   display: block;
