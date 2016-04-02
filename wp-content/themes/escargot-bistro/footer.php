@@ -16,7 +16,7 @@
 									<address>1506 E. Commercial Blvd<br/>Oakland Park, FL, 33334</address>
 								</a>
 							</td>
-							<td><?php the_field('opening_hours'); ?></td>
+							<td><?php echo apply_filters( 'the_content',get_option('hours_of_operation')); ?></td>
 							<td>
 								<a href="tel:(754)-206-4116">(754)-206-4116</a>
 								<a href="mailto:info@escargotbistro.com">info@escargotbistro.com</a>

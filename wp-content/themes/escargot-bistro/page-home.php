@@ -30,7 +30,7 @@
 			<div class="m-all t-2of-3 d-5of7">
 				<div id="operating-hours" class="container">
 					<h2>Opening Hours &amp; Address</h2>
-					<?php the_field('opening_hours'); ?>
+					<?php echo apply_filters( 'the_content',get_option('hours_of_operation')); ?>
 					<a href="https://www.google.com/maps/place/Escargot+Bistro/@26.1886258,-80.1304127,17z/data=!4m2!3m1!1s0x0000000000000000:0x0da6a02deb22bddf?hl=en" target="_blank">
 						<address>1506 E. Commercial Blvd Oakland Park, FL, 33334</address>
 					</a>
