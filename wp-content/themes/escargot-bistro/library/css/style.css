@@ -2057,6 +2057,9 @@ FOOTER STYLES
 .footer table a {
   display: block;
 }
+.footer table p:first-of-type {
+  margin-top: 0;
+}
 
 /*
 if you checked out the link above:
