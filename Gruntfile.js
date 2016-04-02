@@ -9,8 +9,8 @@ module.exports = function(grunt){
         sass:{
             dev:{
                 options:{
-                    style:'expanded',
-                    sourcemap:'none',
+                    style:'compressed',
+                    sourcemap:'auto',
                     compass:true,
                     update:true
                 },
