@@ -7,7 +7,7 @@
 					<header class="article-header">
 						<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
 					</header>
-					<section class="entry-content cf" itemprop="articleBody">
+					<section class="entry-content cf sub" itemprop="articleBody">
 						<?php
 							the_content();
 							wp_link_pages( array(

@@ -416,19 +416,26 @@ POSTS & CONTENT STYLES
     //border: 1px solid $border-color;
 
     header {
-        border-bottom: 1px solid $light-gray;
-        padding: 1.5em;
-    }
+        padding: 8px 24px;
+        border-radius: 1px;
+        background: $primary-color none;
+        color: #FFF;
+        margin-bottom: 8px;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
 
-    footer {
-        padding: 1.5em;
-        border-top: 1px solid $light-gray;
-
-        p {
-            margin: 0;
+        h1 {
+            font-size: 22px;
+            line-height: normal;
         }
     }
 
+    section.sub {
+        padding: 16px 24px 0;
+        background: #FFF;
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    padding-bottom: 24px;
 }
 
 #operating-hours {

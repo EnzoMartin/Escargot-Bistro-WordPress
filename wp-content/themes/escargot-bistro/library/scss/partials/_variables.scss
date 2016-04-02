@@ -22,9 +22,11 @@ $alert-red: #fbe3e4;
 $alert-green: #e6efc2;
 $alert-blue: #d5edf8;
 
+$primary-color: #00897b;
+
 $black: #1c202b;
 $white: #fff;
-$link: #00897b;
+$link: $primary-color;
 
 $light-gray: #f8f9fa;
 $gray: #eaedf2;
