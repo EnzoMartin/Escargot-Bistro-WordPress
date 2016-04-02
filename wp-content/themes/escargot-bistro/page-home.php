@@ -22,7 +22,7 @@
 								'link_after' => '</span>',
 							) );
 							?>
-						</section> <?php // end article section ?>
+						</section>
 					</article>
 				<?php endwhile; endif; ?>
 				<div id="stamp"><img src="<?php echo get_template_directory_uri(); ?>/library/images/stamp.jpg"/></div>
