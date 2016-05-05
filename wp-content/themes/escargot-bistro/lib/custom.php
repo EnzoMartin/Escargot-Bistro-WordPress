@@ -10,13 +10,13 @@ function admin(){
 add_action('admin_enqueue_scripts', 'admin');
 
 
-// [banner title="Mumble Voice Servers" count="1" caption="Prices start at blah" link="http://google.com" image="http://blahlblahlhah.com"]
+// [banner title="A title" count="1" caption="My caption" link="http://google.com" image="http://imgur.com"]
 function makeBanner( $atts ) {
     $values = shortcode_atts( array(
         'title' => '',
         'image' => '',
         'count' => '1',
-	    'button' => 'Order your server',
+	    'button' => '',
         'caption' => '',
         'link' => ''
     ), $atts );
@@ -151,4 +151,49 @@ if ( ! function_exists('custom_menu') ) {
 
     // Hook into the 'init' action
     add_action( 'init', 'custom_menu', 0 );
+}
+
+// Register Item Post Type
+if ( ! function_exists('custom_items') ) {
+    function custom_items() {
+        $labels = array(
+            'name'                => _x( 'Items', 'Post Type General Name', 'text_domain' ),
+            'singular_name'       => _x( 'Item', 'Post Type Singular Name', 'text_domain' ),
+            'menu_name'           => __( 'Items', 'text_domain' ),
+            'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
+            'all_items'           => __( 'All Items', 'text_domain' ),
+            'view_item'           => __( 'View Item', 'text_domain' ),
+            'add_new_item'        => __( 'Add New Item', 'text_domain' ),
+            'add_new'             => __( 'Add New', 'text_domain' ),
+            'edit_item'           => __( 'Edit Item', 'text_domain' ),
+            'update_item'         => __( 'Update Item', 'text_domain' ),
+            'search_items'        => __( 'Search Items', 'text_domain' ),
+            'not_found'           => __( 'Not found', 'text_domain' ),
+            'not_found_in_trash'  => __( 'Not found in Trash', 'text_domain' ),
+        );
+        $args = array(
+            'label'               => __( 'item', 'text_domain' ),
+            'description'         => __( 'A item', 'text_domain' ),
+            'labels'              => $labels,
+            'supports'            => array( 'title', 'revisions', 'thumbnail', ),
+            'taxonomies'          => array( 'item' ),
+            'hierarchical'        => false,
+            'public'              => true,
+            'show_ui'             => true,
+            'show_in_menu'        => true,
+            'show_in_nav_menus'   => false,
+            'show_in_admin_bar'   => true,
+            'menu_position'       => 6,
+            'menu_icon'           => 'dashicons-store',
+            'can_export'          => true,
+            'has_archive'         => true,
+            'exclude_from_search' => true,
+            'publicly_queryable'  => false,
+            'capability_type'     => 'post',
+        );
+        register_post_type( 'item', $args );
+    }
+
+    // Hook into the 'init' action
+    add_action( 'init', 'custom_items', 0 );
 }
