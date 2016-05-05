@@ -16,7 +16,179 @@ come into play. Have fun!
 GENERAL STYLES
 *********************/
 
-body {
+body {  }
+
+#home-carousel {
+
+}
+
+.simpleBanner {
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	padding: 0;
+    border-radius: 3px;
+    height: 500px;
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+        height: 500px;
+	}
+
+	.bannerListWpr {
+		clear: both;
+		overflow: hidden;
+
+		ul {
+			width: 50000px;
+			overflow: hidden;
+
+			li {
+				float: left;
+				width: 760px;
+                position: relative;
+                height: 500px;
+
+				img {
+					display: block;
+                    height: 500px;
+                    width: 760px;
+				}
+
+                .caption-container {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    background: rgba(0,0,0,0.65);
+
+                    .carousel-caption {
+                        box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
+                        padding: 8px 12px 18px;
+                    }
+
+                    a {
+                        color: #FFF;
+
+                        &:hover {
+                            color: #CCC;
+                        }
+                    }
+
+                    h5, h6 {
+                        color: #FFF;
+                    }
+
+                    h5 {
+                        font-size: 28px;
+                        margin: 0;
+                    }
+
+                    h6 {
+                        font-size: 16px;
+                        margin: 8px 0 0;
+                    }
+                }
+			}
+		}
+	}
+
+	.bannerControlsWpr {
+		cursor: pointer;
+		padding: 10px 9px;
+		position: absolute;
+		top: 42%;
+		background: rgba(0,0,0,0.65);
+        box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
+        transition: background ease-in-out 0.2s;
+
+        .bannerControls {
+            background: transparent url('../images/arrows.png') no-repeat top center;
+            height: 17px;
+            width: 13px;
+            border: 0;
+            transition: opacity ease-in-out 0.2s;
+        }
+
+        &:hover {
+            background: rgba(0,0,0,0.35);
+
+            .bannerControls {
+                opacity: 0.6;
+            }
+		}
+	}
+
+	.bannerControlsPrev {
+		border-radius: 0 5px 5px 0;
+		left: 0;
+		padding-left: 5px;
+
+		.bannerControls {
+			background-position: 0 0;
+		}
+	}
+
+	.bannerControlsNext {
+		border-radius: 5px 0 0 5px;
+		right: 0;
+		padding-right: 5px;
+
+		.bannerControls {
+            background-position: -13px 0;
+		}
+	}
+
+	.bannerIndicators {
+		background: transparent;
+		right: 20px;
+		opacity: 0.9;
+		padding: 4px 8px 4px 0;
+		position: absolute;
+		top: 10px;
+        height: 15px;
+
+		ul {
+			overflow: hidden;
+            height: 22px;
+            padding: 5px;
+		}
+
+		.bannerIndicator {
+			background: #5d5d5d;
+			border-radius: 7px 7px 7px 7px;
+            box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
+			cursor: pointer;
+			float: left;
+			height: 13px;
+			margin-left: 8px;
+			width: 13px;
+            transition: background ease-in-out 0.2s;
+
+			&:hover {
+				background: $white;
+			}
+
+			&.current {
+				background: #ff7e00;
+				cursor: default;
+			}
+		}
+	}
+
+	&.hiddenArrows .bannerControlsWpr {
+		display: none;
+	}
+
+	&.hiddenIndicators .bannerIndicators {
+		display: none;
+	}
+}
+
+.home #main {
+    min-height: 500px;
 }
 
 /*********************

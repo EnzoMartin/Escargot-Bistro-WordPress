@@ -247,4 +247,7 @@ function bones_fonts() {
 
 add_action('wp_enqueue_scripts', 'bones_fonts');
 
+require_once locate_template('/lib/meta-banner.php');
+require_once locate_template('/lib/custom.php');
+
 /* DON'T DELETE THIS CLOSING TAG */ ?>

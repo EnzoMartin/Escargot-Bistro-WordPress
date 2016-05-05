@@ -4,8 +4,65 @@
 		<div id="inner-content" class="wrap cf">
 			<!-- Hide this for mobile -->
 			<div class="m-all t-2of-3 d-5of7">
-				<div class="container">
-					Image goes here
+				<?php
+				$banners = new WP_Query(
+				    array(
+				        'post_type' => 'banner',
+				        'meta_key' => 'banners_text_order',
+				        'order' => 'ASC',
+				        'orderby' => 'meta_value_num',
+				        'nopaging' => true
+				    )
+				);
+				$html = [];
+				if ( $banners->have_posts() ) {
+				    $classes = 'active';
+				    while($banners->have_posts()): $banners->the_post();
+				        if(get_post_status() == 'publish') {
+				            $imageMeta = get_post_meta($post->ID, 'banners_image', true);
+				            $image = wp_get_attachment_url($imageMeta, 'fullsize');
+
+				            $subheading = get_post_meta($post->ID, 'banners_text_subheading', true);
+				            $caption = get_post_meta($post->ID, 'banners_text_caption', true);
+				            $link = get_post_meta($post->ID, 'banners_text_link', true);
+				            $linktext = get_post_meta($post->ID, 'banners_text_link_text', true);
+
+				            $banner =
+				            '<li class="item ' . $classes . '">
+		                        <a href="' . $link . '"><img src="' . $image . '" alt=""></a>
+		                        <div class="caption-container">
+		                            <div class="carousel-caption">' .
+		                                (($link != '') ? '<a href="' . $link . '">' : '') .
+		                                '<h5>' . get_the_title() . '</h5>' .
+		                                (($subheading != '') ? '<h6>' . $subheading . '</h6>' : '') .
+				                        (($link != '') ? '</a>' : '') .
+		                            '</div>
+	                            </div>
+		                    </li>';
+					        
+				            array_push($html, $banner);
+				            $classes = '';
+				        }
+				    endwhile;
+				}
+				wp_reset_query();
+				?>
+
+				<div id="home-carousel" class="simpleBanner">
+					<div class="bannerListWpr">
+					    <ul class="bannerList">
+					        <?php
+					        foreach($html as $banner){
+					            echo $banner;
+					        }
+					        ?>
+					    </ul>
+					</div>
+				    <?php if(count($html) > 1){ ?>
+					    <div class="bannerControlsWpr bannerControlsPrev" title="Previous"><div class="bannerControls"></div></div>
+					    <div class="bannerIndicators"><ul></ul></div>
+					    <div class="bannerControlsWpr bannerControlsNext" title="Next"><div class="bannerControls"></div></div>
+				    <?php } ?>
 				</div>
 			</div>
 			<main id="main" class="container decorated m-all t-1of3 d-2of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
