@@ -7,6 +7,27 @@ function admin(){
     wp_enqueue_script('admin', get_template_directory_uri() . '/library/js/admin.js', array('jquery'), null, true);
 }
 
+function add_admin_menu_separator( $position ) {
+    global $menu;
+    $index = 0;
+    foreach ( $menu as $offset => $section ) {
+        if ( substr( $section[2], 0, 9 ) == 'separator' ) {
+            $index ++;
+        }
+        if ( $offset >= $position ) {
+            $menu[$position] = array( '', 'read', "separator{$index}", '', 'wp-menu-separator' );
+            break;
+        }
+    }
+    ksort( $menu );
+}
+
+function admin_menu_separator() {
+	add_admin_menu_separator(10);
+	add_admin_menu_separator(15);
+}
+
+add_action('admin_init','admin_menu_separator');
 add_action('admin_enqueue_scripts', 'admin');
 
 
@@ -138,7 +159,7 @@ if ( ! function_exists('custom_menu') ) {
             'show_in_menu'        => true,
             'show_in_nav_menus'   => true,
             'show_in_admin_bar'   => true,
-            'menu_position'       => 5,
+            'menu_position'       => 12,
             'menu_icon'           => 'dashicons-book-alt',
             'can_export'          => true,
             'has_archive'         => true,
@@ -159,7 +180,7 @@ if ( ! function_exists('custom_items') ) {
         $labels = array(
             'name'                => _x( 'Items', 'Post Type General Name', 'text_domain' ),
             'singular_name'       => _x( 'Item', 'Post Type Singular Name', 'text_domain' ),
-            'menu_name'           => __( 'Items', 'text_domain' ),
+            'menu_name'           => __( 'Menu Items', 'text_domain' ),
             'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
             'all_items'           => __( 'All Items', 'text_domain' ),
             'view_item'           => __( 'View Item', 'text_domain' ),
@@ -183,7 +204,7 @@ if ( ! function_exists('custom_items') ) {
             'show_in_menu'        => true,
             'show_in_nav_menus'   => false,
             'show_in_admin_bar'   => true,
-            'menu_position'       => 6,
+            'menu_position'       => 14,
             'menu_icon'           => 'dashicons-store',
             'can_export'          => true,
             'has_archive'         => true,
@@ -196,4 +217,49 @@ if ( ! function_exists('custom_items') ) {
 
     // Hook into the 'init' action
     add_action( 'init', 'custom_items', 0 );
+}
+
+// Register Category Post Type
+if ( ! function_exists('custom_categories') ) {
+    function custom_categories() {
+        $labels = array(
+            'name'                => _x( 'Categories', 'Post Type General Name', 'text_domain' ),
+            'singular_name'       => _x( 'Category', 'Post Type Singular Name', 'text_domain' ),
+            'menu_name'           => __( 'Menu Categories', 'text_domain' ),
+            'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
+            'all_items'           => __( 'All Categories', 'text_domain' ),
+            'view_item'           => __( 'View Category', 'text_domain' ),
+            'add_new_item'        => __( 'Add New Category', 'text_domain' ),
+            'add_new'             => __( 'Add New', 'text_domain' ),
+            'edit_item'           => __( 'Edit Category', 'text_domain' ),
+            'update_item'         => __( 'Update Category', 'text_domain' ),
+            'search_items'        => __( 'Search Categories', 'text_domain' ),
+            'not_found'           => __( 'Not found', 'text_domain' ),
+            'not_found_in_trash'  => __( 'Not found in Trash', 'text_domain' ),
+        );
+        $args = array(
+            'label'               => __( 'category', 'text_domain' ),
+            'description'         => __( 'A category', 'text_domain' ),
+            'labels'              => $labels,
+            'supports'            => array( 'title', 'revisions', 'editor', ),
+            'taxonomies'          => array( 'item' ),
+            'hierarchical'        => false,
+            'public'              => true,
+            'show_ui'             => true,
+            'show_in_menu'        => true,
+            'show_in_nav_menus'   => false,
+            'show_in_admin_bar'   => true,
+            'menu_position'       => 13,
+            'menu_icon'           => 'dashicons-editor-ul',
+            'can_export'          => true,
+            'has_archive'         => true,
+            'exclude_from_search' => true,
+            'publicly_queryable'  => false,
+            'capability_type'     => 'post',
+        );
+        register_post_type( 'category', $args );
+    }
+
+    // Hook into the 'init' action
+    add_action( 'init', 'custom_categories', 0 );
 }

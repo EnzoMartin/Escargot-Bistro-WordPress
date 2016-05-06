@@ -1,6 +1,6 @@
 <?php
 $categories = [];
-$loop = new WP_Query(array('post_type' => 'menucategories','nopaging' => true));
+$loop = new WP_Query(array('post_type' => 'category','nopaging' => true));
 while($loop->have_posts()): $loop->the_post();
     $value = get_the_ID();
     $category = array (
@@ -8,6 +8,18 @@ while($loop->have_posts()): $loop->the_post();
         'value' => $value
     );
     $categories[$value] = $category;
+endwhile;
+wp_reset_query();
+
+$menus = [];
+$loop = new WP_Query(array('post_type' => 'menu','nopaging' => true));
+while($loop->have_posts()): $loop->the_post();
+    $value = get_the_ID();
+    $menu = array (
+        'label' => get_the_title(),
+        'value' => $value
+    );
+    $menus[$value] = $menu;
 endwhile;
 wp_reset_query();
 
@@ -42,9 +54,16 @@ $item_meta_details_fields = array(
     array(
         'label'=> 'Description',
         'desc'  => 'Describe the item',
-        'id'    => $prefix.'text_subheading',
+        'id'    => $prefix.'description',
         'size'  => 100,
         'type'  => 'text'
+    ),
+    array(
+        'label'=> 'Menu',
+        'desc'  => 'Menu under which to display',
+        'id'    => $prefix.'menu',
+        'type'  => 'select',
+        'options' => $menus
     ),
     array(
         'label'=> 'Category',
@@ -52,6 +71,12 @@ $item_meta_details_fields = array(
         'id'    => $prefix.'category',
         'type'  => 'select',
         'options' => $categories
+    ),
+    array(
+        'label'=> 'Price',
+        'desc'  => '',
+        'id'    => $prefix.'price',
+        'type'  => 'text'
     ),
     array(
         'label'=> 'Order',
@@ -66,40 +91,42 @@ $item_meta_options_fields = array(
     array(
         'label'=> 'Vegetarian',
         'desc'  => 'Mark as vegetarian',
-        'id'    => $prefix.'text_link_text',
+        'id'    => $prefix.'vegetarion',
         'type'  => 'checkbox'
     ),
     array(
         'label'=> 'Vegan',
         'desc'  => 'Mark as vegan',
-        'id'    => $prefix.'text_link_text',
+        'id'    => $prefix.'vegan',
         'type'  => 'checkbox'
     ),
     array(
         'label'=> 'Gluten free',
         'desc'  => 'Mark as gluten free',
-        'id'    => $prefix.'text_link_text',
+        'id'    => $prefix.'glutenfree',
         'type'  => 'checkbox'
     ),
     array(
         'label'=> 'Andrea recipe',
         'desc'  => 'Mark as Andrea\'s recipe',
-        'id'    => $prefix.'text_link_text',
+        'id'    => $prefix.'andrearecipe',
         'type'  => 'checkbox'
     ),
     array(
         'label'=> 'Chef Jacque recipe',
         'desc'  => 'Mark as Chef Jacque\'s recipe',
-        'id'    => $prefix.'text_link_text',
+        'id'    => $prefix.'jacquerecipe',
         'type'  => 'checkbox'
     ),
     array(
         'label'=> '"NEW"',
         'desc'  => 'Mark as a brand new item on the menu',
-        'id'    => $prefix.'text_link_text',
+        'id'    => $prefix.'newitem',
         'type'  => 'checkbox'
     ),
 );
+
+$item_meta_fields = array_merge($item_meta_details_fields, $item_meta_options_fields);
 
 function show_item_meta_details_box() {
     global $item_meta_details_fields, $post;
@@ -128,13 +155,14 @@ function show_item_meta_details_box() {
                 break;
             // select
             case 'select':
-                $locations = get_post_meta($post->ID, $field['id'], false);
-                echo '<select name="'.$field['id'].'[]" id="'.$field['id'].'">';
+                $item = get_post_meta($post->ID, $field['id'], false);
+                $item = count($item) > 0 ? $item[0] : array();
+                echo '<select required="true" name="'.$field['id'].'[]" id="'.$field['id'].'">';
                 echo '<option value="">None</option>';
                 foreach ($field['options'] as $option) {
                     $selected = false;
-                    foreach($locations as $location){
-                        if($location == $option['value']){
+                    foreach($item as $value){
+                        if($value == $option['value']){
                             $selected = true;
                             break;
                         }
