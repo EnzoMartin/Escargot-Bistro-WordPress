@@ -91,7 +91,7 @@ $item_meta_options_fields = array(
     array(
         'label'=> 'Vegetarian',
         'desc'  => 'Mark as vegetarian',
-        'id'    => $prefix.'vegetarion',
+        'id'    => $prefix.'vegetarian',
         'type'  => 'checkbox'
     ),
     array(
@@ -155,16 +155,13 @@ function show_item_meta_details_box() {
                 break;
             // select
             case 'select':
-                $item = get_post_meta($post->ID, $field['id'], true);
-                echo '<select required="true" name="'.$field['id'].'[]" id="'.$field['id'].'">';
+                $value = get_post_meta($post->ID, $field['id'], true);
+                echo '<select required="true" name="'.$field['id'].'" id="'.$field['id'].'">';
                 echo '<option value="">None</option>';
                 foreach ($field['options'] as $option) {
                     $selected = false;
-                    foreach($item as $value){
-                        if($value == $option['value']){
-                            $selected = true;
-                            break;
-                        }
+                    if($value == $option['value']){
+                        $selected = true;
                     }
                     echo '<option', $selected ? ' selected="selected"' : '', ' value="'.$option['value'].'">'.$option['label'].'</option>';
                 }
