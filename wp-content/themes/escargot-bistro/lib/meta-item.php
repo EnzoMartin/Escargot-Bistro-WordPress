@@ -155,8 +155,7 @@ function show_item_meta_details_box() {
                 break;
             // select
             case 'select':
-                $item = get_post_meta($post->ID, $field['id'], false);
-                $item = count($item) > 0 ? $item[0] : array();
+                $item = get_post_meta($post->ID, $field['id'], true);
                 echo '<select required="true" name="'.$field['id'].'[]" id="'.$field['id'].'">';
                 echo '<option value="">None</option>';
                 foreach ($field['options'] as $option) {
