@@ -82,8 +82,8 @@
 		foreach ($menu as $category){
 		?>
 			<div class="menu-category">
-				<h3><?= $category['title'] ?></h3>
-				<div><?= $category['content'] ?></div>
+				<h3 class="menu-category-title"><?= $category['title'] ?></h3>
+				<div class="menu-category-content"><?= $category['content'] ?></div>
 				<?php
 				$item_count = count($category['items']);
 				if ($item_count > 0) {
@@ -116,7 +116,7 @@
 							<table width="100%" cellpadding="0" cellspacing="0" border="0">
 								<tbody>
 								<tr>
-									<th class="name"><?= $item->title ?></th>
+									<th class="name"><h4><?= $item->title ?></h4></th>
 									<td class="price" rowspan="2">$<?= $item->price ?></td>
 								</tr>
 								<tr>

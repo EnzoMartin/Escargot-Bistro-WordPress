@@ -1,0 +1,89 @@
+.menu-category {
+    margin-bottom: 70px;
+
+    table, tr, td, th, tr:nth-child(even) {
+        border: none;
+        background: transparent;
+    }
+
+    .menu-category-title {
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        position: relative;
+
+        /*&:after {
+            border-top: 2px solid #ffa600;
+            border-bottom: 2px solid #00897b;
+            top: 3px;
+            content: '';
+            position: absolute;
+            height: 3px;
+            width: 30px;
+        }
+
+        &:after {
+            left: -8px;
+            transform: rotate(-45deg);
+        }*/
+    }
+
+    .menu-category-content {
+
+    }
+
+    .menu-items {
+        td, th {
+            padding: 0;
+        }
+
+        .menu-row {
+            &:not(.last) {
+                .menu-item {
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        left: 10px;
+                        right: 10px;
+                        bottom: 0;
+                        border-bottom: 1px dashed #d0d1d4;
+                    }
+                }
+            }
+
+            .menu-item {
+                padding-right: 25px;
+                position: relative;
+
+                .name {
+                    h4 {
+                        font-size: 19px;
+                        font-weight: bold;
+                        margin: 0;
+                        text-align: left;
+                    }
+                }
+
+                .price {
+                    color: #ffa600;
+                    font-size: 22px;
+                    font-weight: bold;
+                    width: 20%;
+                    max-width: 150px;
+                    text-align: center;
+                    vertical-align: middle;
+                }
+
+                .description {
+                    text-align: left;
+                    font-size: 13px;
+                    color: #6c6f79;
+                }
+
+                + .menu-item {
+                    padding: 0 0 0 25px;
+                }
+            }
+        }
+    }
+}
