@@ -11,7 +11,7 @@
 
 		$itemsQuery = "
 			SELECT p.post_title AS title,
-				MAX(IF(m.meta_key='items_description',m.meta_value,0)) AS description,
+				MAX(IF(m.meta_key='items_description',m.meta_value,'')) AS description,
 				MAX(IF(m.meta_key='items_text_order',m.meta_value,0)) AS sorting,
 				MAX(IF(m.meta_key='items_price',m.meta_value,0)) AS price,
 				MAX(IF(m.meta_key='items_category',m.meta_value,0)) AS category,
