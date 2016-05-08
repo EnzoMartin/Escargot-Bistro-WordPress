@@ -29,8 +29,14 @@ $banner_meta_fields = array(
         'type'  => 'image'
     ),
     array(
-        'label'=> 'Subheading',
-        'desc'  => 'Subheading to display under the title <em>(optional)</em>',
+        'label'=> 'Title',
+        'desc'  => 'Title to display under the title <em>(optional)</em>',
+        'id'    => $prefix.'text_title',
+        'type'  => 'text'
+    ),
+    array(
+        'label'=> 'Subtitle',
+        'desc'  => 'Subtitle to display under the title <em>(optional)</em>',
         'id'    => $prefix.'text_subheading',
         'type'  => 'text'
     ),

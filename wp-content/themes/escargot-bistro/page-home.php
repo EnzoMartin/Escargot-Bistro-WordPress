@@ -28,26 +28,33 @@ $is_mobile = preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberr
 				    $classes = 'active';
 				    while($banners->have_posts()): $banners->the_post();
 				        if(get_post_status() == 'publish') {
-				            $imageMeta = get_post_meta($post->ID, 'banners_image', true);
-				            $image = wp_get_attachment_url($imageMeta, 'fullsize');
+				            $imageMeta = get_post_meta($post->ID);
 
-				            $subheading = get_post_meta($post->ID, 'banners_text_subheading', true);
-				            $caption = get_post_meta($post->ID, 'banners_text_caption', true);
-				            $link = get_post_meta($post->ID, 'banners_text_link', true);
-				            $linktext = get_post_meta($post->ID, 'banners_text_link_text', true);
+					        //$imageMeta['banners_text_subheading'][0]
+				            $image = wp_get_attachment_url($imageMeta['banners_image'][0], 'fullsize');
+
+				            $title = $imageMeta['banners_text_title'][0];
+				            $subheading = $imageMeta['banners_text_subheading'][0];
+				            $caption = $imageMeta['banners_text_caption'][0];
+				            $link = $imageMeta['banners_text_link'][0];
+				            $linktext = $imageMeta['banners_text_link_text'][0];
+
+					        $display = $title != '' && $subheading != '';
 
 				            $banner =
 				            '<li class="item ' . $classes . '">
-		                        <a href="' . $link . '"><img src="' . $image . '" alt=""></a>
-		                        <div class="caption-container">
+		                        <a href="' . $link . '"><img src="' . $image . '" alt=""></a>' .
+				                ($display ?
+		                        '<div class="caption-container">
 		                            <div class="carousel-caption">' .
 		                                (($link != '') ? '<a href="' . $link . '">' : '') .
-		                                '<h5>' . get_the_title() . '</h5>' .
+		                                (($title != '') ? '<h5>' . $title . '</h5>' : '') .
 		                                (($subheading != '') ? '<h6>' . $subheading . '</h6>' : '') .
 				                        (($link != '') ? '</a>' : '') .
 		                            '</div>
-	                            </div>
-		                    </li>';
+	                            </div>'
+		                        : '') .
+		                    '</li>';
 					        
 				            array_push($html, $banner);
 				            $classes = '';
