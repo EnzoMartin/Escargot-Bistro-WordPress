@@ -247,6 +247,16 @@ function bones_fonts() {
 
 add_action('wp_enqueue_scripts', 'bones_fonts');
 
+add_image_size('homepage-banner', 760, 500 );
+
+add_filter( 'image_size_names_choose', 'my_custom_sizes' );
+
+function my_custom_sizes( $sizes ) {
+    return array_merge( $sizes, array(
+        'homepage-banner' => __( 'Homepage Banner Image' ),
+    ) );
+}
+
 require_once locate_template('/lib/meta-banner.php');
 require_once locate_template('/lib/meta-item.php');
 require_once locate_template('/lib/meta-category.php');
