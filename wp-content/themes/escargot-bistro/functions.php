@@ -294,12 +294,13 @@ function remove_jquery_migrate( &$scripts)
     if(!is_admin())
     {
         $scripts->remove( 'jquery');
-        $scripts->add( 'jquery', false, array( 'jquery-core' ), '1.11.1' );
+        $scripts->add( 'jquery', get_template_directory_uri() . '/library/js/jquery.min.js', false, '2.2.3' );
+	    $scripts->add_data( 'jquery', 'group', 1 );
     }
 }
 
 function deregister_scripts(){
-  wp_deregister_script( 'wp-embed' );
+    wp_deregister_script( 'wp-embed' );
 }
 add_action( 'wp_footer', 'deregister_scripts' );
 
