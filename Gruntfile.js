@@ -1,7 +1,9 @@
 const path = require('path');
 const libPath = path.join(__dirname, './wp-content/themes/escargot-bistro/library');
 const cssPath = path.join(libPath,'css');
+const jsPath = path.join(libPath,'js');
 const scssPath = path.join(libPath,'scss');
+const scriptsPath = path.join(jsPath,'scripts.js');
 
 module.exports = function(grunt){
     grunt.initConfig({
@@ -37,6 +39,20 @@ module.exports = function(grunt){
                 }
             }
         },
+        uglify: {
+            dist: {
+                options:{
+                    compress:true,
+                    sourceMap:false,
+                    mangle:true,
+                    preserveComments: false,
+                    screwIE8: true
+                },
+                files:{
+                    [scriptsPath]:[scriptsPath]
+                }
+            }
+        },
         watch: {
             scss: {
                 files: [libPath + '/**/*.scss'],
@@ -50,6 +66,8 @@ module.exports = function(grunt){
 
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
     grunt.registerTask('default',['sass:dev','watch:scss']);
+    grunt.registerTask('prod',['sass:prod','uglify']);
 };
