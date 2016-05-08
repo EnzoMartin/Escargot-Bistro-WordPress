@@ -1,5 +1,32 @@
+.type-menu {
+    .entry-content {
+        table {
+            margin-bottom: 0;
+        }
+    }
+
+    .entry-header {
+        table {
+            width: 100%;
+        }
+
+        .subtitle {
+            padding-right: 15px;
+            text-align: right;
+        }
+
+        h2.entry-title {
+            font-size: 14px;
+        }
+    }
+}
+
 .menu-category {
-    margin-bottom: 70px;
+    margin-bottom: 30px;
+
+    &:last-of-type {
+        margin-bottom: 80px;
+    }
 
     table, tr, td, th, tr:nth-child(even) {
         border: none;
@@ -42,33 +69,31 @@
         }
 
         .menu-row {
-            position: relative;
             overflow: hidden;
 
             table {
                 margin: 20px 0 15px;
-            }
-
-            &:before,
-            &:after {
-                content: '';
-                position: absolute;
-                width: 45%;
-                bottom: 0;
-                border-bottom: 1px dashed #d0d1d4;
-            }
-
-            &:after {
-                left: 0;
-            }
-
-            &:before {
-                right: 0;
+                min-height: 75px;
             }
 
             .menu-item {
-                padding-right: 25px;
                 position: relative;
+
+                &:after {
+                    border-bottom: 1px dashed #d0d1d4;
+                    position: absolute;
+                    bottom: 0;
+                    content: '';
+                    left: 10px;
+                    right: 5%;
+                }
+
+                &:last-of-type:not(:first-of-type) {
+                    &:after {
+                        left: 5%;
+                        right: 10px;
+                    }
+                }
 
                 .name {
                     h4 {

@@ -1,6 +1,13 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
 	<header class="article-header entry-header">
-		<h1 class="entry-title single-title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1>
+		<table cellspacing="0" cellpadding="0" border="0">
+			<tbody>
+			<tr>
+				<td><h1 class="entry-title single-title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1></td>
+				<td class="subtitle"><h2 class="entry-title single-title"><?= get_post_meta($post->ID,'menus_hours',true); ?></h2></td>
+			</tr>
+			</tbody>
+		</table>
 	</header>
 	<section class="entry-content cf sub" itemprop="articleBody">
 		<?php
@@ -95,13 +102,13 @@
 					foreach ($category['items'] as $item){
 						$odd = $i % 2;
 						$row_classes = array(
-							'menu-row cf',
+							'menu-row row cf',
 							$i === 1 ? 'first' : '',
 							$i >= $item_count ? 'last' : ''
 						);
 
 						$item_classes = array(
-							'menu-item m-all t-1of2 d-1of2',
+							'menu-item col-sm-12 col-md-6',
 							$item->vegetarian ? 'vegetarian' : '',
 		                    $item->vegan ? 'vegan' : '',
 		                    $item->glutenfree ? 'gluten' : '',
