@@ -11,6 +11,10 @@ while($loop->have_posts()): $loop->the_post();
 endwhile;
 wp_reset_query();
 
+usort($categories, function($a, $b) {
+    return strcmp($a['label'], $b['label']);
+});
+
 $menus = [];
 $loop = new WP_Query(array('post_type' => 'menu','nopaging' => true));
 while($loop->have_posts()): $loop->the_post();
@@ -22,6 +26,10 @@ while($loop->have_posts()): $loop->the_post();
     $menus[$value] = $menu;
 endwhile;
 wp_reset_query();
+
+usort($menus, function($a, $b) {
+    return strcmp($a['label'], $b['label']);
+});
 
 // Add the Meta Box
 function item_meta_details_box() {
