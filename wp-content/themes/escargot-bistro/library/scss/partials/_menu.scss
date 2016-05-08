@@ -6,6 +6,10 @@
         background: transparent;
     }
 
+    h3 {
+        margin: 28px 0 15px;
+    }
+
     .menu-category-title {
         text-align: center;
         font-size: 28px;
@@ -38,17 +42,28 @@
         }
 
         .menu-row {
-            &:not(.last) {
-                .menu-item {
-                    &:after {
-                        content: '';
-                        position: absolute;
-                        left: 10px;
-                        right: 10px;
-                        bottom: 0;
-                        border-bottom: 1px dashed #d0d1d4;
-                    }
-                }
+            position: relative;
+            overflow: hidden;
+
+            table {
+                margin: 20px 0 15px;
+            }
+
+            &:before,
+            &:after {
+                content: '';
+                position: absolute;
+                width: 45%;
+                bottom: 0;
+                border-bottom: 1px dashed #d0d1d4;
+            }
+
+            &:after {
+                left: 0;
+            }
+
+            &:before {
+                right: 0;
             }
 
             .menu-item {
