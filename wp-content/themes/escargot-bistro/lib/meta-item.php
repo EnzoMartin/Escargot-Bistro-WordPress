@@ -27,6 +27,35 @@ while($loop->have_posts()): $loop->the_post();
 endwhile;
 wp_reset_query();
 
+
+add_filter('manage_edit-item_columns', 'custom_columns');
+function custom_columns($columns) {
+    return array(
+        'cb' => '<input type="checkbox" />',
+        'title' => __('Title'),
+        'menu' => __('Menu'),
+        'date' => __('Date')
+    );
+}
+
+add_action('manage_posts_custom_column',  'show_custom_columns');
+function show_custom_columns($name) {
+    global $post, $menus;
+    switch ($name) {
+        case 'menu':
+            $menu_id = get_post_meta($post->ID, 'items_menu', true);
+            $key = array_search($menu_id, array_column($menus, 'value'));
+            $selected = $menus[$key];
+            if(!isset($selected) || !$selected){
+                $views = '';
+            } else {
+                $views = $selected['label'];
+            }
+
+            echo $views;
+    }
+}
+
 usort($menus, function($a, $b) {
     return strcmp($a['label'], $b['label']);
 });
