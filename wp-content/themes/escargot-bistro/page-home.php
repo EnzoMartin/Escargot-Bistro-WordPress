@@ -3,7 +3,7 @@
 	<div id="content">
 		<div id="inner-content" class="wrap cf">
 			<!-- Hide this for mobile -->
-			<div class="m-all t-2of-3 d-5of7">
+			<div class="m-hidden t-2of-3 d-5of7">
 				<?php
 				$banners = new WP_Query(
 				    array(
