@@ -89,7 +89,7 @@
 		foreach ($menu as $category){
 		?>
 			<div class="menu-category">
-				<h3 class="menu-category-title"><?= $category['title'] ?></h3>
+				<h3 class="menu-category-title"><span><?= $category['title'] ?></span></h3>
 				<div class="menu-category-content"><?= $category['content'] ?></div>
 				<?php
 				$item_count = count($category['items']);

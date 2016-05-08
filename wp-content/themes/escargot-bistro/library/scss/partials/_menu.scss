@@ -41,22 +41,22 @@
         text-align: center;
         font-size: 28px;
         font-weight: bold;
-        position: relative;
 
-        /*&:after {
-            border-top: 2px solid #ffa600;
-            border-bottom: 2px solid #00897b;
-            top: 3px;
-            content: '';
-            position: absolute;
-            height: 3px;
-            width: 30px;
+        span {
+            position: relative;
+
+            &:after {
+                border-bottom: 2px solid #ffa600;
+                border-top: 2px solid #00897b;
+                top: 15px;
+                content: '';
+                position: absolute;
+                height: 4px;
+                width: 22px;
+                right: -30px;
+                transform: rotate(-65deg) skewX(-25deg);
+            }
         }
-
-        &:after {
-            left: -8px;
-            transform: rotate(-45deg);
-        }*/
     }
 
     .menu-category-content {
