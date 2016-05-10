@@ -74,7 +74,7 @@
 					'id' => $cat->id,
 					'title' => $cat->title,
 					'content' => $cat->content,
-					'sorting' => $cat->sorting,
+					'sorting' => intval($cat->sorting),
 					'items' => $cat_items
 				);
 
@@ -83,7 +83,8 @@
 		}
 
 		usort($menu, function($a, $b) {
-			return $a->sorting > $b->sorting;
+			if($a['sorting'] == $b['sorting']){ return 0 ; }
+			return ($a['sorting'] < $b['sorting']) ? -1 : 1;
 		});
 
 		foreach ($menu as $category){
