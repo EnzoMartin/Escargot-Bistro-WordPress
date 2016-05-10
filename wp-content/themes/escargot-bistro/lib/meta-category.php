@@ -16,6 +16,25 @@ while($loop->have_posts()): $loop->the_post();
 endwhile;
 wp_reset_query();
 
+add_filter('manage_edit-category_columns', 'custom_category_columns');
+function custom_category_columns($columns) {
+    return array(
+        'cb' => '<input type="checkbox" />',
+        'title' => __('Title'),
+        'order' => __('Order'),
+        'date' => __('Date')
+    );
+}
+
+add_action('manage_posts_custom_column',  'show_custom_category_columns');
+function show_custom_category_columns($name) {
+    global $post;
+    switch ($name) {
+        case 'order':
+            echo get_post_meta($post->ID, 'category_text_order', true);
+    }
+}
+
 // Add the Meta Box
 function category_meta_details_box() {
     add_meta_box(
