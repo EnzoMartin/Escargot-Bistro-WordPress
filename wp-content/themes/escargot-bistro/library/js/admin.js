@@ -27,3 +27,13 @@ jQuery('.custom_clear_image_button').on('click',function() {
 
     return false;
 });
+
+jQuery('#items_is_wine').on('change',function() {
+    if(this.checked){
+        jQuery('.normal-price').stop().hide();
+        jQuery('.wine-price').stop().show();
+    } else {
+        jQuery('.normal-price').stop().show();
+        jQuery('.wine-price').stop().hide();
+    }
+});

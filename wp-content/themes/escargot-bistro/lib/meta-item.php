@@ -89,8 +89,15 @@ add_action('add_meta_boxes', 'item_meta_options_box');
 $prefix = 'items_';
 $item_meta_details_fields = array(
     array(
+        'label'=> 'Display as bottle/glass price',
+        'desc'  => '',
+        'id'    => $prefix.'is_wine',
+        'type'  => 'checkbox'
+    ),
+    array(
         'label'=> 'Description',
         'desc'  => 'Describe the item',
+        'className' => 'normal-price',
         'id'    => $prefix.'description',
         'size'  => 100,
         'type'  => 'text'
@@ -113,6 +120,21 @@ $item_meta_details_fields = array(
         'label'=> 'Price',
         'desc'  => '',
         'id'    => $prefix.'price',
+        'className' => 'normal-price',
+        'type'  => 'text'
+    ),
+    array(
+        'label'=> 'Bottle Price',
+        'desc'  => '',
+        'id'    => $prefix.'bottle_price',
+        'className' => 'wine-price', 
+        'type'  => 'text'
+    ),
+    array(
+        'label'=> 'Glass Price',
+        'desc'  => '',
+        'id'    => $prefix.'glass_price',
+        'className' => 'wine-price',
         'type'  => 'text'
     ),
     array(
@@ -129,30 +151,35 @@ $item_meta_options_fields = array(
         'label'=> 'Vegetarian',
         'desc'  => 'Mark as vegetarian',
         'id'    => $prefix.'vegetarian',
+        'className' => 'normal-price',
         'type'  => 'checkbox'
     ),
     array(
         'label'=> 'Vegan',
         'desc'  => 'Mark as vegan',
         'id'    => $prefix.'vegan',
+        'className' => 'normal-price',
         'type'  => 'checkbox'
     ),
     array(
         'label'=> 'Gluten free',
         'desc'  => 'Mark as gluten free',
         'id'    => $prefix.'glutenfree',
+        'className' => 'normal-price',
         'type'  => 'checkbox'
     ),
     array(
         'label'=> 'Andrea recipe',
         'desc'  => 'Mark as Andrea\'s recipe',
         'id'    => $prefix.'andrearecipe',
+        'className' => 'normal-price',
         'type'  => 'checkbox'
     ),
     array(
         'label'=> 'Chef Jacque recipe',
         'desc'  => 'Mark as Chef Jacque\'s recipe',
         'id'    => $prefix.'jacquerecipe',
+        'className' => 'normal-price',
         'type'  => 'checkbox'
     ),
     array(
@@ -167,16 +194,17 @@ $item_meta_fields = array_merge($item_meta_details_fields, $item_meta_options_fi
 
 function show_item_meta_details_box() {
     global $item_meta_details_fields, $post;
+    $showWinePrice = get_post_meta($post->ID, 'items_is_wine', true) === 'on' ? 'show-wine' : 'hide-wine';
     // Use nonce for verification
     echo '<input type="hidden" name="item_meta_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'" />';
 
     // Begin the field table and loop
-    echo '<table class="form-table">';
+    echo '<table class="form-table ' . $showWinePrice . '">';
     foreach ($item_meta_details_fields as $field) {
         // get value of this field if it exists for this post
         $meta = get_post_meta($post->ID, $field['id'], true);
         // begin a table row with
-        echo '<tr>
+        echo '<tr class="'. $field['className'] .'">
                 <th><label for="'.$field['id'].'">'.$field['label'].'</label></th>
                 <td>';
         switch($field['type']) {
@@ -212,14 +240,15 @@ function show_item_meta_details_box() {
 
 function show_item_meta_options_box() {
     global $item_meta_options_fields, $post;
+    $showWinePrice = get_post_meta($post->ID, 'items_is_wine', true) === 'on' ? 'show-wine' : 'hide-wine';
 
     // Begin the field table and loop
-    echo '<table class="form-table">';
+    echo '<table class="form-table ' . $showWinePrice . '">';
     foreach ($item_meta_options_fields as $field) {
         // get value of this field if it exists for this post
         $meta = get_post_meta($post->ID, $field['id'], true);
         // begin a table row with
-        echo '<tr>
+        echo '<tr class="'. $field['className'] .'">
                 <th><label for="'.$field['id'].'">'.$field['label'].'</label></th>
                 <td>';
         switch($field['type']) {

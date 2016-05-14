@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AACI,sBAAY,CACR,OAAO,CAAE,IAAI,CAKjB,wBAAc,CACV,OAAO,CAAE,IAAI",
+"sources": ["../scss/admin.scss"],
 "names": [],
 "file": "admin.css"
 }

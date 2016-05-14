@@ -72,6 +72,14 @@
             overflow: hidden;
             min-height: 103px;
 
+            &.wine-row {
+                min-height: 0;
+
+                table {
+                    min-height: 42px;
+                }
+            }
+
             table {
                 margin: 20px 0 15px;
                 min-height: 75px;
@@ -113,6 +121,13 @@
                     max-width: 150px;
                     text-align: center;
                     vertical-align: middle;
+
+                    small {
+                        display: block;
+                        font-size: 11px;
+                        line-height: 4px;
+                        color: #6c6f79;
+                    }
                 }
 
                 .description {
