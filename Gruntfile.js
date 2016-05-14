@@ -4,6 +4,7 @@ const cssPath = path.join(libPath,'css');
 const jsPath = path.join(libPath,'js');
 const scssPath = path.join(libPath,'scss');
 const scriptsPath = path.join(jsPath,'scripts.js');
+const adminPath = path.join(jsPath,'admin.js');
 
 module.exports = function(grunt){
     grunt.initConfig({
@@ -49,7 +50,8 @@ module.exports = function(grunt){
                     screwIE8: true
                 },
                 files:{
-                    [scriptsPath]:[scriptsPath]
+                    [scriptsPath]:[scriptsPath],
+                    [adminPath]:[adminPath]
                 }
             }
         },

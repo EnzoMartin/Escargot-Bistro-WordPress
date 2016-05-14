@@ -73,8 +73,8 @@ if ( ! isset( $content_width ) ) {
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
-add_image_size( 'bones-thumb-600', 600, 150, true );
-add_image_size( 'bones-thumb-300', 300, 100, true );
+//add_image_size( 'bones-thumb-600', 600, 150, true );
+//add_image_size( 'bones-thumb-300', 300, 100, true );
 
 /*
 to add more sizes, simply copy a line from above
@@ -100,8 +100,8 @@ add_filter( 'image_size_names_choose', 'bones_custom_image_sizes' );
 
 function bones_custom_image_sizes( $sizes ) {
     return array_merge( $sizes, array(
-        'bones-thumb-600' => __('600px by 150px'),
-        'bones-thumb-300' => __('300px by 100px'),
+        //'bones-thumb-600' => __('600px by 150px'),
+        //'bones-thumb-300' => __('300px by 100px'),
     ) );
 }
 
@@ -137,7 +137,7 @@ function bones_theme_customizer($wp_customize) {
   $wp_customize->remove_section('title_tagline');
   $wp_customize->remove_section('colors');
   $wp_customize->remove_section('background_image');
-  // $wp_customize->remove_section('static_front_page');
+  $wp_customize->remove_section('static_front_page');
   // $wp_customize->remove_section('nav');
 
   // Uncomment the below lines to remove the default controls
@@ -303,5 +303,11 @@ function deregister_scripts(){
     wp_deregister_script( 'wp-embed' );
 }
 add_action( 'wp_footer', 'deregister_scripts' );
+
+function load_custom_wp_admin_style(){
+    wp_register_style( 'custom_wp_admin_css', get_template_directory_uri() . '/library/css/admin.css', false, '1.0.0' );
+    wp_enqueue_style( 'custom_wp_admin_css' );
+}
+add_action('admin_enqueue_scripts', 'load_custom_wp_admin_style');
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>
