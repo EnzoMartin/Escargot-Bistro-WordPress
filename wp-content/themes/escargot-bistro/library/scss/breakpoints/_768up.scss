@@ -35,10 +35,20 @@ body {
 
     &:after {
         background: transparent url('../images/bg_bottom_right-o.jpg') no-repeat;
+        background-size: cover;
         bottom: 0;
         right: 0;
         width: 562px;
         height: 625px;
+    }
+}
+
+@media screen and ( max-height: 800px ){
+    body {
+        &:after {
+            height: 425px;
+            width: 382px;
+        }
     }
 }
 
