@@ -137,9 +137,9 @@ header.header {
 .operating-hours {
     &.small {
         background: #000 url("../images/bg_hours-o.jpg") no-repeat 0 0;
-        background-size: auto 150px;
-        height: 150px;
-        margin: 8px 0 30px;
+        background-size: auto 120px;
+        height: 120px;
+        margin: 0 0 8px;
         min-height: 0;
     }
 
@@ -163,7 +163,6 @@ header.header {
         .menu-buttons {
             overflow: hidden;
             border-radius: 1px;
-            //border: 2px solid #00897b;
             box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4);
         }
 
@@ -172,7 +171,6 @@ header.header {
             font-size: 16px;
             background: #FFF;
             text-transform: uppercase;
-
             text-decoration: none;
             float: left;
 
