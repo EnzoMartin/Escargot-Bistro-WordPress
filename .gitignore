@@ -1,4 +1,5 @@
 .htaccess
+.sass-cache
 /bin
 /App_Data
 /wp-admin
