@@ -89,6 +89,24 @@ header.header {
     }
 }
 
+.menu-category {
+    .menu-items {
+        .menu-row {
+            .menu-item {
+                &:after {
+                    right: 10px;
+                }
+
+                &:last-of-type:not(:first-of-type) {
+                    &:after {
+                        left: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
 #mobile-nav {
     width: 100%;
 
