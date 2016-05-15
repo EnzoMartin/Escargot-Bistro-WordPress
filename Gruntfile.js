@@ -22,7 +22,8 @@ module.exports = function(grunt){
                     [path.join(cssPath,'editor-style.css')]:path.join(scssPath,'editor-style.scss'),
                     [path.join(cssPath,'ie.css')]:path.join(scssPath,'ie.scss'),
                     [path.join(cssPath,'login.css')]:path.join(scssPath,'login.scss'),
-                    [path.join(cssPath,'style.css')]:path.join(scssPath,'style.scss')
+                    [path.join(cssPath,'style.css')]:path.join(scssPath,'style.scss'),
+                    [path.join(cssPath,'print.css')]:path.join(scssPath,'print.scss')
                 }
             },
             prod:{
@@ -36,7 +37,8 @@ module.exports = function(grunt){
                     [path.join(cssPath,'editor-style.css')]:path.join(scssPath,'editor-style.scss'),
                     [path.join(cssPath,'ie.css')]:path.join(scssPath,'ie.scss'),
                     [path.join(cssPath,'login.css')]:path.join(scssPath,'login.scss'),
-                    [path.join(cssPath,'style.css')]:path.join(scssPath,'style.scss')
+                    [path.join(cssPath,'style.css')]:path.join(scssPath,'style.scss'),
+                    [path.join(cssPath,'print.css')]:path.join(scssPath,'print.scss')
                 }
             }
         },

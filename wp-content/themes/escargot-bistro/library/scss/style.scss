@@ -139,18 +139,3 @@ only screen and (min-device-pixel-ratio: 1.5) {
     @import "breakpoints/2x";
 
 }
-
-// end of media query
-
-/*********************
-PRINT STYLESHEET
-Feel free to customize this. Remember to add things that won't make
-sense to print at the bottom. Things like nav, ads, and forms should
-be set to display none.
-*********************/
-@media print {
-
-    // styles in print.scss
-    @import "partials/print";
-
-}

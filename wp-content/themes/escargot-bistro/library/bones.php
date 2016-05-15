@@ -155,6 +155,7 @@ function bones_scripts_and_styles() {
 		*/
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'bones-js' );
+	    wp_enqueue_style( 'print', get_template_directory_uri() . '/library/css/print.css', null, null, 'print' );
 
 	}
 }
