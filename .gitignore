@@ -49,3 +49,4 @@ sitemap.xml.gz
 /readme.html
 /wp-activate.php
 /wp-blog-header.php
+node_modules
