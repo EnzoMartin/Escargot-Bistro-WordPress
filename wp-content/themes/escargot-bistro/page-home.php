@@ -95,15 +95,13 @@ get_header();
 				</div>
 			</div>
 		</div>
-		<div class="row hidden-md-up menu-buttons">
-			<div class="col-xs-4 center">
-				<a href="/menu/lunch-menu">Lunch Menu</a>
-			</div>
-			<div class="col-xs-4 center">
-				<a href="/menu/dinner-menu">Dinner Menu</a>
-			</div>
-			<div class="col-xs-4 center">
-				<a href="/menu/wine-list">Wine List</a>
+		<div class="row hidden-md-up menu-buttons-container">
+			<div class="col-xs-12">
+				<div class="menu-buttons">
+					<a class="col-xs-4 center action-lunch" href="/menu/lunch-menu">Lunch</a>
+					<a class="col-xs-4 center action-dinner" href="/menu/dinner-menu">Dinner</a>
+					<a class="col-xs-4 center action-wine" href="/menu/wine-list">Wine</a>
+				</div>
 			</div>
 		</div>
 		<div class="row hidden-md-up">

@@ -144,9 +144,8 @@ header.header {
     }
 
     &.large {
-        border-radius: 1px 1px 0 0;
         padding: 16px 24px;
-        margin-bottom: 8px;
+        margin: 0 0 8px;
         background: none #FFF;
         color: $text-color;
         text-align: center;
@@ -160,11 +159,30 @@ header.header {
 }
 
 .home {
-    .menu-buttons {
+    .menu-buttons-container {
+        .menu-buttons {
+            overflow: hidden;
+            border-radius: 1px;
+            //border: 2px solid #00897b;
+            box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4);
+        }
+
         a {
-            display: block;
             padding: 8px;
-            font-size: 20px;
+            font-size: 16px;
+            background: #FFF;
+            text-transform: uppercase;
+
+            text-decoration: none;
+            float: left;
+
+            &.action-wine {
+                border-left: 1px solid #C3C3C3;
+            }
+
+            &.action-dinner {
+                border-left: 1px solid #C3C3C3;
+            }
         }
     }
 }
