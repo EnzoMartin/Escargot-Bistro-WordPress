@@ -1,32 +1,26 @@
 		<?php if(!is_home() && !is_front_page()){ ?>
 			<footer class="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
-				<div id="inner-footer" class="wrap cf">
-					<table cellpadding="0" cellspacing="0" border="0">
-						<thead>
-						<tr>
-							<th><h3>ADDRESS</h3></th>
-							<th><h3>HOURS</h3></th>
-							<th><h3>CONTACT</h3></th>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-							<td>
-								<a href="https://www.google.com/maps/place/Escargot+Bistro/@26.1886258,-80.1304127,17z/data=!4m2!3m1!1s0x0000000000000000:0x0da6a02deb22bddf?hl=en" target="_blank">
-									<address>1506 E. Commercial Blvd<br/>Oakland Park, FL, 33334</address>
-								</a>
-							</td>
-							<td><?php echo apply_filters( 'the_content',get_option('hours_of_operation')); ?></td>
-							<td>
-								<a href="tel:(754)-206-4116">(754)-206-4116</a>
-								<a href="mailto:info@escargotbistro.com">info@escargotbistro.com</a>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="3"><p>&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>.</p></td>
-						</tr>
-						</tbody>
-					</table>
+				<div id="inner-footer" class="container">
+					<div class="row">
+						<div class="col-xs-12 col-md-4 center">
+							<h3>ADDRESS</h3>
+							<a href="https://www.google.com/maps/place/Escargot+Bistro/@26.1886258,-80.1304127,17z/data=!4m2!3m1!1s0x0000000000000000:0x0da6a02deb22bddf?hl=en" target="_blank">
+								<address>1506 E. Commercial Blvd<br/>Oakland Park, FL, 33334</address>
+							</a>
+						</div>
+						<div class="col-xs-12 col-md-4 center">
+							<h3>HOURS</h3>
+							<?php echo apply_filters( 'the_content',get_option('hours_of_operation')); ?>
+						</div>
+						<div class="col-xs-12 col-md-4 center">
+							<h3>CONTACT</h3>
+							<a href="tel:(754)-206-4116">(754)-206-4116</a>
+							<a href="mailto:info@escargotbistro.com">info@escargotbistro.com</a>
+						</div>
+					</div>
+					<div class="row center">
+						<div class="col-xs-12"><p>&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>.</p></div>
+					</div>
 				</div>
 			</footer>
 		<?php } ?>

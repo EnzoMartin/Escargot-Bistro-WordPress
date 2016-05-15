@@ -1237,6 +1237,10 @@ SIDEBARS & ASIDES
     margin-bottom: 1.5em;
 }
 
+.center {
+    text-align: center;
+}
+
 /*********************
 FOOTER STYLES
 *********************/
@@ -1249,22 +1253,8 @@ FOOTER STYLES
         font-weight:bold;
     }
 
-    table {
-        width: 100%;
-
-        td, th {
-            width: 33%;
-            text-align: center;
-            vertical-align: top;
-        }
-
-        a {
-            display: block;
-        }
-
-        p:first-of-type {
-            margin-top: 0;
-        }
+    a {
+        display: block;
     }
 }
 
