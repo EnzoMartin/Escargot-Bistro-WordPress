@@ -1,0 +1,29 @@
+#nav {
+    #logo {
+        a {
+            img {
+                width: 150px;
+            }
+        }
+    }
+}
+
+.header {
+    #nav {
+        td {
+            width: 50%;
+        }
+
+        #nav-left {
+            padding-right: 16px;
+        }
+
+        #nav-right {
+            padding-left: 16px;
+        }
+
+        #nav-center {
+            display: none;
+        }
+    }
+}

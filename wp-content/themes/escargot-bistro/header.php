@@ -83,9 +83,9 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
 			</div>
 		<?php } ?>
 		<div id="container">
-			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
-				<div id="inner-header" class="wrap cf">
-					<nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+			<header class="header container" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+				<div id="inner-header" class="row">
+					<nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement" class="col-xs-12">
 						<?php if ($GLOBALS['is_mobile']) { ?>
 							<table id="mobile-nav" cellpadding="0" cellspacing="0" border="0">
 								<tbody>
@@ -94,7 +94,6 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
 									<td>
 										<div id="logo" class="h1" itemscope itemtype="http://schema.org/Organization">
 											<a href="<?php echo home_url(); ?>" rel="nofollow">
-												<!--<img src="<?php echo get_template_directory_uri(); ?>/library/images/logo-mobile.png"/>-->
 												Escargot Bistro
 											</a>
 										</div>
