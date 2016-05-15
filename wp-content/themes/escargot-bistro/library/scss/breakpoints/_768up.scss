@@ -16,7 +16,31 @@ come into play. Have fun!
 GENERAL STYLES
 *********************/
 
-body {  }
+body {
+    &:before,
+    &:after {
+        content: '';
+        position: fixed;
+        display: block;
+        z-index: 1;
+    }
+
+    &:before {
+        background: transparent url('../images/bg_top_left-o.jpg') no-repeat;
+        top: 0;
+        left: 0;
+        width: 814px;
+        height: 500px;
+    }
+
+    &:after {
+        background: transparent url('../images/bg_bottom_right-o.jpg') no-repeat;
+        bottom: 0;
+        right: 0;
+        width: 562px;
+        height: 625px;
+    }
+}
 
 #home-carousel {
 
