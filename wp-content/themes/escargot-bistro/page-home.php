@@ -10,7 +10,6 @@ $is_mobile = preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberr
 <div class="home">
 	<div id="content" class="container">
 		<div id="inner-content" class="row">
-			<!-- Hide this for mobile -->
 			<?php if(!$is_mobile){ ?>
 			<div class="hidden-sm-down col-xs-12">
 				<?php

@@ -60,7 +60,7 @@
 											'link_after'  => '</span>',
 										) );
 									?>
-								</section> <!-- end article section -->
+								</section>
 
 								<footer class="article-footer">
 									<p class="tags"><?php echo get_the_term_list( get_the_ID(), 'custom_tag', '<span class="tags-title">' . __( 'Custom Tags:', 'bonestheme' ) . '</span> ', ', ' ) ?></p>
