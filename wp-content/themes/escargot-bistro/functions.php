@@ -295,8 +295,8 @@ function remove_jquery_migrate( &$scripts)
     {
         $scripts->remove( 'jquery');
 
-	    if(is_home()) {
-		    $scripts->add( 'jquery', get_template_directory_uri() . '/library/js/jquery.min.js', false, '2.2.3' );
+	    if(is_home() || is_front_page()) {
+		    $scripts->add( 'jquery', get_template_directory_uri() . '/library/js/jquery-light.min.js', false, '3.0.0' );
 		    $scripts->add_data( 'jquery', 'group', 1 );
 	    }
     }

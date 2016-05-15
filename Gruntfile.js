@@ -1,10 +1,13 @@
 const path = require('path');
 const libPath = path.join(__dirname, './wp-content/themes/escargot-bistro/library');
+
 const cssPath = path.join(libPath,'css');
 const jsPath = path.join(libPath,'js');
+
 const scssPath = path.join(libPath,'scss');
 const scriptsPath = path.join(jsPath,'scripts.js');
 const adminPath = path.join(jsPath,'admin.js');
+const jqueryPath = path.join(jsPath,'jquery-light.min.js');
 
 module.exports = function(grunt){
     grunt.initConfig({
@@ -53,6 +56,7 @@ module.exports = function(grunt){
                 },
                 files:{
                     [scriptsPath]:[scriptsPath],
+                    [jqueryPath]:[jqueryPath],
                     [adminPath]:[adminPath]
                 }
             }

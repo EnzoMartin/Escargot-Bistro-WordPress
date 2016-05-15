@@ -83,6 +83,10 @@ body {
         height: 500px;
 	}
 
+    .bannerList {
+        transition: margin-left 0.2s ease-in-out;
+    }
+
 	.bannerListWpr {
 		clear: both;
 		overflow: hidden;
