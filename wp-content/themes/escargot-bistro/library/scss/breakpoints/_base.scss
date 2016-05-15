@@ -1237,6 +1237,10 @@ FOOTER STYLES
 
     a {
         display: block;
+
+        + a {
+            margin-top: 8px;
+        }
     }
 
     p {
