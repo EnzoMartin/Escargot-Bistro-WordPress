@@ -149,3 +149,10 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
 					</nav>
 				</div>
 			</header>
+			<div id="print-logo-container" class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<img id="print-logo" src="<?php echo get_template_directory_uri(); ?>/library/images/logo-p.png"/>
+					</div>
+				</div>
+			</div>

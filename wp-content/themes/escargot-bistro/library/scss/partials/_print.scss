@@ -1,15 +1,3 @@
-/******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Print Stylesheet
-
-This is the print stylesheet. There's probably not a lot
-of reasons to edit this stylesheet. If you want to
-though, go for it.
-
-******************************************************************/
-
 * {
     background: transparent !important;
     color: black !important;
@@ -76,5 +64,41 @@ h3 {
 .wp-prev-next,
 .respond-form,
 nav {
+    display: none;
+}
+
+.hentry header {
+    background: #00897b !important;
+
+    h1,
+    h2 {
+        color: #FFF !important;
+    }
+}
+
+.copyright {
+    display: none;
+}
+
+#print-logo-container {
+    display: block;
+
+    #print-logo {
+        margin: 16px auto 0;
+        width: 420px;
+        height: 140px;
+        display: block;
+    }
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: .9375rem;
+    padding-right: .9375rem;
+    max-width: none;
+}
+
+footer.footer {
     display: none;
 }
