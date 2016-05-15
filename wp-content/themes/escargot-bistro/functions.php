@@ -294,8 +294,11 @@ function remove_jquery_migrate( &$scripts)
     if(!is_admin())
     {
         $scripts->remove( 'jquery');
-        $scripts->add( 'jquery', get_template_directory_uri() . '/library/js/jquery.min.js', false, '2.2.3' );
-	    $scripts->add_data( 'jquery', 'group', 1 );
+
+	    if(is_home()) {
+		    $scripts->add( 'jquery', get_template_directory_uri() . '/library/js/jquery.min.js', false, '2.2.3' );
+		    $scripts->add_data( 'jquery', 'group', 1 );
+	    }
     }
 }
 
