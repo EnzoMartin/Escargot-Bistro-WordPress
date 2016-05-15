@@ -45,7 +45,7 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
 	<body <?php body_class($mobile); ?> itemscope itemtype="http://schema.org/WebPage">
 		<?php if ($GLOBALS['is_mobile']) { ?>
 			<input type="checkbox" id="nav-trigger" name="nav-trigger" class="nav-trigger hidden-print" title="Open Navigation"/>
-			<label id="nav-trigger-label" for="nav-trigger hidden-print">
+			<label id="nav-trigger-label" for="nav-trigger" class="hidden-print">
 				<img
 					src="<?= get_template_directory_uri(); ?>/library/images/1x/menu_white_24dp.png"
 					srcset="<?= get_template_directory_uri(); ?>/library/images/2x/menu_white_24dp.png 2x"
