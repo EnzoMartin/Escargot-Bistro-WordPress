@@ -1,9 +1,13 @@
 * {
-    background: transparent !important;
-    color: black !important;
+    background: #FFF !important;
+    color: #000 !important;
     text-shadow: none !important;
     filter: none !important;
     -ms-filter: none !important;
+}
+
+body, html {
+    background: transparent none !important;
 }
 
 a, a:visited {
@@ -69,10 +73,16 @@ nav {
 
 .hentry header {
     background: #00897b !important;
+    margin-bottom: 0;
+
+    * {
+        background: #00897b !important;
+    }
 
     h1,
     h2 {
         color: #FFF !important;
+        text-transform: uppercase;
     }
 }
 
@@ -89,6 +99,16 @@ nav {
         height: 140px;
         display: block;
     }
+
+    span {
+        display: inline-block;
+        text-align: center;
+        padding-top: 4px;
+    }
+}
+
+#content {
+    margin-top: 8px;
 }
 
 .container {
