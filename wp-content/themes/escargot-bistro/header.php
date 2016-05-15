@@ -44,14 +44,14 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
 	</head>
 	<body <?php body_class($mobile); ?> itemscope itemtype="http://schema.org/WebPage">
 		<?php if ($GLOBALS['is_mobile']) { ?>
-			<input type="checkbox" id="nav-trigger" name="nav-trigger" class="nav-trigger" title="Open Navigation"/>
-			<label id="nav-trigger-label" for="nav-trigger">
+			<input type="checkbox" id="nav-trigger" name="nav-trigger" class="nav-trigger hidden-print" title="Open Navigation"/>
+			<label id="nav-trigger-label" for="nav-trigger hidden-print">
 				<img
 					src="<?= get_template_directory_uri(); ?>/library/images/1x/menu_white_24dp.png"
 					srcset="<?= get_template_directory_uri(); ?>/library/images/2x/menu_white_24dp.png 2x"
 					alt="" aria-hidden="true">
 			</label>
-			<div id="mobile-nav-menu-container">
+			<div id="mobile-nav-menu-container" class="hidden-print">
 				<div id="mobile-nav-menu">
 					<?php wp_nav_menu(array(
 						'container' => false,
