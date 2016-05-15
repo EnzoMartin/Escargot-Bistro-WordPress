@@ -213,6 +213,11 @@ HEADER STYLES
 
         #nav-left {
             text-align: left;
+            padding-right: 35px;
+
+            .top-nav {
+                float: right;
+            }
         }
 
         #nav-center {
@@ -221,9 +226,10 @@ HEADER STYLES
 
         #nav-right {
             text-align: right;
+            padding-left: 35px;
 
-            #menu-menu-right {
-                float: right;
+            .top-nav {
+                float: left;
             }
         }
     }
