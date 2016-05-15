@@ -63,7 +63,7 @@
 								<td id="nav-center">
 									<div id="logo" class="h1" itemscope itemtype="http://schema.org/Organization">
 										<a href="<?php echo home_url(); ?>" rel="nofollow">
-											<img src="<?php echo get_template_directory_uri(); ?>/library/images/logo.png"/>
+											<img src="<?php echo get_template_directory_uri(); ?>/library/images/logo-o.png"/>
 										</a>
 									</div>
 								</td>
