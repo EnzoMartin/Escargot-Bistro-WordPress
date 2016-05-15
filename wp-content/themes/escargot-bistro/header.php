@@ -123,7 +123,7 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
 								<td id="nav-center">
 									<div id="logo" class="h1" itemscope itemtype="http://schema.org/Organization">
 										<a href="<?php echo home_url(); ?>" rel="nofollow">
-											<img src="<?php echo get_template_directory_uri(); ?>/library/images/logo-p.png"/>
+											<img src="<?php echo get_template_directory_uri(); ?>/library/images/logo-o-s.png"/>
 										</a>
 									</div>
 								</td>
@@ -152,7 +152,7 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
 			<div id="print-logo-container" class="container">
 				<div class="row">
 					<div class="col-xs-12 center">
-						<img id="print-logo" src="<?php echo get_template_directory_uri(); ?>/library/images/logo-p.png"/>
+						<img id="print-logo" src="<?php echo get_template_directory_uri(); ?>/library/images/logo-o-s.png"/>
 						<span>1506 E. Commercial Blvd, Oakland Park, FL, 33334</span>
 						<br/>
 						<span><strong>(754)-206-4116</strong></span>
