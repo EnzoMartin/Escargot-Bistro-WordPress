@@ -50,6 +50,14 @@ body {
     }
 }
 
+#nav {
+    #logo {
+        img {
+            width: 100%;
+        }
+    }
+}
+
 #container {
     z-index: 2;
     position: relative;
