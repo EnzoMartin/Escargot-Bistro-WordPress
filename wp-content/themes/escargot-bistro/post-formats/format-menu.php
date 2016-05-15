@@ -153,7 +153,7 @@
 						);
 
 						$item_classes = array(
-							'menu-item col-xs-12 col-md-6',
+							'menu-item col-xs-12 col-sm-6',
 							$item->vegetarian ? 'vegetarian' : '',
 		                    $item->vegan ? 'vegan' : '',
 		                    $item->glutenfree ? 'gluten' : '',
