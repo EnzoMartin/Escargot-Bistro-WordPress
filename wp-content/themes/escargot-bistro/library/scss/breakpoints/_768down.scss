@@ -137,15 +137,15 @@ header.header {
 .operating-hours {
     &.small {
         background: #000 url("../images/bg_hours-o.jpg") no-repeat 0 0;
-        background-size: auto 120px;
-        height: 120px;
+        background-size: auto 100px;
+        height: 100px;
         margin: 0 0 8px;
         min-height: 0;
     }
 
     &.large {
         padding: 16px 24px;
-        margin: 0 0 8px;
+        margin: 8px 0 0;
         background: none #FFF;
         color: $text-color;
         text-align: center;

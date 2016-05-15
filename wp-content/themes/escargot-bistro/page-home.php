@@ -81,6 +81,13 @@ get_header();
 			<div class="col-xs-12 hidden-md-up">
 				<div class="operating-hours small"></div>
 			</div>
+			<div class="col-xs-12 hidden-md-up menu-buttons-container">
+				<div class="menu-buttons">
+					<a class="col-xs-4 center action-lunch" href="/menu/lunch-menu">Lunch</a>
+					<a class="col-xs-4 center action-dinner" href="/menu/dinner-menu">Dinner</a>
+					<a class="col-xs-4 center action-wine" href="/menu/wine-list">Wine</a>
+				</div>
+			</div>
 			<div class="col-xs-12">
 				<div class="operating-hours large">
 					<h2>Opening Hours &amp; Address</h2>
@@ -95,15 +102,6 @@ get_header();
 						<address>1506 E. Commercial Blvd Oakland Park, FL, 33334</address>
 					</a>
 					<a class="tel hidden-md-up" href="tel:(754)-206-4116">(754)-206-4116</a>
-				</div>
-			</div>
-		</div>
-		<div class="row hidden-md-up menu-buttons-container">
-			<div class="col-xs-12">
-				<div class="menu-buttons">
-					<a class="col-xs-4 center action-lunch" href="/menu/lunch-menu">Lunch</a>
-					<a class="col-xs-4 center action-dinner" href="/menu/dinner-menu">Dinner</a>
-					<a class="col-xs-4 center action-wine" href="/menu/wine-list">Wine</a>
 				</div>
 			</div>
 		</div>
