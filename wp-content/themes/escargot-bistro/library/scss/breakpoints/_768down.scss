@@ -89,7 +89,8 @@ header.header {
     }
 }
 
-#container header.container {
+#container header.container,
+.home #content.container {
     margin-left: auto;
     margin-right: auto;
     padding-left: .9375rem;
@@ -129,6 +130,41 @@ header.header {
             display: inline-block;
             color: #FFF;
             font-size: 24px;
+        }
+    }
+}
+
+.operating-hours {
+    &.small {
+        background: #000 url("../images/bg_hours-o.jpg") no-repeat 0 0;
+        background-size: auto 150px;
+        height: 150px;
+        margin: 8px 0 30px;
+        min-height: 0;
+    }
+
+    &.large {
+        border-radius: 1px 1px 0 0;
+        padding: 16px 24px 0;
+        margin-bottom: 8px;
+        background: none #FFF;
+        color: $text-color;
+        text-align: center;
+
+        .address,
+        .tel {
+            font-size: 15px;
+            font-weight: bold;
+        }
+    }
+}
+
+.home {
+    .menu-buttons {
+        a {
+            display: block;
+            padding: 8px;
+            font-size: 20px;
         }
     }
 }

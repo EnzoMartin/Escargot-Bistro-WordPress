@@ -76,16 +76,39 @@ get_header();
 					    <div class="bannerControlsWpr bannerControlsNext" title="Next"><div class="bannerControls"></div></div>
 				    <?php } ?>
 				</div>
-				<?php } ?>
 			</div>
+			<?php } ?>
 			<div class="col-xs-12">
-				<div id="operating-hours" class="container">
+				<div class="operating-hours large">
 					<h2>Opening Hours &amp; Address</h2>
-					<?php the_content(); ?>
-					<a href="https://www.google.com/maps/place/Escargot+Bistro/@26.1886258,-80.1304127,17z/data=!4m2!3m1!1s0x0000000000000000:0x0da6a02deb22bddf?hl=en" target="_blank">
+					<?php
+						if (have_posts()) :
+							while (have_posts()) : the_post();
+								the_content();
+							endwhile;
+						endif;
+					?>
+					<a class="address" href="https://www.google.com/maps/place/Escargot+Bistro/@26.1886258,-80.1304127,17z/data=!4m2!3m1!1s0x0000000000000000:0x0da6a02deb22bddf?hl=en" target="_blank">
 						<address>1506 E. Commercial Blvd Oakland Park, FL, 33334</address>
 					</a>
+					<a class="tel hidden-md-up" href="tel:(754)-206-4116">(754)-206-4116</a>
 				</div>
+			</div>
+		</div>
+		<div class="row hidden-md-up menu-buttons">
+			<div class="col-xs-4 center">
+				<a href="/menu/lunch-menu">Lunch Menu</a>
+			</div>
+			<div class="col-xs-4 center">
+				<a href="/menu/dinner-menu">Dinner Menu</a>
+			</div>
+			<div class="col-xs-4 center">
+				<a href="/menu/wine-list">Wine List</a>
+			</div>
+		</div>
+		<div class="row hidden-md-up">
+			<div class="col-xs-12">
+				<div class="operating-hours small"></div>
 			</div>
 		</div>
 	</div>
