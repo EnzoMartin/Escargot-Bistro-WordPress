@@ -128,8 +128,8 @@
 									<tbody>
 									<tr>
 										<th class="name"><h4><?= $item->title ?></h4></th>
-										<td class="price"><?= $item->glass_price > 0 ? ('$' . $item->glass_price . '<small>glass</small>') : '-'; ?></td>
-										<td class="price"><?= $item->bottle_price > 0 ? ('$' . $item->bottle_price . '<small>bottle</small>') : '-'; ?></td>
+										<td class="price glass"><?= $item->glass_price > 0 ? ('$' . $item->glass_price . '<small>glass</small>') : '-'; ?></td>
+										<td class="price bottle"><?= $item->bottle_price > 0 ? ('$' . $item->bottle_price . '<small>bottle</small>') : '-'; ?></td>
 									</tr>
 									</tbody>
 								</table>
