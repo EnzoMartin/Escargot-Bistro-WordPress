@@ -491,7 +491,7 @@ POSTS & CONTENT STYLES
         box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
     }
 
-    padding-bottom: 24px;
+    //padding-bottom: 24px;
 }
 
 #operating-hours {
@@ -1225,13 +1225,32 @@ FOOTER STYLES
     clear: both;
     color: $black;
 
+    #inner-footer {
+        background: rgba(234, 234, 234, 0.85);
+        border-radius: 0 0 3px 3px;
+        box-shadow: 0 1px 4px 0 rgba(0,0,0,0.3);
+        padding-bottom: 16px;
+    }
+
     h3 {
         font-weight:bold;
+        margin-bottom: 3px;
     }
 
     a {
         display: block;
     }
+
+    p {
+        margin: 0;
+    }
+}
+
+.copyright {
+    margin-top: 80px;
+    background: rgba(66, 66, 66, 0.5);
+    color: #E0E0E0;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.3);
 }
 
 /*
