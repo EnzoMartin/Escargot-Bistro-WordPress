@@ -24,7 +24,7 @@ $banner_meta_fields = array(
     ),
     array(
         'label'  => 'Banner',
-        'desc'  => 'Image to display 732px wide (MAKE SURE TO CLICK "INSERT INTO POST" and "FULLSIZE" to select the image)',
+        'desc'  => 'Image to display: 1110px wide, and 500px high (MAKE SURE TO CLICK "INSERT INTO POST" and "Homepage banner" or "FULLSIZE" to select the image)',
         'id'    => $prefix.'image',
         'type'  => 'image'
     ),
