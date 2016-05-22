@@ -25,8 +25,6 @@ get_header();
 				    while($banners->have_posts()): $banners->the_post();
 				        if(get_post_status() == 'publish') {
 				            $imageMeta = get_post_meta($post->ID);
-
-					        //$imageMeta['banners_text_subheading'][0]
 				            $image = wp_get_attachment_url($imageMeta['banners_image'][0], 'fullsize');
 
 				            $title = $imageMeta['banners_text_title'][0];
@@ -38,8 +36,8 @@ get_header();
 					        $display = $title != '' && $subheading != '';
 
 				            $banner =
-				            '<li class="item ' . $classes . '">
-		                        <a href="' . $link . '"><img src="' . $image . '" alt=""></a>' .
+				            '<li class="item ' . $classes . '">' .
+		                        (($link != '') ? '<a href="' . $link . '">' : '') . '<img src="' . $image . '" alt="">'. (($link != '') ? '</a>' : '') .
 				                ($display ?
 		                        '<div class="caption-container">
 		                            <div class="carousel-caption">' .
