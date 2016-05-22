@@ -33,7 +33,7 @@ function disable_default_dashboard_widgets() {
 	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);  // Incoming Links Widget
 	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);         // Plugins Widget
 
-	// unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);    // Quick Press Widget
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);    // Quick Press Widget
 	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);     // Recent Drafts Widget
 	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);           //
 	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);         //
@@ -102,7 +102,7 @@ function bones_custom_dashboard_widgets() {
 // removing the dashboard widgets
 add_action( 'wp_dashboard_setup', 'disable_default_dashboard_widgets' );
 // adding any custom widgets
-add_action( 'wp_dashboard_setup', 'bones_custom_dashboard_widgets' );
+//add_action( 'wp_dashboard_setup', 'bones_custom_dashboard_widgets' );
 
 
 /************* CUSTOM LOGIN PAGE *****************/

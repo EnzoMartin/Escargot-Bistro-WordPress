@@ -47,7 +47,7 @@ function add_admin_menu_separator( $position ) {
 }
 
 function admin_menu_separator() {
-	add_admin_menu_separator(10);
+	add_admin_menu_separator(12);
 	add_admin_menu_separator(15);
 }
 

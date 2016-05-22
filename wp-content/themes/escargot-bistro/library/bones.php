@@ -29,9 +29,9 @@ need.
 
 function bones_head_cleanup() {
 	// category feeds
-	// remove_action( 'wp_head', 'feed_links_extra', 3 );
+	remove_action( 'wp_head', 'feed_links_extra', 3 );
 	// post and comment feeds
-	// remove_action( 'wp_head', 'feed_links', 2 );
+	remove_action( 'wp_head', 'feed_links', 2 );
 	// EditURI link
 	remove_action( 'wp_head', 'rsd_link' );
 	// windows live writer
@@ -185,7 +185,7 @@ function bones_theme_support() {
 	);
 
 	// rss thingy
-	add_theme_support('automatic-feed-links');
+	//add_theme_support('automatic-feed-links');
 
 	// to add header image support go here: http://themble.com/support/adding-header-background-image-support/
 
@@ -196,7 +196,7 @@ function bones_theme_support() {
 			'gallery',           // gallery of images
 			//'link',              // quick link to other site
 			'image',             // an image
-			'quote',             // a quick quote
+			//'quote',             // a quick quote
 			//'status',            // a Facebook like status update
 			'video',             // video
 			//'audio',             // audio
