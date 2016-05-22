@@ -45,7 +45,7 @@ textarea,
     margin-bottom: 14px;
     font-size: 1em;
     color: $text-color;
-    border-radius: 3px;
+    border-radius: 2px;
     vertical-align: middle;
     box-shadow: none;
     border: 0;
@@ -119,6 +119,40 @@ textarea {
     max-width: 100%;
     min-height: 120px;
     line-height: 1.5em;
+    padding: 12px;
+}
+
+form {
+    .wpcf7-not-valid-tip {
+        border-radius: 2px;
+        padding: 6px 12px;
+        border: 1px solid #e53935;
+        color: #b71c1c;
+        background: #ffcdd2;
+        width: 100%;
+        max-width: 400px;
+        margin-top: -14px;
+        display: inline-block;
+        text-align: left;
+    }
+}
+
+.wpcf7 {
+    > div {
+        margin: 0 0 1.5em;
+        color: #b71c1c;
+        text-align: left;
+    }
+
+    .screen-reader-response {
+        ul {
+            display: none;
+        }
+    }
+}
+
+.wpcf7-response-output.wpcf7-validation-errors {
+    display: none;
 }
 
 // selects
