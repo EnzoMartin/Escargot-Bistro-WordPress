@@ -138,7 +138,7 @@ if ( ! function_exists('custom_banners') ) {
             'show_in_menu'        => true,
             'show_in_nav_menus'   => false,
             'show_in_admin_bar'   => true,
-            'menu_position'       => 5,
+            'menu_position'       => 11,
             'menu_icon'           => 'dashicons-images-alt',
             'can_export'          => true,
             'has_archive'         => true,
