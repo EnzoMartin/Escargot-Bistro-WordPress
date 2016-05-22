@@ -33,7 +33,7 @@ $categoriesQuery = "
 	SELECT p.post_title AS title,
 		p.ID AS id,
 		p.post_content as content,
-		MAX(IF(m.meta_key='category_text_order_$menuField',m.meta_value,0)) AS sorting,
+		MAX(IF(m.meta_key='category_text_order_$menuId',m.meta_value,0)) AS sorting,
 		MAX(IF(m.meta_key='$menuField',m.meta_value = 'on',0)) AS pinned
 	FROM $wpdb->postmeta m
 	INNER JOIN $wpdb->posts p ON m.post_id = p.id
