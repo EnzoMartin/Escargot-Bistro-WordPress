@@ -53,35 +53,35 @@ $vegetarian = false;
 foreach ($items as $item){
 	if($item->vegetarian){
 		$vegetarian = true;
-		$item->vegetarian = '<div class="food-icon-container" title="Vegetarian"><span class="food-icon vegetarian"><img src="'. get_template_directory_uri() . '/library/images/food-icons/vegetarian.png"/></span></div>';
+		$item->vegetarian = '<div class="food-icon-container"><span class="food-icon vegetarian"><img title="Vegetarian" alt="Vegetarian" src="'. get_template_directory_uri() . '/library/images/food-icons/vegetarian.png"/></span></div>';
 	} else {
 		$item->vegetarian = '';
 	}
 
 	if($item->vegan){
 		$vegan = true;
-		$item->vegan = '<div class="food-icon-container" title="Vegan"><span class="food-icon vegan"><img src="'. get_template_directory_uri() . '/library/images/food-icons/vegan.png"/></span></div>';
+		$item->vegan = '<div class="food-icon-container"><span class="food-icon vegan"><img title="Vegan" alt="Vegan" src="'. get_template_directory_uri() . '/library/images/food-icons/vegan.png"/></span></div>';
 	} else {
 		$item->vegan = '';
 	}
 
 	if($item->glutenfree){
 		$gluten = true;
-		$item->glutenfree = '<div class="food-icon-container" title="Gluten free"><span class="food-icon gluten"><img src="'. get_template_directory_uri() . '/library/images/food-icons/gluten.png"/></span></div>';
+		$item->glutenfree = '<div class="food-icon-container"><span class="food-icon gluten"><img title="Gluten free" alt="Gluten free" src="'. get_template_directory_uri() . '/library/images/food-icons/gluten.png"/></span></div>';
 	} else {
 		$item->glutenfree = '';
 	}
 
 	if($item->andrearecipe){
 		$andrea = true;
-		$item->andrearecipe = '<div class="food-icon-container" title="Andrea\'s Recipe"><span class="food-icon andrea"><img src="'. get_template_directory_uri() . '/library/images/food-icons/andrea.png"/></span></div >';
+		$item->andrearecipe = '<div class="food-icon-container"><span class="food-icon andrea"><img title="Andrea\'s Recipe" alt="Andrea\'s Recipe" src="'. get_template_directory_uri() . '/library/images/food-icons/andrea.png"/></span></div >';
 	} else {
 		$item->andrearecipe = '';
 	}
 
 	if($item->jacquerecipe){
 		$jacques = true;
-		$item->jacquerecipe = '<div class="food-icon-container" title="Chef Jacques\'s Creation"><span class="food-icon jacques"><img src="'. get_template_directory_uri() . '/library/images/food-icons/jacques.png"/></span></div>';
+		$item->jacquerecipe = '<div class="food-icon-container"><span class="food-icon jacques"><img title="Chef Jacques\'s Creation" alt="Chef Jacques\'s Creation" src="'. get_template_directory_uri() . '/library/images/food-icons/jacques.png"/></span></div>';
 	} else {
 		$item->jacquerecipe = '';
 	}
