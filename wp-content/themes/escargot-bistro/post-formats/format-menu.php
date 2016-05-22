@@ -144,6 +144,7 @@ foreach ($categories as $cat){
 		</table>
 	</header>
 	<section class="entry-content cf sub" itemprop="articleBody">
+		<?php get_template_part('social'); ?>
 		<div class="row">
 			<div class="col-xs-12 food-icons center">
 				<?php if($andrea){?>

@@ -15,7 +15,7 @@
 							</header>
 
 							<section class="entry-content">
-
+								<?php get_template_part('social'); ?>
 								<p><?php _e( 'The article you were looking for was not found, but maybe try looking again!', 'bonestheme' ); ?></p>
 
 							</section>

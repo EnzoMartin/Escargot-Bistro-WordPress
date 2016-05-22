@@ -27,6 +27,7 @@
 								</header>
 
 								<section class="entry-content">
+									<?php get_template_part('social'); ?>
 										<?php the_excerpt( '<span class="read-more">' . __( 'Read more &raquo;', 'bonestheme' ) . '</span>' ); ?>
 
 								</section>
@@ -54,6 +55,7 @@
 											<h1><?php _e( 'Sorry, No Results.', 'bonestheme' ); ?></h1>
 										</header>
 										<section class="entry-content">
+											<?php get_template_part('social'); ?>
 											<p><?php _e( 'Try your search again.', 'bonestheme' ); ?></p>
 										</section>
 										<footer class="article-footer">

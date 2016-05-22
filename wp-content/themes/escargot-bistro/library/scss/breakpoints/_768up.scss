@@ -73,7 +73,7 @@ body {
 	position: relative;
 	width: 100%;
 	padding: 0;
-    border-radius: 3px;
+    border-radius: 3px 0 3px 3px;
     height: 500px;
 
 	ul {
@@ -262,6 +262,55 @@ NAVIGATION STYLES
 /*********************
 SIDEBARS & ASIDES
 *********************/
+
+.use-desktop {
+    section.entry-content {
+        position: relative;
+        border-top-right-radius: 0;
+    }
+}
+
+.social-icons {
+    position: absolute;
+    right: -40px;
+    top: 0;
+    width: 40px;
+    box-shadow: 0 1px 3px 1px rgba(0,0,0,0.3);
+    z-index: -1;
+
+    .social-icon {
+        border-bottom: 1px solid #d0d1d4;
+
+        img {
+            display: block;
+            width: 40px;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            transition: opacity 0.2s ease-in-out;
+            display: block;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        &.first {
+            img {
+                border-radius: 0 2px 0 0;
+            }
+        }
+
+        &.last {
+            border-bottom: none;
+            img {
+                border-radius: 0 0 2px 0;
+            }
+        }
+    }
+}
 
 .sidebar {
     margin-top: 2.2em;

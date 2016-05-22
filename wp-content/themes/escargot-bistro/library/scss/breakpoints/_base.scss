@@ -455,6 +455,13 @@ POSTS & CONTENT STYLES
 
 #content {
     margin-top: 1.5em;
+    position: relative;
+}
+
+.home {
+    .social-icons {
+        right: -25px;
+    }
 }
 
 #stamp {

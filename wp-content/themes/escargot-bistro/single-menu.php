@@ -14,6 +14,7 @@
 						<h1><?php _e( 'Page Not Found', 'bonestheme' ); ?></h1>
 					</header>
 					<section class="entry-content">
+						<?php get_template_part('social'); ?>
 						<p><?php _e( 'Sorry, something is missing.', 'bonestheme' ); ?></p>
 					</section>
 				</article>

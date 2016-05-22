@@ -18,6 +18,7 @@
                 </header> <?php // end article header ?>
 
                 <section class="entry-content cf" itemprop="description">
+                  <?php get_template_part('social'); ?>
                   <?php
                     // the content (pretty self explanatory huh)
                     the_content();

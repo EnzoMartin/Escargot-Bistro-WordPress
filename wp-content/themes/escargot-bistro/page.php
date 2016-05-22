@@ -8,6 +8,7 @@
 						<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
 					</header>
 					<section class="entry-content cf sub" itemprop="articleBody">
+						<?php get_template_part('social'); ?>
 						<?php
 							the_content();
 							wp_link_pages( array(

@@ -6,6 +6,7 @@ get_header();
 
 <div class="home">
 	<div id="content" class="container">
+		<?php get_template_part('social'); ?>
 		<div id="inner-content" class="row">
 			<?php if(!$GLOBALS['is_mobile']){ ?>
 			<div class="hidden-sm-down col-xs-12">

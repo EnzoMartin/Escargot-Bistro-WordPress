@@ -34,6 +34,7 @@
                 </header> <?php // end article header ?>
 
                 <section class="entry-content cf" itemprop="articleBody">
+                  <?php get_template_part('social'); ?>
                   <?php
                     // the content (pretty self explanatory huh)
                     the_content();

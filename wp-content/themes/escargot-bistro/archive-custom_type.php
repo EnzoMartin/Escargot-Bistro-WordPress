@@ -36,7 +36,7 @@
 								</header>
 
 								<section class="entry-content cf">
-
+									<?php get_template_part('social'); ?>
 									<?php the_excerpt(); ?>
 
 								</section>
@@ -58,6 +58,7 @@
 											<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
 										</header>
 										<section class="entry-content">
+											<?php get_template_part('social'); ?>
 											<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
 										</section>
 										<footer class="article-footer">
