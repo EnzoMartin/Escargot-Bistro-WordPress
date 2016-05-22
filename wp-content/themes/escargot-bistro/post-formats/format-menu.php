@@ -259,7 +259,7 @@ foreach ($categories as $cat){
 								<tbody>
 								<tr>
 									<th class="name"><h4><?= $item->title ?> <?= implode($icons, ' ') ?></h4></th>
-									<td class="price" rowspan="2">$<?= $item->price ?></td>
+									<td class="price" rowspan="2"><?= is_numeric($item->price) ? '$' : '' ?><?= $item->price ?></td>
 								</tr>
 								<tr>
 									<td class="description"><?= $item->description ?></td>
