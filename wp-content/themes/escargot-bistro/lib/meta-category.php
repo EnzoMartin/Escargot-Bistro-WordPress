@@ -2,6 +2,8 @@
 $prefix = 'category_';
 $category_meta_options_fields = array();
 $category_meta_details_fields = array();
+$column_fields = array();
+$column_fields_sortable = array();
 
 $loop = new WP_Query(array('post_type' => 'menu','nopaging' => true));
 while($loop->have_posts()): $loop->the_post();
@@ -24,25 +26,41 @@ while($loop->have_posts()): $loop->the_post();
 
     array_push($category_meta_options_fields,$menu);
     array_push($category_meta_details_fields,$order);
+    $column_fields[$prefix.'text_order_'.$value] = '"' . $name .'" Order';
+    $column_fields_sortable[$prefix.'text_order_'.$value] = $prefix.'text_order_'.$value;
 endwhile;
 wp_reset_query();
 
 add_filter('manage_edit-category_columns', 'custom_category_columns');
 function custom_category_columns($columns) {
-    return array(
+    global $column_fields;
+    $cols = array(
         'cb' => '<input type="checkbox" />',
         'title' => __('Title'),
-        'order' => __('Order'),
-        'date' => __('Date')
     );
+    $cols = array_merge($cols, $column_fields);
+    $cols['date'] = __('Date');
+    return $cols;
+}
+
+add_filter('manage_edit-category_sortable_columns', 'custom_category_sortable_columns');
+function custom_category_sortable_columns($columns) {
+    global $column_fields_sortable;
+    $cols = array(
+        'cb' => '<input type="checkbox" />',
+        'title' => __('Title'),
+    );
+    $cols = array_merge($cols, $column_fields_sortable);
+    $cols['date'] = __('Date');
+    return $cols;
 }
 
 add_action('manage_posts_custom_column',  'show_custom_category_columns');
 function show_custom_category_columns($name) {
     global $post;
     switch ($name) {
-        case 'order':
-            echo get_post_meta($post->ID, 'category_text_order', true);
+        default:
+            echo get_post_meta($post->ID, $name, true);
     }
 }
 
