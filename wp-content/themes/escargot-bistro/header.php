@@ -22,6 +22,8 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
 		<meta name="HandheldFriendly" content="True">
 		<meta name="MobileOptimized" content="320">
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="description" content="<?= bloginfo('description') ?>" />
+		<meta name="keywords" content="bistro,french,fort lauderdale,oakland park,french cuisine,french bistro,french restaurant,escargot,lunch,dinner,takeout,pickup" />
 
 		<?php // icons & favicons (for more: http://www.jonathantneal.com/blog/understand-the-favicon/) ?>
 		<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/library/images/apple-touch-icon.png?v=1">
