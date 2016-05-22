@@ -48,7 +48,7 @@ function add_admin_menu_separator( $position ) {
 
 function admin_menu_separator() {
 	add_admin_menu_separator(12);
-	add_admin_menu_separator(15);
+	add_admin_menu_separator(17);
 }
 
 add_action('admin_init','admin_menu_separator');
@@ -183,7 +183,7 @@ if ( ! function_exists('custom_menu') ) {
             'show_in_menu'        => true,
             'show_in_nav_menus'   => true,
             'show_in_admin_bar'   => true,
-            'menu_position'       => 12,
+            'menu_position'       => 13,
             'menu_icon'           => 'dashicons-book-alt',
             'can_export'          => true,
             'has_archive'         => false,
@@ -228,7 +228,7 @@ if ( ! function_exists('custom_items') ) {
             'show_in_menu'        => true,
             'show_in_nav_menus'   => false,
             'show_in_admin_bar'   => true,
-            'menu_position'       => 14,
+            'menu_position'       => 15,
             'menu_icon'           => 'dashicons-store',
             'can_export'          => true,
             'has_archive'         => true,
@@ -273,7 +273,7 @@ if ( ! function_exists('custom_categories') ) {
             'show_in_menu'        => true,
             'show_in_nav_menus'   => false,
             'show_in_admin_bar'   => true,
-            'menu_position'       => 13,
+            'menu_position'       => 14,
             'menu_icon'           => 'dashicons-editor-ul',
             'can_export'          => true,
             'has_archive'         => true,
