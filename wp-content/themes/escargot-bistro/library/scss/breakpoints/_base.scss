@@ -26,6 +26,10 @@ body {
     position: relative;
 }
 
+p:empty {
+    display: none;
+}
+
 .header {
     #nav {
         width: 100%;

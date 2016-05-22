@@ -7,6 +7,30 @@ function admin(){
     wp_enqueue_script('admin', get_template_directory_uri() . '/library/js/admin.js', array('jquery'), null, true);
 }
 
+function bs_row( $params, $content=null ) {
+    extract( shortcode_atts( array(
+        'class' => 'row'
+    ), $params ) );
+    $content = preg_replace( '/<br.\/>/', '', $content );
+    $result = '<div class="' . $class . '">';
+    $result .= do_shortcode( $content );
+    $result .= '</div>';
+    return force_balance_tags( $result );
+}
+add_shortcode('row', 'bs_row');
+
+function bs_span( $params, $content=null ) {
+    extract( shortcode_atts( array(
+        'class' => 'col-xs-12 col-sm-6'
+        ), $params ) );
+
+    $result = '<div class="' . $class . '">';
+    $result .= do_shortcode( $content );
+    $result .= '</div>';
+    return force_balance_tags( $result );
+}
+add_shortcode( 'col', 'bs_span' );
+
 function add_admin_menu_separator( $position ) {
     global $menu;
     $index = 0;
