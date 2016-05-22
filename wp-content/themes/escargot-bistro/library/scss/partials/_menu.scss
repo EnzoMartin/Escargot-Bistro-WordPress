@@ -85,6 +85,11 @@
     .food-icon-container {
         bottom: -3px;
         position: relative;
+
+        span,
+        img {
+            margin: 0;
+        }
     }
 
     .menu-items {
