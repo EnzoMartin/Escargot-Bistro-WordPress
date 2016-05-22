@@ -153,9 +153,9 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
 				<div class="row">
 					<div class="col-xs-12 center">
 						<img id="print-logo" src="<?php echo get_template_directory_uri(); ?>/library/images/logo-o-s.png"/>
-						<span>1506 E. Commercial Blvd, Oakland Park, FL, 33334</span>
-						<br/>
 						<span><strong>(754)-206-4116</strong></span>
+						<span> - 1506 E. Commercial Blvd, Oakland Park, FL, 33334 - </span>
+						<span><em>escargotbistro.com</em></span>
 					</div>
 				</div>
 			</div>

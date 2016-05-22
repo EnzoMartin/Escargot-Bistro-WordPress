@@ -107,6 +107,16 @@ nav {
     }
 }
 
+.hentry section.sub {
+    box-shadow: none;
+
+    .menu-category:last-of-type {
+        margin-bottom: 40px;
+    }
+
+    margin-bottom: .9375rem;
+}
+
 #content {
     margin-top: 8px;
 }
@@ -122,3 +132,30 @@ nav {
 footer.footer {
     display: none;
 }
+
+.menu-category {
+    page-break-inside: avoid;
+}
+
+/*
+.single-menu {
+    .article-header {
+        position: absolute;
+        top: -8px;
+        left: 0;
+        right: 0;
+        z-index: 3;
+    }
+
+    .entry-content {
+        margin-top: 216px;
+    }
+
+    #print-logo-container {
+        position: absolute;
+        top: 43px;
+        z-index: 2;
+        left: 0;
+        right: 0;
+    }
+}*/
