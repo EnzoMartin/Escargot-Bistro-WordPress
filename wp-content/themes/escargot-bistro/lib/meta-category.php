@@ -1,6 +1,7 @@
 <?php
 $prefix = 'category_';
-$category_meta_options_fields = [];
+$category_meta_options_fields = array();
+$category_meta_details_fields = array();
 
 $loop = new WP_Query(array('post_type' => 'menu','nopaging' => true));
 while($loop->have_posts()): $loop->the_post();
@@ -12,7 +13,17 @@ while($loop->have_posts()): $loop->the_post();
         'id'    => $prefix.'menu_'.$value,
         'type'  => 'checkbox'
     );
+
+    $order = array(
+        'label'=> 'Order for "' . $name . '"',
+        'default' => '0',
+        'desc'  => 'Number by which to order by in the "' . $name . '" menu',
+        'id'    => $prefix.'text_order_'.$value,
+        'type'  => 'text'
+    );
+
     array_push($category_meta_options_fields,$menu);
+    array_push($category_meta_details_fields,$order);
 endwhile;
 wp_reset_query();
 
@@ -59,18 +70,6 @@ function category_meta_options_box() {
 add_action('add_meta_boxes', 'category_meta_details_box');
 add_action('add_meta_boxes', 'category_meta_options_box');
 
-
-// Field Array
-$category_meta_details_fields = array(
-    array(
-        'label'=> 'Order',
-        'default' => '0',
-        'desc'  => 'Number by which to order by in the menu',
-        'id'    => $prefix.'text_order',
-        'type'  => 'text'
-    ),
-);
-
 $category_meta_fields = array_merge($category_meta_details_fields, $category_meta_options_fields);
 
 function show_category_meta_details_box() {
@@ -83,6 +82,7 @@ function show_category_meta_details_box() {
     foreach ($category_meta_details_fields as $field) {
         // get value of this field if it exists for this post
         $meta = get_post_meta($post->ID, $field['id'], true);
+        $meta = $meta !== '' ? $meta : $field['default'];
         // begin a table row with
         echo '<tr>
                 <th><label for="'.$field['id'].'">'.$field['label'].'</label></th>
