@@ -1,3 +1,135 @@
+<?php
+$menuId = get_the_ID();
+$menuField = 'category_menu_' . $menuId;
+
+$itemsQuery = "
+	SELECT p.post_title AS title,
+		MAX(IF(m.meta_key='items_description',m.meta_value,'')) AS description,
+		MAX(IF(m.meta_key='items_text_order',m.meta_value,0)) AS sorting,
+		MAX(IF(m.meta_key='items_price',m.meta_value,0)) AS price,
+		MAX(IF(m.meta_key='items_is_wine',m.meta_value,0)) AS is_wine,
+		MAX(IF(m.meta_key='items_bottle_price',m.meta_value,0)) AS bottle_price,
+		MAX(IF(m.meta_key='items_glass_price',m.meta_value,0)) AS glass_price,
+		MAX(IF(m.meta_key='items_category',m.meta_value,0)) AS category,
+		MAX(IF(m.meta_key='items_menu',m.meta_value,0)) AS menu,
+		MAX(IF(m.meta_key='items_vegetarian',m.meta_value = 'on',0)) AS vegetarian,
+		MAX(IF(m.meta_key='items_vegan',m.meta_value = 'on',0)) AS vegan,
+		MAX(IF(m.meta_key='items_glutenfree',m.meta_value = 'on',0)) AS glutenfree,
+		MAX(IF(m.meta_key='items_andrearecipe',m.meta_value = 'on',0)) AS andrearecipe,
+		MAX(IF(m.meta_key='items_jacquerecipe',m.meta_value = 'on',0)) AS jacquerecipe,
+		MAX(IF(m.meta_key='items_newitem',m.meta_value = 'on',0)) AS newitem
+	FROM $wpdb->postmeta m
+	INNER JOIN $wpdb->posts p ON m.post_id = p.id
+	WHERE p.post_type = 'item'
+		AND p.post_status = 'publish'
+		AND p.post_date < NOW()
+	GROUP BY m.post_id
+	HAVING menu = $menuId
+";
+
+$categoriesQuery = "
+	SELECT p.post_title AS title,
+		p.ID AS id,
+		p.post_content as content,
+		MAX(IF(m.meta_key='category_text_order_$menuField',m.meta_value,0)) AS sorting,
+		MAX(IF(m.meta_key='$menuField',m.meta_value = 'on',0)) AS pinned
+	FROM $wpdb->postmeta m
+	INNER JOIN $wpdb->posts p ON m.post_id = p.id
+	WHERE p.post_type = 'category'
+		AND p.post_status = 'publish'
+		AND p.post_date < NOW()
+	GROUP BY m.post_id
+";
+
+$categories = $wpdb->get_results($categoriesQuery, OBJECT);
+$items = $wpdb->get_results($itemsQuery, OBJECT);
+
+$vegan = false;
+$andrea = false;
+$jacques = false;
+$gluten = false;
+$vegetarian = false;
+
+foreach ($items as $item){
+	if($item->vegetarian){
+		$vegetarian = true;
+		$item->vegetarian = '<div class="food-icon-container" title="Vegetarian"><span class="food-icon vegetarian"><img src="'. get_template_directory_uri() . '/library/images/food-icons/vegetarian.png"/></span></div>';
+	} else {
+		$item->vegetarian = '';
+	}
+
+	if($item->vegan){
+		$vegan = true;
+		$item->vegan = '<div class="food-icon-container" title="Vegan"><span class="food-icon vegan"><img src="'. get_template_directory_uri() . '/library/images/food-icons/vegan.png"/></span></div>';
+	} else {
+		$item->vegan = '';
+	}
+
+	if($item->glutenfree){
+		$gluten = true;
+		$item->glutenfree = '<div class="food-icon-container" title="Gluten free"><span class="food-icon gluten"><img src="'. get_template_directory_uri() . '/library/images/food-icons/gluten.png"/></span></div>';
+	} else {
+		$item->glutenfree = '';
+	}
+
+	if($item->andrearecipe){
+		$andrea = true;
+		$item->andrearecipe = '<div class="food-icon-container" title="Andrea\'s Recipe"><span class="food-icon andrea"><img src="'. get_template_directory_uri() . '/library/images/food-icons/andrea.png"/></span></div >';
+	} else {
+		$item->andrearecipe = '';
+	}
+
+	if($item->jacquerecipe){
+		$jacques = true;
+		$item->jacquerecipe = '<div class="food-icon-container" title="Chef Jacques\'s Creation"><span class="food-icon jacques"><img src="'. get_template_directory_uri() . '/library/images/food-icons/jacques.png"/></span></div>';
+	} else {
+		$item->jacquerecipe = '';
+	}
+
+	if($item->newitem){
+		$item->newitem = '';
+	} else {
+		$item->newitem = '';
+	}
+}
+
+$menu = array();
+
+foreach ($categories as $cat){
+	$id = $cat->id;
+
+	$menu_items = array_filter($items, function ($v) {
+		global $id;
+		return $v->category == $id;
+	});
+
+	if(count($menu_items) > 0 || $cat->pinned){
+		usort($menu_items, function($a, $b) {
+			return $a->sorting > $b->sorting;
+		});
+
+		$cat_items = array_filter($menu_items, function ($v) {
+			return !$v->is_wine;
+		});
+
+		$cat_wines = array_filter($menu_items, function ($v) {
+			return $v->is_wine;
+		});
+
+		$category = array(
+			'id' => $cat->id,
+			'title' => $cat->title,
+			'content' => $cat->content,
+			'sorting' => intval($cat->sorting),
+			'items' => $cat_items,
+			'wines' => $cat_wines
+		);
+
+		array_push($menu, $category);
+	}
+}
+?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
 	<header class="article-header entry-header">
 		<table cellspacing="0" cellpadding="0" border="0">
@@ -10,89 +142,37 @@
 		</table>
 	</header>
 	<section class="entry-content cf sub" itemprop="articleBody">
+		<div class="row">
+			<div class="col-xs-12 food-icons center">
+				<?php if($andrea){?>
+				<div class="food-icon-container">
+					<span class="food-icon andrea"><img src="<?= get_template_directory_uri() ?>/library/images/food-icons/andrea.png"/></span><span>Andrea's Recipe</span>
+				</div>
+				<?php } ?>
+				<?php if($jacques){?>
+				<div class="food-icon-container">
+					<span class="food-icon jacques"><img src="<?= get_template_directory_uri() ?>/library/images/food-icons/jacques.png"/></span><span>Chef Jacques's Creation</span>
+				</div>
+				<?php } ?>
+				<?php if($vegan){?>
+				<div class="food-icon-container">
+					<span class="food-icon vegan"><img src="<?= get_template_directory_uri() ?>/library/images/food-icons/vegan.png"/></span><span>Vegan</span>
+				</div>
+				<?php } ?>
+				<?php if($vegetarian){?>
+				<div class="food-icon-container">
+					<span class="food-icon vegetarian"><img src="<?= get_template_directory_uri() ?>/library/images/food-icons/vegetarian.png"/></span><span>Vegetarian</span>
+				</div>
+				<?php } ?>
+				<?php if($gluten){?>
+				<div class="food-icon-container">
+					<span class="food-icon gluten"><img src="<?= get_template_directory_uri() ?>/library/images/food-icons/gluten.png"/></span><span>Gluten free</span>
+				</div>
+				<?php } ?>
+			</div>
+		</div>
 		<?php
 		the_content();
-
-		$menuId = get_the_ID();
-		$menuField = 'category_menu_' . $menuId;
-
-		$itemsQuery = "
-			SELECT p.post_title AS title,
-				MAX(IF(m.meta_key='items_description',m.meta_value,'')) AS description,
-				MAX(IF(m.meta_key='items_text_order',m.meta_value,0)) AS sorting,
-				MAX(IF(m.meta_key='items_price',m.meta_value,0)) AS price,
-				MAX(IF(m.meta_key='items_is_wine',m.meta_value,0)) AS is_wine,
-				MAX(IF(m.meta_key='items_bottle_price',m.meta_value,0)) AS bottle_price,
-				MAX(IF(m.meta_key='items_glass_price',m.meta_value,0)) AS glass_price,
-				MAX(IF(m.meta_key='items_category',m.meta_value,0)) AS category,
-				MAX(IF(m.meta_key='items_menu',m.meta_value,0)) AS menu,
-				MAX(IF(m.meta_key='items_vegetarian',m.meta_value = 'on',0)) AS vegetarian,
-				MAX(IF(m.meta_key='items_vegan',m.meta_value = 'on',0)) AS vegan,
-				MAX(IF(m.meta_key='items_glutenfree',m.meta_value = 'on',0)) AS glutenfree,
-				MAX(IF(m.meta_key='items_andrearecipe',m.meta_value = 'on',0)) AS andrearecipe,
-				MAX(IF(m.meta_key='items_jacquerecipe',m.meta_value = 'on',0)) AS jacquerecipe,
-				MAX(IF(m.meta_key='items_newitem',m.meta_value = 'on',0)) AS newitem
-			FROM $wpdb->postmeta m
-			INNER JOIN $wpdb->posts p ON m.post_id = p.id
-			WHERE p.post_type = 'item'
-				AND p.post_status = 'publish'
-				AND p.post_date < NOW()
-			GROUP BY m.post_id
-			HAVING menu = $menuId
-		";
-
-		$categoriesQuery = "
-			SELECT p.post_title AS title,
-				p.ID AS id,
-				p.post_content as content,
-				MAX(IF(m.meta_key='category_text_order_$menuField',m.meta_value,0)) AS sorting,
-				MAX(IF(m.meta_key='$menuField',m.meta_value = 'on',0)) AS pinned
-			FROM $wpdb->postmeta m
-			INNER JOIN $wpdb->posts p ON m.post_id = p.id
-			WHERE p.post_type = 'category'
-				AND p.post_status = 'publish'
-				AND p.post_date < NOW()
-			GROUP BY m.post_id
-		";
-
-		$categories = $wpdb->get_results($categoriesQuery, OBJECT);
-		$items = $wpdb->get_results($itemsQuery, OBJECT);
-
-		$menu = array();
-		
-		foreach ($categories as $cat){
-			$id = $cat->id;
-
-			$menu_items = array_filter($items, function ($v) {
-				global $id;
-				return $v->category == $id;
-			});
-
-			if(count($menu_items) > 0 || $cat->pinned){
-				usort($menu_items, function($a, $b) {
-					return $a->sorting > $b->sorting;
-				});
-
-				$cat_items = array_filter($menu_items, function ($v) {
-					return !$v->is_wine;
-				});
-
-				$cat_wines = array_filter($menu_items, function ($v) {
-					return $v->is_wine;
-				});
-
-				$category = array(
-					'id' => $cat->id,
-					'title' => $cat->title,
-					'content' => $cat->content,
-					'sorting' => intval($cat->sorting),
-					'items' => $cat_items,
-					'wines' => $cat_wines
-				);
-
-				array_push($menu, $category);
-			}
-		}
 
 		usort($menu, function($a, $b) {
 			if($a['sorting'] == $b['sorting']){ return 0 ; }
@@ -152,14 +232,17 @@
 							$i >= $item_count ? 'last' : ''
 						);
 
+						$icons = array(
+							$item->vegetarian,
+		                    $item->vegan,
+		                    $item->glutenfree,
+		                    $item->andrearecipe,
+		                    $item->jacquerecipe,
+							$item->newitem
+						);
+
 						$item_classes = array(
 							'menu-item col-xs-12 col-sm-6',
-							$item->vegetarian ? 'vegetarian' : '',
-		                    $item->vegan ? 'vegan' : '',
-		                    $item->glutenfree ? 'gluten' : '',
-		                    $item->andrearecipe ? 'andrea' : '',
-		                    $item->jacquerecipe ? 'jacque' : '',
-		                    $item->newitem ? 'new' : ''
 						);
 
 						echo $odd ? '<div class="' . implode($row_classes, ' ') . '">' : '';
@@ -168,7 +251,7 @@
 							<table width="100%" cellpadding="0" cellspacing="0" border="0">
 								<tbody>
 								<tr>
-									<th class="name"><h4><?= $item->title ?></h4></th>
+									<th class="name"><h4><?= $item->title ?> <?= implode($icons, ' ') ?></h4></th>
 									<td class="price" rowspan="2">$<?= $item->price ?></td>
 								</tr>
 								<tr>
