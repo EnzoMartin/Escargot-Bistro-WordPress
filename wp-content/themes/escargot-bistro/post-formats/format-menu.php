@@ -45,6 +45,7 @@ $categories = $wpdb->get_results($categoriesQuery, OBJECT);
 $items = $wpdb->get_results($itemsQuery, OBJECT);
 
 $vegan = false;
+$new = false;
 $andrea = false;
 $jacques = false;
 $gluten = false;
@@ -87,7 +88,8 @@ foreach ($items as $item){
 	}
 
 	if($item->newitem){
-		$item->newitem = '';
+		$new = true;
+		$item->newitem = '<div class="food-icon-container"><span class="food-icon new"><img title="New item" alt="New item" src="'. get_template_directory_uri() . '/library/images/food-icons/new.png"/></span></div>';
 	} else {
 		$item->newitem = '';
 	}
@@ -167,6 +169,11 @@ foreach ($categories as $cat){
 				<?php if($gluten){?>
 				<div class="food-icon-container">
 					<span class="food-icon gluten"><img src="<?= get_template_directory_uri() ?>/library/images/food-icons/gluten.png"/></span><span>Gluten free</span>
+				</div>
+				<?php } ?>
+				<?php if($new){?>
+				<div class="food-icon-container">
+					<span class="food-icon new"><img src="<?= get_template_directory_uri() ?>/library/images/food-icons/new.png"/></span><span>Newly added</span>
 				</div>
 				<?php } ?>
 			</div>

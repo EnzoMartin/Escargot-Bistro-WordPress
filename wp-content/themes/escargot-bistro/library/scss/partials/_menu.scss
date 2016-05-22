@@ -23,40 +23,13 @@
     .food-icon-container {
         display: inline-block;
         vertical-align: top;
-        $food-icon-width: 19px;
 
         .food-icon {
-            //background: transparent url('../images/food-icons_2x.png') no-repeat 0 0;
-            //width: $food-icon-width;
-            //height: 18px;
-
             img {
                 display: block;
                 height: 18px;
                 width: 19px;
             }
-
-            /*background-size: $food-icon-width*5 18px;
-
-            &.andrea {
-                background-position: $food-icon-width*-2 0;
-            }
-
-            &.jacques {
-                background-position: $food-icon-width*-3 0;
-            }
-
-            &.gluten {
-                background-position: 0 0;
-            }
-
-            &.vegan {
-                background-position: $food-icon-width*-4 0;
-            }
-
-            &.vegetarian {
-                background-position: $food-icon-width*-1 0;
-            }*/
         }
 
         span {
