@@ -17,11 +17,18 @@ $prefix = 'menus_';
 $menu_meta_fields = array(
     array(
         'label'=> 'Hours',
-        'default' => '0',
+        'default' => '',
         'desc'  => 'Days & hours during which this menu is available',
         'id'    => $prefix.'hours',
         'type'  => 'text'
-    )
+    ),
+    array(
+        'label'=> 'Menu Season',
+        'default' => '',
+        'desc'  => 'Season the menu is from (Winter 2015, Fall 2017, etc.)',
+        'id'    => $prefix.'season',
+        'type'  => 'text'
+    ),
 );
 
 // The Callback

@@ -1,6 +1,8 @@
 <?php
-$menuId = get_the_ID();
+$menuId = $post->ID;
 $menuField = 'category_menu_' . $menuId;
+$menu_meta = get_post_meta($post->ID);
+$image_url = get_template_directory_uri();
 
 $itemsQuery = "
 	SELECT p.post_title AS title,
@@ -54,42 +56,42 @@ $vegetarian = false;
 foreach ($items as $item){
 	if($item->vegetarian){
 		$vegetarian = true;
-		$item->vegetarian = '<div class="food-icon-container"><span class="food-icon vegetarian"><img title="Vegetarian" alt="Vegetarian" src="'. get_template_directory_uri() . '/library/images/food-icons/vegetarian.png"/></span></div>';
+		$item->vegetarian = '<div class="food-icon-container"><span class="food-icon vegetarian"><img title="Vegetarian" alt="Vegetarian" src="'. $image_url . '/library/images/food-icons/vegetarian.png"/></span></div>';
 	} else {
 		$item->vegetarian = '';
 	}
 
 	if($item->vegan){
 		$vegan = true;
-		$item->vegan = '<div class="food-icon-container"><span class="food-icon vegan"><img title="Vegan" alt="Vegan" src="'. get_template_directory_uri() . '/library/images/food-icons/vegan.png"/></span></div>';
+		$item->vegan = '<div class="food-icon-container"><span class="food-icon vegan"><img title="Vegan" alt="Vegan" src="'. $image_url . '/library/images/food-icons/vegan.png"/></span></div>';
 	} else {
 		$item->vegan = '';
 	}
 
 	if($item->glutenfree){
 		$gluten = true;
-		$item->glutenfree = '<div class="food-icon-container"><span class="food-icon gluten"><img title="Gluten free" alt="Gluten free" src="'. get_template_directory_uri() . '/library/images/food-icons/gluten.png"/></span></div>';
+		$item->glutenfree = '<div class="food-icon-container"><span class="food-icon gluten"><img title="Gluten free" alt="Gluten free" src="'. $image_url . '/library/images/food-icons/gluten.png"/></span></div>';
 	} else {
 		$item->glutenfree = '';
 	}
 
 	if($item->andrearecipe){
 		$andrea = true;
-		$item->andrearecipe = '<div class="food-icon-container"><span class="food-icon andrea"><img title="Andrea\'s Recipe" alt="Andrea\'s Recipe" src="'. get_template_directory_uri() . '/library/images/food-icons/andrea.png"/></span></div >';
+		$item->andrearecipe = '<div class="food-icon-container"><span class="food-icon andrea"><img title="Andrea\'s Recipe" alt="Andrea\'s Recipe" src="'. $image_url . '/library/images/food-icons/andrea.png"/></span></div >';
 	} else {
 		$item->andrearecipe = '';
 	}
 
 	if($item->jacquerecipe){
 		$jacques = true;
-		$item->jacquerecipe = '<div class="food-icon-container"><span class="food-icon jacques"><img title="Chef Jacques\'s Creation" alt="Chef Jacques\'s Creation" src="'. get_template_directory_uri() . '/library/images/food-icons/jacques.png"/></span></div>';
+		$item->jacquerecipe = '<div class="food-icon-container"><span class="food-icon jacques"><img title="Chef Jacques\'s Creation" alt="Chef Jacques\'s Creation" src="'. $image_url . '/library/images/food-icons/jacques.png"/></span></div>';
 	} else {
 		$item->jacquerecipe = '';
 	}
 
 	if($item->newitem){
 		$new = true;
-		$item->newitem = '<div class="food-icon-container"><span class="food-icon new"><img title="New item" alt="New item" src="'. get_template_directory_uri() . '/library/images/food-icons/new.png"/></span></div>';
+		$item->newitem = '<div class="food-icon-container"><span class="food-icon new"><img title="New item" alt="New item" src="'. $image_url . '/library/images/food-icons/new.png"/></span></div>';
 	} else {
 		$item->newitem = '';
 	}
@@ -132,13 +134,13 @@ foreach ($categories as $cat){
 }
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
+<article id="post-<?php $menuId; ?>" <?php post_class( 'cf' ); ?> role="article" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
 	<header class="article-header entry-header">
 		<table cellspacing="0" cellpadding="0" border="0">
 			<tbody>
 			<tr>
 				<td><h1 class="entry-title single-title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1></td>
-				<td class="subtitle"><h2 class="entry-title single-title"><?= get_post_meta($post->ID,'menus_hours',true); ?></h2></td>
+				<td class="subtitle"><h2 class="entry-title single-title"><?= $menu_meta['menus_hours'][0] ?></h2></td>
 			</tr>
 			</tbody>
 		</table>
@@ -149,32 +151,32 @@ foreach ($categories as $cat){
 			<div class="col-xs-12 food-icons center">
 				<?php if($andrea){?>
 				<div class="food-icon-container">
-					<span class="food-icon andrea"><img src="<?= get_template_directory_uri() ?>/library/images/food-icons/andrea.png"/></span><span>Andrea's Recipe</span>
+					<span class="food-icon andrea"><img src="<?= $image_url ?>/library/images/food-icons/andrea.png"/></span><span>Andrea's Recipe</span>
 				</div>
 				<?php } ?>
 				<?php if($jacques){?>
 				<div class="food-icon-container">
-					<span class="food-icon jacques"><img src="<?= get_template_directory_uri() ?>/library/images/food-icons/jacques.png"/></span><span>Chef Jacques's Creation</span>
+					<span class="food-icon jacques"><img src="<?= $image_url ?>/library/images/food-icons/jacques.png"/></span><span>Chef Jacques's Creation</span>
 				</div>
 				<?php } ?>
 				<?php if($vegan){?>
 				<div class="food-icon-container">
-					<span class="food-icon vegan"><img src="<?= get_template_directory_uri() ?>/library/images/food-icons/vegan.png"/></span><span>Vegan</span>
+					<span class="food-icon vegan"><img src="<?= $image_url ?>/library/images/food-icons/vegan.png"/></span><span>Vegan</span>
 				</div>
 				<?php } ?>
 				<?php if($vegetarian){?>
 				<div class="food-icon-container">
-					<span class="food-icon vegetarian"><img src="<?= get_template_directory_uri() ?>/library/images/food-icons/vegetarian.png"/></span><span>Vegetarian</span>
+					<span class="food-icon vegetarian"><img src="<?= $image_url ?>/library/images/food-icons/vegetarian.png"/></span><span>Vegetarian</span>
 				</div>
 				<?php } ?>
 				<?php if($gluten){?>
 				<div class="food-icon-container">
-					<span class="food-icon gluten"><img src="<?= get_template_directory_uri() ?>/library/images/food-icons/gluten.png"/></span><span>Gluten free</span>
+					<span class="food-icon gluten"><img src="<?= $image_url ?>/library/images/food-icons/gluten.png"/></span><span>Gluten free</span>
 				</div>
 				<?php } ?>
 				<?php if($new){?>
 				<div class="food-icon-container">
-					<span class="food-icon new"><img src="<?= get_template_directory_uri() ?>/library/images/food-icons/new.png"/></span><span>Newly added</span>
+					<span class="food-icon new"><img src="<?= $image_url ?>/library/images/food-icons/new.png"/></span><span>Newly added</span>
 				</div>
 				<?php } ?>
 			</div>
@@ -231,13 +233,18 @@ foreach ($categories as $cat){
 				$item_count = count($category['items']);
 				if ($item_count > 0) {
 					$i = 1;
-					$item_count = $item_count / 2;
+					$row = 0;
+					$row_count = round($item_count / 2);
 					foreach ($category['items'] as $item){
 						$odd = $i % 2;
+						if($odd){
+							$row++;
+						}
+
 						$row_classes = array(
 							'menu-row row cf',
-							$i === 1 ? 'first' : '',
-							$i >= $item_count ? 'last' : ''
+							$row === 1 ? 'first' : '',
+							$row >= $row_count ? 'last' : ''
 						);
 
 						$icons = array(
@@ -269,16 +276,17 @@ foreach ($categories as $cat){
 							</table>
 						</div>
 					<?php
-						echo !$odd ? '</div>' : '';
+						echo !$odd || ($row == $row_count && $i == $item_count) ? '</div>' : '';
 						$i++;
 					}
 					?>
-				</div>
 				<?php } ?>
+				</div>
 			</div>
 		<?php } ?>
+		<?php if($menu_meta['menus_season'][0]){ ?>
+			<div class="menu-season menu-category"><em><?= $menu_meta['menus_season'][0] ?></em></div>
+		<?php } ?>
 	</section>
-	<footer class="article-footer">
-
-	</footer>
+	<footer class="article-footer"></footer>
 </article>

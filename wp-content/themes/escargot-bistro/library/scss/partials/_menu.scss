@@ -48,7 +48,13 @@
     margin-bottom: 30px;
 
     &:last-of-type {
-        margin-bottom: 80px;
+        margin-bottom: 90px;
+    }
+
+    &.menu-season {
+        margin: 30px 0 40px;
+        min-height: 20px;
+        text-align: right;
     }
 
     table, tr, td, th, tr:nth-child(even) {
