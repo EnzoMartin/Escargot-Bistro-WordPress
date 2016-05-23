@@ -24,15 +24,6 @@
 					</div>
 				</div>
 			</footer>
-			<div class="center copyright">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12">
-							<p>&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>.</p>
-						</div>
-					</div>
-				</div>
-			</div>
 		<?php } ?>
 		</div>
 		<?php // all js scripts are loaded in library/bones.php ?>
