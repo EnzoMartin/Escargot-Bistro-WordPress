@@ -42,6 +42,52 @@
             }
         }
     }
+
+    .menu-title {
+        background: none #80CBC4;
+        padding: 12px 16px;
+        text-align: center;
+        margin-bottom: 0;
+        border-radius: 2px 2px 0 0;
+    }
+
+    .menu-special-wrapper {
+        border: 1px solid #80CBC4;
+        border-top: none;
+        border-radius: 0 0 2px 2px;
+        padding: 12px 8px 0;
+
+        .menu-category {
+            overflow: hidden;
+            margin-bottom: 16px;
+
+            .menu-category-title {
+                margin: 0;
+            }
+
+            .menu-items {
+                .menu-row {
+                    .menu-item {
+                        table {
+                            margin: 0;
+                        }
+
+                        &:after {
+                            display: none;
+                        }
+                    }
+
+                    + .menu-row {
+                        .menu-item {
+                            table {
+                                margin-top: 4px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 .menu-disclaimer {

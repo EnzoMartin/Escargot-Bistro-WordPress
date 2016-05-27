@@ -46,6 +46,107 @@ function add_admin_menu_separator( $position ) {
     ksort( $menu );
 }
 
+/**
+ * BEGIN SHORTCODES
+ */
+
+/**
+ * MENU WRAPPER
+ */
+
+function make_menu($params, $content=null){
+    $result = '<div class="custom-menu">';
+    $result .= do_shortcode( $content );
+    $result .= '</div>';
+    return force_balance_tags( $result );
+}
+add_shortcode( 'menu', 'make_menu' );
+
+function make_special_menu($params, $content=null){
+    $result = '<div class="row"><div class="col-xs-12"><div class="menu-special-wrapper">';
+    $result .= do_shortcode( $content );
+    $result .= '</div></div></div>';
+    return force_balance_tags( $result );
+}
+add_shortcode( 'menu_special', 'make_special_menu' );
+
+function make_title($params, $content=null){
+    $result = '<div class="row"><div class="col-xs-12"><h2 class="menu-title">';
+    $result .= do_shortcode( $content );
+    $result .= '</h2></div></div>';
+    return force_balance_tags( $result );
+}
+add_shortcode( 'menu_title', 'make_title' );
+
+/**
+ * MENU ITEMS
+ */
+
+function make_items($params, $content=null){
+    $result = '<div class="menu-items cf">';
+    $result .= do_shortcode( $content );
+    $result .= '</div>';
+    return force_balance_tags( $result );
+}
+add_shortcode( 'menu_items', 'make_items' );
+
+function make_item($params, $content=null){
+    $result = '<div class="menu-row row"><div class="menu-item col-xs-12"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tbody>';
+    $result .= do_shortcode( $content );
+    $result .= '</tbody></table></div></div>';
+    return force_balance_tags( $result );
+}
+add_shortcode( 'menu_item', 'make_item' );
+
+function make_item_title($params, $content=null){
+    $result = '<tr><th class="name"><h4>';
+    $result .= do_shortcode( $content );
+    $result .= '</h4></th></tr>';
+    return force_balance_tags( $result );
+}
+add_shortcode( 'menu_item_title', 'make_item_title' );
+
+function make_item_description($params, $content=null){
+    $result = '<tr><td class="description">';
+    $result .= do_shortcode( $content );
+    $result .= '</td></tr>';
+    return force_balance_tags( $result );
+}
+add_shortcode( 'menu_item_description', 'make_item_description' );
+
+/**
+ * CATEGORIES
+ */
+
+function make_item_category($params, $content=null){
+    $result = '<div class="menu-category">';
+    $result .= do_shortcode( $content );
+    $result .= '</div></div>';
+    return force_balance_tags( $result );
+}
+add_shortcode( 'menu_category', 'make_item_category' );
+
+function make_item_category_title($params, $content=null){
+    $result = '<h3 class="menu-category-title"><span>';
+    $result .= do_shortcode( $content );
+    $result .= '</span></h3>';
+    return force_balance_tags( $result );
+}
+add_shortcode( 'menu_category_title', 'make_item_category_title' );
+
+function make_item_category_description($params, $content=null){
+    $result = '<div class="menu-category-content center">';
+    $result .= do_shortcode( $content );
+    $result .= '</div>';
+    return force_balance_tags( $result );
+}
+add_shortcode( 'menu_category_description', 'make_item_category_description' );
+
+/**
+ * END SHORTCODES
+ */
+
+
 function admin_menu_separator() {
 	add_admin_menu_separator(12);
 	add_admin_menu_separator(17);
@@ -53,60 +154,6 @@ function admin_menu_separator() {
 
 add_action('admin_init','admin_menu_separator');
 add_action('admin_enqueue_scripts', 'admin');
-
-
-// [banner title="A title" count="1" caption="My caption" link="http://google.com" image="http://imgur.com"]
-function makeBanner( $atts ) {
-    $values = shortcode_atts( array(
-        'title' => '',
-        'image' => '',
-        'count' => '1',
-	    'button' => '',
-        'caption' => '',
-        'link' => ''
-    ), $atts );
-
-    $banner = '<div class="banner" style="background-image: url(' . $values['image'] . ')">
-        <a href="' . $values['link'] . '" class="bg-link"></a>
-        <div class="bottom">
-            <a href="' . $values['link'] . '">
-	            <div class="heading pull-left">
-	                <h2>' . $values['title'] . '</h2>
-	            </div>
-            </a>
-            <div class="subheading">
-                <a href="' . $values['link'] . '">
-                    <h3 class="pull-left hidden-xs">' .  $values['caption'] . '</h3>
-                </a>';
-
-    $out = '</div>
-        </div>
-    </div>';
-
-    if($values['count'] == '1'){
-        $button = '<a href="' . $values['link'] . '" class="btn btn-order pull-right">' . $values['button'] . '</a>';
-        $html = '<div class="col-xs-12">' . $banner . $button . $out . '</div>';
-    } else {
-        $button = '<a href="' . $values['link'] . '" class="btn btn-order btn-half pull-right"><i class="fa fa-mail-forward"></i></a>';
-        $html = '<div class="col-xs-12 col-sm-6">' . $banner . $button . $out . '</div>';
-    }
-
-    return $html;
-}
-add_shortcode( 'banner', 'makeBanner' );
-
-
-// [image url=""]
-function makeInternalBanner( $atts ) {
-    $values = shortcode_atts( array(
-        'url' => ''
-    ), $atts );
-
-    return '<div class="banner" style="background-image: url(' . $values['url'] . ')"></div>';
-}
-add_shortcode( 'image', 'makeInternalBanner' );
-
-//add_filter('widget_text', 'do_shortcode');
 
 // Register Banner Post Type
 if ( ! function_exists('custom_banners') ) {
