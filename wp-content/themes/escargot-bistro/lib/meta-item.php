@@ -34,6 +34,7 @@ function custom_columns($columns) {
         'cb' => '<input type="checkbox" />',
         'title' => __('Title'),
         'menu' => __('Menu'),
+        'order' => __('Order'),
         'date' => __('Date')
     );
 }
@@ -53,6 +54,10 @@ function show_custom_columns($name) {
             }
 
             echo $views;
+            break;
+        case 'order':
+            echo get_post_meta($post->ID, 'items_text_order', true);
+            break;
     }
 }
 
