@@ -44,12 +44,14 @@
     }
 }
 
+.menu-disclaimer {
+    .row + .row {
+        margin-top: 8px;
+    }
+}
+
 .menu-category {
     margin-bottom: 30px;
-
-    &:last-of-type {
-        margin-bottom: 90px;
-    }
 
     &.menu-season {
         margin: 30px 0 40px;

@@ -290,5 +290,13 @@ foreach ($categories as $cat){
 		<?php if($menu_meta['menus_season'][0]){ ?>
 			<div class="menu-season menu-category"><em><?= $menu_meta['menus_season'][0] ?></em></div>
 		<?php } ?>
+		<div class="menu-disclaimer menu-category">
+			<div class="row">
+				<div class="col-xs-12 center"><strong>Any allergy? Let us know!</strong> &mdash; Tax &amp; Gratuities are not included</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 center">Eating raw or undercooked fish, seafood, eggs or meat increases the risk of food illnesses</div>
+			</div>
+		</div>
 	</section>
 </article>
