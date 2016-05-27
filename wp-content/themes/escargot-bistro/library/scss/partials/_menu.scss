@@ -20,29 +20,6 @@
         }
     }
 
-    .food-icon-container {
-        display: inline-block;
-        vertical-align: top;
-
-        .food-icon {
-            img {
-                display: block;
-                height: 18px;
-                width: 19px;
-            }
-        }
-
-        span {
-            display: inline-block;
-            vertical-align: top;
-            margin-right: 3px;
-
-            + span {
-                margin-right: 6px;
-            }
-        }
-    }
-
     .menu-title {
         background: none #80CBC4;
         padding: 12px 16px;
@@ -133,16 +110,6 @@
                 right: -30px;
                 transform: rotate(-65deg) skewX(-25deg);
             }
-        }
-    }
-
-    .food-icon-container {
-        bottom: -3px;
-        position: relative;
-
-        span,
-        img {
-            margin: 0;
         }
     }
 
