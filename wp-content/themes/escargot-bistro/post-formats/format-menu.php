@@ -14,6 +14,9 @@ $itemsQuery = "
 		MAX(IF(m.meta_key='items_glass_price',m.meta_value,0)) AS glass_price,
 		MAX(IF(m.meta_key='items_category',m.meta_value,0)) AS category,
 		MAX(IF(m.meta_key='items_menu',m.meta_value,0)) AS menu,
+		MAX(IF(m.meta_key='items_vegetarian',m.meta_value = 'on',0)) AS vegetarian,
+		MAX(IF(m.meta_key='items_vegan',m.meta_value = 'on',0)) AS vegan,
+		MAX(IF(m.meta_key='items_glutenfree',m.meta_value = 'on',0)) AS glutenfree,
 		MAX(IF(m.meta_key='items_newitem',m.meta_value = 'on',0)) AS newitem
 	FROM $wpdb->postmeta m
 	INNER JOIN $wpdb->posts p ON m.post_id = p.id
@@ -40,6 +43,41 @@ $categoriesQuery = "
 
 $categories = $wpdb->get_results($categoriesQuery, OBJECT);
 $items = $wpdb->get_results($itemsQuery, OBJECT);
+
+$vegan = false;
+$new = false;
+$gluten = false;
+$vegetarian = false;
+
+foreach ($items as $item){
+	if($item->vegetarian){
+		$vegetarian = true;
+		$item->vegetarian = '<div class="food-icon-container"><span class="food-icon vegetarian"><img title="Vegetarian" alt="Vegetarian" src="'. $image_url . '/library/images/food-icons/vegetarian.png"/></span></div>';
+	} else {
+		$item->vegetarian = '';
+	}
+
+	if($item->vegan){
+		$vegan = true;
+		$item->vegan = '<div class="food-icon-container"><span class="food-icon vegan"><img title="Vegan" alt="Vegan" src="'. $image_url . '/library/images/food-icons/vegan.png"/></span></div>';
+	} else {
+		$item->vegan = '';
+	}
+
+	if($item->glutenfree){
+		$gluten = true;
+		$item->glutenfree = '<div class="food-icon-container"><span class="food-icon gluten"><img title="Gluten free" alt="Gluten free" src="'. $image_url . '/library/images/food-icons/gluten.png"/></span></div>';
+	} else {
+		$item->glutenfree = '';
+	}
+
+	if($item->newitem){
+		$new = true;
+		$item->newitem = '<div class="food-icon-container"><span class="food-icon new"><img title="New item" alt="New item" src="'. $image_url . '/library/images/food-icons/new.png"/></span></div>';
+	} else {
+		$item->newitem = '';
+	}
+}
 
 $menu = array();
 
@@ -91,6 +129,30 @@ foreach ($categories as $cat){
 	</header>
 	<section class="entry-content cf sub" itemprop="articleBody">
 		<?php get_template_part('social'); ?>
+		<div class="row">
+			<div class="col-xs-12 food-icons center">
+				<?php if($vegan){?>
+				<div class="food-icon-container">
+					<span class="food-icon vegan"><img src="<?= $image_url ?>/library/images/food-icons/vegan.png"/></span><span>Vegan</span>
+				</div>
+				<?php } ?>
+				<?php if($vegetarian){?>
+				<div class="food-icon-container">
+					<span class="food-icon vegetarian"><img src="<?= $image_url ?>/library/images/food-icons/vegetarian.png"/></span><span>Vegetarian</span>
+				</div>
+				<?php } ?>
+				<?php if($gluten){?>
+				<div class="food-icon-container">
+					<span class="food-icon gluten"><img src="<?= $image_url ?>/library/images/food-icons/gluten.png"/></span><span>Gluten free</span>
+				</div>
+				<?php } ?>
+				<?php if($new){?>
+				<div class="food-icon-container">
+					<span class="food-icon new"><img src="<?= $image_url ?>/library/images/food-icons/new.png"/></span><span>Newly added</span>
+				</div>
+				<?php } ?>
+			</div>
+		</div>
 		<?php
 		usort($menu, function($a, $b) {
 			if($a['sorting'] == $b['sorting']){ return 0 ; }
@@ -115,7 +177,8 @@ foreach ($categories as $cat){
 						);
 
 						$item_classes = array(
-							'menu-item col-xs-12'
+							'menu-item col-xs-12',
+		                    $item->newitem ? 'new' : ''
 						);
 
 						?>
@@ -154,6 +217,13 @@ foreach ($categories as $cat){
 							$row >= $row_count ? 'last' : ''
 						);
 
+						$icons = array(
+							$item->vegetarian,
+		                    $item->vegan,
+		                    $item->glutenfree,
+							$item->newitem
+						);
+
 						$item_classes = array(
 							'menu-item col-xs-12 col-sm-6',
 						);
@@ -164,7 +234,7 @@ foreach ($categories as $cat){
 							<table width="100%" cellpadding="0" cellspacing="0" border="0">
 								<tbody>
 								<tr>
-									<th class="name"><h4><?= $item->title ?></h4></th>
+									<th class="name"><h4><?= $item->title ?> <?= implode($icons, ' ') ?></h4></th>
 									<td class="price" rowspan="2"><?= is_numeric($item->price) ? '$' : '' ?><?= $item->price ?></td>
 								</tr>
 								<tr>

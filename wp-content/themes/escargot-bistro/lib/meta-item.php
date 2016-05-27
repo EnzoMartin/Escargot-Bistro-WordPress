@@ -71,7 +71,18 @@ function item_meta_details_box() {
         'high'); // $priority
 }
 
+function item_meta_options_box() {
+    add_meta_box(
+        'item_meta_options_box', // $id
+        'Options', // $title
+        'show_item_meta_options_box', // $callback
+        'item', // $page
+        'normal', // $context
+        'high'); // $priority
+}
+
 add_action('add_meta_boxes', 'item_meta_details_box');
+add_action('add_meta_boxes', 'item_meta_options_box');
 
 
 // Field Array
@@ -135,7 +146,37 @@ $item_meta_details_fields = array(
     ),
 );
 
-$item_meta_fields = array_merge($item_meta_details_fields);
+$item_meta_options_fields = array(
+    array(
+        'label'=> 'Vegetarian',
+        'desc'  => 'Mark as vegetarian',
+        'id'    => $prefix.'vegetarian',
+        'className' => 'normal-price',
+        'type'  => 'checkbox'
+    ),
+    array(
+        'label'=> 'Vegan',
+        'desc'  => 'Mark as vegan',
+        'id'    => $prefix.'vegan',
+        'className' => 'normal-price',
+        'type'  => 'checkbox'
+    ),
+    array(
+        'label'=> 'Gluten free',
+        'desc'  => 'Mark as gluten free',
+        'id'    => $prefix.'glutenfree',
+        'className' => 'normal-price',
+        'type'  => 'checkbox'
+    ),
+    array(
+        'label'=> '"NEW"',
+        'desc'  => 'Mark as a brand new item on the menu',
+        'id'    => $prefix.'newitem',
+        'type'  => 'checkbox'
+    ),
+);
+
+$item_meta_fields = array_merge($item_meta_details_fields, $item_meta_options_fields);
 
 function show_item_meta_details_box() {
     global $item_meta_details_fields, $post;
@@ -176,6 +217,36 @@ function show_item_meta_details_box() {
                     echo '<option', $selected ? ' selected="selected"' : '', ' value="'.$option['value'].'">'.$option['label'].'</option>';
                 }
                 echo '</select><br /><span class="description">'.$field['desc'].'</span>';
+                break;
+        } //end switch
+        echo '</td></tr>';
+    } // end foreach
+    echo '</table>'; // end table
+}
+
+function show_item_meta_options_box() {
+    global $item_meta_options_fields, $post;
+    $showWinePrice = get_post_meta($post->ID, 'items_is_wine', true) === 'on' ? 'show-wine' : 'hide-wine';
+
+    // Begin the field table and loop
+    echo '<table class="form-table ' . $showWinePrice . '">';
+    foreach ($item_meta_options_fields as $field) {
+        // get value of this field if it exists for this post
+        $meta = get_post_meta($post->ID, $field['id'], true);
+        // begin a table row with
+        echo '<tr class="'. $field['className'] .'">
+                <th><label for="'.$field['id'].'">'.$field['label'].'</label></th>
+                <td>';
+        switch($field['type']) {
+            // text
+            case 'text':
+                echo '<input type="text" name="'.$field['id'].'" id="'.$field['id'].'" value="'.$meta.'" size="'.(isset($field['size']) ? $field['size'] : 30).'" />
+                    <br /><span class="description">'.$field['desc'].'</span>';
+                break;
+            // checkbox
+            case 'checkbox':
+                echo '<input type="checkbox" name="'.$field['id'].'" id="'.$field['id'].'" ',$meta ? ' checked="checked"' : '','/>
+                    <label for="'.$field['id'].'">'.$field['desc'].'</label>';
                 break;
         } //end switch
         echo '</td></tr>';
