@@ -182,8 +182,6 @@ foreach ($categories as $cat){
 			</div>
 		</div>
 		<?php
-		the_content();
-
 		usort($menu, function($a, $b) {
 			if($a['sorting'] == $b['sorting']){ return 0 ; }
 			return ($a['sorting'] < $b['sorting']) ? -1 : 1;
@@ -283,10 +281,14 @@ foreach ($categories as $cat){
 				<?php } ?>
 				</div>
 			</div>
+		<?php }
+
+		$content = get_the_content();
+		if ($content) { ?>
+		<div class="menu-content menu-category"><?= $content ?></div>
 		<?php } ?>
 		<?php if($menu_meta['menus_season'][0]){ ?>
 			<div class="menu-season menu-category"><em><?= $menu_meta['menus_season'][0] ?></em></div>
 		<?php } ?>
 	</section>
-	<footer class="article-footer"></footer>
 </article>
