@@ -11,6 +11,25 @@ function banner_meta_box() {
 }
 add_action('add_meta_boxes', 'banner_meta_box');
 
+add_filter('manage_edit-banner_columns', 'custom_banner_columns');
+function custom_banner_columns($columns) {
+    return array(
+        'cb' => '<input type="checkbox" />',
+        'title' => __('Title'),
+        'order' => __('Order'),
+        'date' => __('Date')
+    );
+}
+
+add_action('manage_posts_custom_column',  'show_custom_banner_columns');
+function show_custom_banner_columns($name) {
+    global $post;
+    switch ($name) {
+        case 'order':
+            echo get_post_meta($post->ID, 'banners_text_order', true);
+    }
+}
+
 
 // Field Array
 $prefix = 'banners_';
