@@ -283,7 +283,7 @@ foreach ($categories as $cat){
 			</div>
 		<?php }
 
-		$content = get_the_content();
+		$content = apply_filters( 'the_content', get_the_content() );
 		if ($content) { ?>
 		<div class="menu-content menu-category"><?= $content ?></div>
 		<?php } ?>
