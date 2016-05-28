@@ -1,5 +1,15 @@
 <?php
-// Add the Meta Box
+function menu_editor_box() {
+    add_meta_box(
+        'menu_editor_box', // $id
+        'Fixed Price Menu', // $title
+        'show_menu_editor_box', // $callback
+        'menu', // $page
+        'normal', // $context
+        'high'); // $priority
+}
+add_action('add_meta_boxes', 'menu_editor_box');
+
 function menu_meta_box() {
     add_meta_box(
         'menu_meta_box', // $id
@@ -56,6 +66,11 @@ function show_menu_meta_box() {
         echo '</td></tr>';
     } // end foreach
     echo '</table>'; // end table
+}
+
+
+function show_menu_editor_box() {
+    echo 'Loading..';
 }
 
 // Save the Data

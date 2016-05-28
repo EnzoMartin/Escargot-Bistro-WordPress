@@ -9,3 +9,55 @@
         display: none;
     }
 }
+
+.post-type-menu {
+    .form-menu {
+        h3 {
+            margin: 0;
+        }
+
+        th {
+            width: 150px;
+        }
+
+        .form-menu {
+            margin: 0 0 16px 0;
+            padding: 8px;
+            border-radius: 2px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.04);
+            background: rgba(0,0,0,0.1);
+
+            tbody {
+                tr:nth-of-type(odd) {
+                    th, td {
+                        padding-top: 2px;
+                        border-bottom: 1px solid #CCC;
+                    }
+
+                    &:last-of-type {
+                        th, td {
+                            border-bottom: none;
+                        }
+                    }
+                }
+
+                tr:nth-of-type(even) {
+                    th, td {
+                        padding-bottom: 2px;
+                    }
+                }
+
+                tr.menu-section-items {
+                    td {
+                        padding-left: 0;
+                        border-bottom: none;
+                    }
+
+                    h3 {
+                        border-bottom: 1px solid #CCC;
+                    }
+                }
+            }
+        }
+    }
+}
