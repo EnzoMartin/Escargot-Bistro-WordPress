@@ -4,8 +4,8 @@ function admin(){
     wp_enqueue_script('media-upload');
     wp_enqueue_script('thickbox');
     wp_enqueue_style('thickbox');
-    wp_enqueue_script('lodash', get_template_directory_uri() . '/library/js/lodash.js', array(), null, true);
-    wp_enqueue_script('admin', get_template_directory_uri() . '/library/js/admin.js', array('jquery','lodash'), null, true);
+    //wp_enqueue_script('lodash', get_template_directory_uri() . '/library/js/lodash.js', array(), null, true);
+    wp_enqueue_script('admin', get_template_directory_uri() . '/library/js/admin.js', array('jquery'), null, true);
 }
 
 function bs_row( $params, $content=null ) {
