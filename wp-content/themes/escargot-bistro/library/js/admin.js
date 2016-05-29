@@ -106,12 +106,8 @@ function xmlToJson(xml) {
 	return obj;
 }
 
-function makeTitle(name,className){
-    return '<tr class="menu-section-' + className + '"><td colspan="2"><h3>' + name + '</h3></td></tr>';
-}
-
 (function($){
-    var $editor = $('.wp-editor-area').first();
+    var $editor = $('#menus_fixed_price');
     var $box = $('#menu_editor_box').find('.inside');
     var content = $editor.val();
 
@@ -126,43 +122,20 @@ function makeTitle(name,className){
 
     console.log(JSON.stringify(tree, true, 4));
 
-    var html = '<table class="form-table form-menu"><tbody>';
+    render();
 
-    if(tree.menu){
-        html += makeTextarea('menu_title','Title',tree.menu.menu_title && tree.menu.menu_title['#text'] || '');
-
-        html += makeTitle('Categories','categories');
-        if(tree.menu.menu_special && tree.menu.menu_special.menu_category){
-            tree.menu.menu_special.menu_category.forEach(function(menu_category,category_i){
-                html += '<tr><td colspan="2"><table class="form-menu"><thead>';
-                html += makeInput('menu_category_title-' + category_i,'Category Name',menu_category.menu_category_title['#text']);
-                html += makeTextarea('menu_category_description-' + category_i,'Category Description',menu_category.menu_category_description['#text']);
-                html += '</thead><tbody>';
-
-                if(menu_category.menu_items && menu_category.menu_items.menu_item){
-                    // Ensure that the menu_item level is an array even if there's only 1
-                    if(!Array.isArray(menu_category.menu_items.menu_item)){
-                        menu_category.menu_items.menu_item = [menu_category.menu_items.menu_item];
-                    }
-
-                    html += makeTitle('Items','items');
-                    menu_category.menu_items.menu_item.forEach(function(menu_item,item_i){
-                        html += makeInput('menu_item_title-' + category_i + '-' + item_i,'Name',menu_item.menu_item_title['#text']);
-                        html += makeInput('menu_item_description-' + category_i + '-' + item_i,'Description',menu_item.menu_item_description['#text']);
-                    });
-                }
-                html += '</tbody></table></td></tr>';
-            });
-        }
+    function makeTitle(name,className,type,category){
+        category = typeof category === 'undefined' ? -1 : category;
+        return '<tr class="menu-section-' + className + '">' +
+            '<td colspan="3"><h3>' + name +
+            '<div class="button button-primary button-large pull-right" data-type="' + type + '" data-category="' + category + '" onclick="handleAddRow(event)">Add ' + type + '</div></h3>' +
+            '</td></tr>';
     }
-
-    html += '</tbody></table>';
-    $box.html(html);
 
     function makeInput(name,label,value,description){
         value = value || '';
         var html = '<tr class="menu-input-row"><th><label for="ci-' + name + '">' + label + '</label></th>';
-        html += '<td><input size="150" type="text" id="ci-' + name + '" name="' + name + '" value="' + value + '" onkeyup="handleInputChange(event)"/>';
+        html += '<td><input size="150" type="text" id="ci-' + name + '" name="' + name + '" value="' + decodeURIComponent(value) + '" onkeyup="handleInputChange(event)"/>';
 
         if(description){
             html += '<br/><span class="description">' + description + '</span>';
@@ -175,7 +148,7 @@ function makeTitle(name,className){
     function makeTextarea(name,label,value,description){
         value = value || '';
         var html = '<tr><th><label for="ci-' + name + '">' + label + '</label></th>';
-        html += '<td><textarea cols="150" rows="7" id="ci-' + name + '" name="' + name + '" onkeyup="handleInputChange(event)">' +  value + '</textarea>';
+        html += '<td><textarea cols="150" rows="7" id="ci-' + name + '" name="' + name + '" onkeyup="handleInputChange(event)">' +  decodeURIComponent(value) + '</textarea>';
 
         if(description){
             html += '<br/><span class="description">' + description + '</span>';
@@ -185,9 +158,33 @@ function makeTitle(name,className){
         return html;
     }
 
+    window.handleAddRow = function(event){
+        var target = event.target;
+        var type = target.getAttribute('data-type');
+        var category = target.getAttribute('data-category');
+
+        switch(type){
+            case 'item':
+                tree.menu.menu_special.menu_category[category].menu_items.menu_item.push({
+                    menu_item_title: {},
+                    menu_item_description: {}
+                });
+                break;
+            case 'category':
+                tree.menu.menu_special.menu_category.push({
+                    menu_category_title: {},
+                    menu_category_description: {},
+                    menu_items: {
+                        menu_item: []
+                    }
+                });
+                break;
+        }
+
+        render();
+    };
+
     window.handleInputChange = function(event){
-        //console.log('test',tree);
-        console.log(event)
         var target = event.target;
         var value = target.value;
         var id = target.id.replace('ci-','').split('-');
@@ -195,8 +192,10 @@ function makeTitle(name,className){
         var category = typeof id[1] === 'undefined' ? null : id[1];
         var item = typeof id[2] === 'undefined' ? null : id[2];
 
-        console.log(name,category,item)
+        console.log('--------------')
+        console.log('modified',name,category,item)
         console.log(value)
+        console.log('--------------')
 
         switch(name){
             case 'menu_title':
@@ -204,15 +203,49 @@ function makeTitle(name,className){
                 break;
             case 'menu_category_title':
             case 'menu_category_description':
-                tree.menu.menu_special.menu_category[category][name] = {'#text': value};
+                tree.menu.menu_special.menu_category[category][name] = {'#text': encodeURIComponent(value)};
                 break;
             case 'menu_item_title':
             case 'menu_item_description':
-                tree.menu.menu_special.menu_category[category].menu_items.menu_item[item][name] = {'#text': value};
+                tree.menu.menu_special.menu_category[category].menu_items.menu_item[item][name] = {'#text': encodeURIComponent(value)};
                 break;
         }
 
         console.log(JSON.stringify(tree, true, 4));
         console.log(json2xml(tree));
+        $editor.html(json2xml(tree));
     };
+
+    function render(){
+        var html = '<table class="form-table form-menu"><tbody>';
+        if(tree.menu){
+            html += makeTextarea('menu_title','Title',tree.menu.menu_title && tree.menu.menu_title['#text'] || '');
+            html += makeTitle('Categories','categories','category');
+            if(tree.menu.menu_special && tree.menu.menu_special.menu_category){
+                tree.menu.menu_special.menu_category.forEach(function(menu_category,category_i){
+                    html += '<tr><td colspan="2"><table class="form-menu"><thead>';
+                    html += makeInput('menu_category_title-' + category_i,'Category Name',menu_category.menu_category_title['#text']);
+                    html += makeTextarea('menu_category_description-' + category_i,'Category Description',menu_category.menu_category_description['#text']);
+                    html += '</thead><tbody>';
+
+                    if(menu_category.menu_items && menu_category.menu_items.menu_item){
+                        // Ensure that the menu_item level is an array even if there's only 1
+                        if(!Array.isArray(menu_category.menu_items.menu_item)){
+                            menu_category.menu_items.menu_item = [menu_category.menu_items.menu_item];
+                        }
+
+                        html += makeTitle('Items','items','item',category_i);
+                        menu_category.menu_items.menu_item.forEach(function(menu_item,item_i){
+                            html += makeInput('menu_item_title-' + category_i + '-' + item_i,'Name',menu_item.menu_item_title['#text']);
+                            html += makeInput('menu_item_description-' + category_i + '-' + item_i,'Description',menu_item.menu_item_description['#text']);
+                        });
+                    }
+                    html += '</tbody></table></td></tr>';
+                });
+            }
+        }
+
+        html += '</tbody></table>';
+        $box.html(html);
+    }
 })(jQuery);

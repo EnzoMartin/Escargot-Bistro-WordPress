@@ -159,6 +159,8 @@ foreach ($categories as $cat){
 			return ($a['sorting'] < $b['sorting']) ? -1 : 1;
 		});
 
+		the_content();
+
 		foreach ($menu as $category){
 		?>
 			<div class="menu-category">
@@ -252,12 +254,11 @@ foreach ($categories as $cat){
 				</div>
 			</div>
 		<?php }
-
-		$content = apply_filters( 'the_content', get_the_content() );
+		$content = $menu_meta['menus_fixed_price'][0];
 		if ($content) { ?>
-		<div class="menu-content menu-category"><?= $content ?></div>
-		<?php } ?>
-		<?php if($menu_meta['menus_season'][0]){ ?>
+			<div class="menu-content menu-category"><?= urldecode(apply_filters( 'the_content', $content )) ?></div>
+		<?php }
+		if($menu_meta['menus_season'][0]){ ?>
 			<div class="menu-season menu-category"><em><?= $menu_meta['menus_season'][0] ?></em></div>
 		<?php } ?>
 		<div class="menu-disclaimer menu-category">
