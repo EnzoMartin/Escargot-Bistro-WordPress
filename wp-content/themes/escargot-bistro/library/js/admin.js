@@ -110,10 +110,22 @@ function xmlToJson(xml) {
     var $editor = $('#menus_fixed_price');
     var $box = $('#menu_editor_box').find('.inside');
     var content = $editor.val();
+    var tree = {};
 
-    var xmlString = content.replace(/\[/g, '<').replace(/\]/g, '>');
-    var xml = $.parseXML(xmlString);
-    var tree = xmlToJson(xml);
+    if(content){
+        var xmlString = content.replace(/\[/g, '<').replace(/\]/g, '>');
+        var xml = $.parseXML(xmlString);
+        tree = xmlToJson(xml);
+    } else {
+        tree = {
+            menu: {
+                menu_title: {},
+                menu_special: {
+                    menu_category: []
+                }
+            }
+        };
+    }
     
     // Ensure that the menu_category level is an array even if there's only 1
     if(tree.menu && tree.menu.menu_special && tree.menu.menu_special.menu_category && !Array.isArray(tree.menu.menu_special.menu_category)){
@@ -183,7 +195,12 @@ function xmlToJson(xml) {
 
         render();
 
-        $('html, body').scrollTop($('.form-menu').find('tr').last().offset().top);
+        if(type === 'item'){
+            //TODO: Fix this
+            $('html, body').scrollTop($('.form-menu').find('tr').eq(category+2).find('tr').last().offset().top);
+        } else {
+            $('html, body').scrollTop($('.form-menu').find('tr').last().offset().top);
+        }
     };
 
     window.handleInputChange = function(event){
@@ -220,31 +237,30 @@ function xmlToJson(xml) {
 
     function render(){
         var html = '<table class="form-table form-menu"><tbody>';
-        if(tree.menu){
-            html += makeTextarea('menu_title','Title',tree.menu.menu_title && tree.menu.menu_title['#text'] || '');
-            html += makeTitle('Categories','categories','category');
-            if(tree.menu.menu_special && tree.menu.menu_special.menu_category){
-                tree.menu.menu_special.menu_category.forEach(function(menu_category,category_i){
-                    html += '<tr><td colspan="2"><table class="form-menu"><thead>';
-                    html += makeInput('menu_category_title-' + category_i,'Category Name',menu_category.menu_category_title['#text']);
-                    html += makeTextarea('menu_category_description-' + category_i,'Category Description',menu_category.menu_category_description['#text']);
-                    html += '</thead><tbody>';
+        html += makeTextarea('menu_title','Title',tree.menu.menu_title && tree.menu.menu_title['#text'] || '');
+        html += makeTitle('Categories','categories','category');
 
-                    if(menu_category.menu_items && menu_category.menu_items.menu_item){
-                        // Ensure that the menu_item level is an array even if there's only 1
-                        if(!Array.isArray(menu_category.menu_items.menu_item)){
-                            menu_category.menu_items.menu_item = [menu_category.menu_items.menu_item];
-                        }
+        if(tree.menu.menu_special && tree.menu.menu_special.menu_category){
+            tree.menu.menu_special.menu_category.forEach(function(menu_category,category_i){
+                html += '<tr><td colspan="2"><table class="form-menu"><thead>';
+                html += makeInput('menu_category_title-' + category_i,'Category Name',menu_category.menu_category_title['#text']);
+                html += makeTextarea('menu_category_description-' + category_i,'Category Description',menu_category.menu_category_description['#text']);
+                html += '</thead><tbody>';
 
-                        html += makeTitle('Items','items','item',category_i);
-                        menu_category.menu_items.menu_item.forEach(function(menu_item,item_i){
-                            html += makeInput('menu_item_title-' + category_i + '-' + item_i,'Name',menu_item.menu_item_title['#text']);
-                            html += makeInput('menu_item_description-' + category_i + '-' + item_i,'Description',menu_item.menu_item_description['#text']);
-                        });
+                if(menu_category.menu_items && menu_category.menu_items.menu_item){
+                    // Ensure that the menu_item level is an array even if there's only 1
+                    if(!Array.isArray(menu_category.menu_items.menu_item)){
+                        menu_category.menu_items.menu_item = [menu_category.menu_items.menu_item];
                     }
-                    html += '</tbody></table></td></tr>';
-                });
-            }
+
+                    html += makeTitle('Items','items','item',category_i);
+                    menu_category.menu_items.menu_item.forEach(function(menu_item,item_i){
+                        html += makeInput('menu_item_title-' + category_i + '-' + item_i,'Name',menu_item.menu_item_title['#text']);
+                        html += makeInput('menu_item_description-' + category_i + '-' + item_i,'Description',menu_item.menu_item_description['#text']);
+                    });
+                }
+                html += '</tbody></table></td></tr>';
+            });
         }
 
         html += '</tbody></table>';
