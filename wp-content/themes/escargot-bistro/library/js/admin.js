@@ -182,6 +182,8 @@ function xmlToJson(xml) {
         }
 
         render();
+
+        $('html, body').scrollTop($('.form-menu').find('tr').last().offset().top);
     };
 
     window.handleInputChange = function(event){
