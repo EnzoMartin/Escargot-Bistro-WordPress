@@ -1,3 +1,5 @@
+@import 'partials/bootstrap/variables';
+
 .hide-wine {
     .wine-price {
         display: none;
@@ -14,6 +16,46 @@
     float: right;
 }
 
+.button {
+    &.button-danger {
+        color: #FFF;
+        border-color: $brand-danger;
+        background: lighten($brand-danger, 10%);
+
+        &:hover,
+        &:focus {
+            border-color: darken($brand-danger,10%);
+            background-color: darken($brand-danger, 0%);
+            color: #FFF;
+        }
+
+        &:active {
+            border-color: darken($brand-danger,10%);
+            background-color: darken($brand-danger, 3%);
+            color: #FFF;
+        }
+    }
+
+    &.button-info {
+        color: #FFF;
+        border-color: $brand-info;
+        background: lighten($brand-info, 10%);
+
+        &:hover,
+        &:focus {
+            border-color: darken($brand-info,10%);
+            background-color: darken($brand-info, 0%);
+            color: #FFF;
+        }
+
+        &:active {
+            border-color: darken($brand-info,10%);
+            background-color: darken($brand-info, 3%);
+            color: #FFF;
+        }
+    }
+}
+
 .post-type-menu {
     .form-menu {
         h3 {
@@ -22,6 +64,28 @@
 
         th {
             width: 150px;
+        }
+
+        .col-buttons {
+            width: 50px;
+            vertical-align: middle;
+
+            &.single {
+                padding-top: 0;
+            }
+
+            .button {
+                width: 100%;
+                text-align: center;
+
+                + .button {
+                    margin-top: 8px;
+                }
+            }
+
+            &.align-top {
+                vertical-align: top;
+            }
         }
 
         .form-menu {
