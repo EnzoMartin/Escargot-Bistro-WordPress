@@ -157,7 +157,7 @@ function xmlToJson(xml) {
         }
         
         html += '<th><label for="ci-' + name + '">' + label + '</label></th>';
-        html += '<td><input size="150" type="text" id="ci-' + name + '" name="' + name + '" value="' + decodeURIComponent(value) + '" onkeyup="handleInputChange(event)"/>';
+        html += '<td><input sie="150" type="text" id="ci-' + name + '" name="' + name + '" value="' + decodeURIComponent(value) + '" onkeyup="handleInputChange(event)"/>';
 
         if(description){
             html += '<br/><span class="description">' + description + '</span>';
@@ -166,8 +166,6 @@ function xmlToJson(xml) {
         html += '</td>';
         if(displayButtons){
             html += '<td class="col-buttons single" rowspan="2"><div class="button button-danger button-large" onclick="handleDeleteItem(event,\'' + type + '\')">Delete</div></td>';
-        } else {
-            html += '<td></td>';
         }
         html += '</tr>';
         return html;
@@ -187,7 +185,7 @@ function xmlToJson(xml) {
         }
 
         html += '<th><label for="ci-' + name + '">' + label + '</label></th>';
-        html += '<td><textarea cols="150" rows="7" id="ci-' + name + '" name="' + name + '" onkeyup="handleInputChange(event)">' +  decodeURIComponent(value) + '</textarea>';
+        html += '<td><textarea cos="150" rows="7" id="ci-' + name + '" name="' + name + '" onkeyup="handleInputChange(event)">' +  decodeURIComponent(value) + '</textarea>';
 
         if(description){
             html += '<br/><span class="description">' + description + '</span>';
