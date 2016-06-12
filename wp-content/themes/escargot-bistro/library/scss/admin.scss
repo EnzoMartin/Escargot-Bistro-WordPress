@@ -72,6 +72,22 @@
             width: 100%;
         }
 
+        .menu-section-categories + tr {
+            thead {
+                .btn-up {
+                    display: none;
+                }
+            }
+        }
+
+        > tbody >  tr:last-of-type {
+            thead {
+                .btn-down {
+                    display: none;
+                }
+            }
+        }
+
         .col-buttons {
             width: 50px;
             vertical-align: middle;
