@@ -149,9 +149,9 @@ function xmlToJson(xml) {
         var html = '<tr class="menu-input-row">';
         
         if(displayButtons){
-            html += '<td class="col-buttons align-top"><div class="button button-secondary button-medium" data-direction="up" onclick="handleMoveItem(event,\'' + type + '\')">Up</div></td>';
+            html += '<td class="col-buttons align-top"><div class="button button-secondary button-medium btn-up" data-direction="up" onclick="handleMoveItem(event,\'' + type + '\')">Up</div></td>';
         } else if (displayButtons !== null) {
-            html += '<td class="col-buttons align-top"><div class="button button-secondary button-medium" data-direction="down" onclick="handleMoveItem(event,\'' + type + '\')">Down</div></td>';
+            html += '<td class="col-buttons align-top"><div class="button button-secondary button-medium btn-down" data-direction="down" onclick="handleMoveItem(event,\'' + type + '\')">Down</div></td>';
         } else {
             html += '<td></td>';
         }
@@ -177,8 +177,8 @@ function xmlToJson(xml) {
 
         if(displayButtons){
             html += '<td class="col-buttons align-top">' +
-                '<div class="button button-secondary button-medium" data-direction="up" onclick="handleMoveItem(event,\'category\')">Up</div>' +
-                '<div class="button button-secondary button-medium" data-direction="down" onclick="handleMoveItem(event,\'category\')">Down</div>' +
+                '<div class="button button-secondary button-medium btn-up" data-direction="up" onclick="handleMoveItem(event,\'category\')">Up</div>' +
+                '<div class="button button-secondary button-medium btn-down" data-direction="down" onclick="handleMoveItem(event,\'category\')">Down</div>' +
             '</td>';
         } else {
             html += '<td></td>';
