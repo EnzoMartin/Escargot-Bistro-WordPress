@@ -224,7 +224,7 @@ function xmlToJson(xml) {
             var targetCat = parseInt(category,10)+2;
             $('html, body').animate({scrollTop:($('.inside > .form-menu > tbody > tr').eq(targetCat).find('tr').last().offset().top)},1000);
         } else {
-            $('html, body').animate({scrollTop:($('.form-menu').find('tr').last().offset().top)},1000);
+            $('html, body').animate({scrollTop:($('.inside > .form-menu > tbody > tr').last().offset().top)},1000);
         }
     };
 
