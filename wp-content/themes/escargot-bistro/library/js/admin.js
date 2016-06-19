@@ -220,11 +220,11 @@ function xmlToJson(xml) {
 
         render();
 
-        if(type === 'item'){
-            //TODO: Fix this
-            $('html, body').scrollTop($('.form-menu').find('tr').eq(category+2).find('tr').last().offset().top);
+         if(type === 'item'){
+            var targetCat = parseInt(category,10)+2;
+            $('html, body').animate({scrollTop:($('.inside > .form-menu > tbody > tr').eq(targetCat).find('tr').last().offset().top)},1000);
         } else {
-            $('html, body').scrollTop($('.form-menu').find('tr').last().offset().top);
+            $('html, body').animate({scrollTop:($('.form-menu').find('tr').last().offset().top)},1000);
         }
     };
 
