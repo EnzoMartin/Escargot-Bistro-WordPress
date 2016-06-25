@@ -19,13 +19,13 @@
 .button {
     &.button-danger {
         color: #FFF;
-        border-color: $brand-danger;
-        background: lighten($brand-danger, 10%);
+        border-color: darken($brand-danger,10%);
+        background-color: darken($brand-danger, 0%);
 
         &:hover,
         &:focus {
-            border-color: darken($brand-danger,10%);
-            background-color: darken($brand-danger, 0%);
+            border-color: $brand-danger;
+            background: lighten($brand-danger, 10%);
             color: #FFF;
         }
 

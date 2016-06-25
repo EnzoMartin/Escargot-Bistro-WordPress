@@ -108,33 +108,35 @@ function xmlToJson(xml) {
 
 (function($){
     var $editor = $('#menus_fixed_price');
-    var $box = $('#menu_editor_box').find('.inside');
-    var content = $editor.val();
-    var tree = {};
+    if($editor.length){
+        var $box = $('#menu_editor_box').find('.inside');
+        var content = $editor.val();
+        var tree = {};
 
-    if(content){
-        var xmlString = content.replace(/\[/g, '<').replace(/\]/g, '>');
-        var xml = $.parseXML(xmlString);
-        tree = xmlToJson(xml);
-    } else {
-        tree = {
-            menu: {
-                menu_title: {},
-                menu_special: {
-                    menu_category: []
+        if(content){
+            var xmlString = content.replace(/\[/g,'<').replace(/\]/g,'>');
+            var xml = $.parseXML(xmlString);
+            tree = xmlToJson(xml);
+        } else {
+            tree = {
+                menu:{
+                    menu_title:{},
+                    menu_special:{
+                        menu_category:[]
+                    }
                 }
-            }
-        };
-    }
-    
-    // Ensure that the menu_category level is an array even if there's only 1
-    if(tree.menu && tree.menu.menu_special && tree.menu.menu_special.menu_category && !Array.isArray(tree.menu.menu_special.menu_category)){
-        tree.menu.menu_special.menu_category = [tree.menu.menu_special.menu_category];
-    }
+            };
+        }
 
-    console.log(JSON.stringify(tree, true, 4));
+        // Ensure that the menu_category level is an array even if there's only 1
+        if(tree.menu && tree.menu.menu_special && tree.menu.menu_special.menu_category && !Array.isArray(tree.menu.menu_special.menu_category)){
+            tree.menu.menu_special.menu_category = [tree.menu.menu_special.menu_category];
+        }
 
-    render();
+        console.log(JSON.stringify(tree,true,4));
+
+        render();
+    }
 
     function makeTitle(name,className,type,category){
         category = typeof category === 'undefined' ? -1 : category;
@@ -144,14 +146,19 @@ function xmlToJson(xml) {
             '</td></tr>';
     }
 
-    function makeInput(name,label,value,type,displayButtons,description){
+    function makeInput(name,indexes,label,value,type,displayButtons,description){
         value = value || '';
+        name += '-' + indexes.cat;
+        if(typeof indexes.i !== 'undefined'){
+            name += '-' + indexes.i;
+        }
+
         var html = '<tr class="menu-input-row">';
         
         if(displayButtons){
-            html += '<td class="col-buttons align-top"><div class="button button-secondary button-medium btn-up" data-direction="up" onclick="handleMoveItem(event,\'' + type + '\')">Up</div></td>';
+            html += '<td class="col-buttons align-top"><div class="button button-secondary button-medium btn-up" data-direction="up" onclick="handleMoveItem(event,\'' + type + '\',' + indexes.cat + ',' + indexes.i + ')">Up</div></td>';
         } else if (displayButtons !== null) {
-            html += '<td class="col-buttons align-top"><div class="button button-secondary button-medium btn-down" data-direction="down" onclick="handleMoveItem(event,\'' + type + '\')">Down</div></td>';
+            html += '<td class="col-buttons align-top"><div class="button button-secondary button-medium btn-down" data-direction="down" onclick="handleMoveItem(event,\'' + type + '\',' + indexes.cat + ',' + indexes.i + ')">Down</div></td>';
         } else {
             html += '<td></td>';
         }
@@ -165,20 +172,25 @@ function xmlToJson(xml) {
 
         html += '</td>';
         if(displayButtons){
-            html += '<td class="col-buttons single" rowspan="2"><div class="button button-danger button-large" onclick="handleDeleteItem(event,\'' + type + '\')">Delete</div></td>';
+            html += '<td class="col-buttons single" rowspan="2"><div class="button button-danger button-large" onclick="handleDeleteItem(event,\'' + type + '\',' + indexes.cat + ',' + indexes.i + ')">Delete</div></td>';
         }
         html += '</tr>';
         return html;
     }
 
-    function makeTextarea(name,label,value,displayButtons,description){
+    function makeTextarea(name,indexes,label,value,displayButtons,description){
         value = value || '';
+        name += '-' + indexes.cat;
+        if(typeof indexes.i !== 'undefined'){
+            name += '-' + indexes.i;
+        }
+
         var html = '<tr>';
 
         if(displayButtons){
             html += '<td class="col-buttons align-top">' +
-                '<div class="button button-secondary button-medium btn-up" data-direction="up" onclick="handleMoveItem(event,\'category\')">Up</div>' +
-                '<div class="button button-secondary button-medium btn-down" data-direction="down" onclick="handleMoveItem(event,\'category\')">Down</div>' +
+                '<div class="button button-secondary button-medium btn-up" data-direction="up" onclick="handleMoveItem(event,\'category\',' + indexes.cat + ',' + indexes.i + ')">Up</div>' +
+                '<div class="button button-secondary button-medium btn-down" data-direction="down" onclick="handleMoveItem(event,\'category\',' + indexes.cat + ',' + indexes.i + ')">Down</div>' +
             '</td>';
         } else {
             html += '<td></td>';
@@ -260,24 +272,25 @@ function xmlToJson(xml) {
         $editor.html(json2xml(tree));
     };
 
-    window.handleDeleteItem = function(event,type){
+    window.handleDeleteItem = function(event,type,category,item){
         console.log(type);
     };
 
-    window.handleMoveItem = function(event,type){
-
+    window.handleMoveItem = function(event,type,category,item){
+        var direction = event.target.getAttribute('data-direction');
+        console.log(arguments);
     };
 
     function render(){
         var html = '<table class="form-table form-menu"><tbody>';
-        html += makeTextarea('menu_title','Title',tree.menu.menu_title && tree.menu.menu_title['#text'] || '');
+        html += makeTextarea('menu_title',{},'Title',tree.menu.menu_title && tree.menu.menu_title['#text'] || '');
         html += makeTitle('Categories','categories','category');
 
         if(tree.menu.menu_special && tree.menu.menu_special.menu_category){
             tree.menu.menu_special.menu_category.forEach(function(menu_category,category_i){
                 html += '<tr><td colspan="4"><table class="form-menu"><thead>';
-                html += makeInput('menu_category_title-' + category_i,'Category Name',menu_category.menu_category_title['#text'],'category',null);
-                html += makeTextarea('menu_category_description-' + category_i,'Category Description',menu_category.menu_category_description['#text'],true);
+                html += makeInput('menu_category_title',{cat:category_i},'Category Name',menu_category.menu_category_title['#text'],'category',null);
+                html += makeTextarea('menu_category_description',{cat:category_i},'Category Description',menu_category.menu_category_description['#text'],true);
                 html += '</thead><tbody>';
 
                 if(menu_category.menu_items && menu_category.menu_items.menu_item){
@@ -288,8 +301,8 @@ function xmlToJson(xml) {
 
                     html += makeTitle('Items','items','item',category_i);
                     menu_category.menu_items.menu_item.forEach(function(menu_item,item_i){
-                        html += makeInput('menu_item_title-' + category_i + '-' + item_i,'Name',menu_item.menu_item_title['#text'],'item',true);
-                        html += makeInput('menu_item_description-' + category_i + '-' + item_i,'Description',menu_item.menu_item_description['#text'],'item');
+                        html += makeInput('menu_item_title',{cat:category_i,i:item_i},'Name',menu_item.menu_item_title['#text'],'item',true);
+                        html += makeInput('menu_item_description',{cat:category_i,i:item_i},'Description',menu_item.menu_item_description['#text'],'item');
                     });
                 }
                 html += '</tbody></table></td></tr>';
