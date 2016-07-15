@@ -203,7 +203,13 @@ function xmlToJson(xml) {
             html += '<br/><span class="description">' + description + '</span>';
         }
 
-        html += '</td><td></td></tr>';
+        html += '</td>';
+        if(displayButtons){
+            html += '<td class="col-buttons single" rowspan="2"><div class="button button-danger button-large" onclick="handleDeleteItem(event,\'category\',' + indexes.cat + ')">Delete</div></td>';
+        } else {
+            html += '<td></td>';
+        }
+        html +='</tr>';
         return html;
     }
 
