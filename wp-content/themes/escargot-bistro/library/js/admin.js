@@ -273,7 +273,16 @@ function xmlToJson(xml) {
     };
 
     window.handleDeleteItem = function(event,type,category,item){
-        console.log(type);
+        if(type === 'category'){
+            if(window.confirm('Are you sure you want to delete this category? It will also delete all items in it')){
+                delete tree.menu.menu_special.menu_category[category];
+            }
+        } else {
+            if(window.confirm('Are you sure you want to delete this item?')){
+                delete tree.menu.menu_special.menu_category[category].menu_items.menu_item[item];
+            }
+        }
+        render();
     };
 
     window.handleMoveItem = function(event,type,categoryIndex,itemIndex){
