@@ -276,9 +276,18 @@ function xmlToJson(xml) {
         console.log(type);
     };
 
-    window.handleMoveItem = function(event,type,category,item){
+    window.handleMoveItem = function(event,type,categoryIndex,itemIndex){
         var direction = event.target.getAttribute('data-direction');
-        console.log(arguments);
+        var modifier = direction === 'down' ? 1 : -1;
+
+        if(type === 'category'){
+            var category = tree.menu.menu_special.menu_category.splice(categoryIndex,1);
+            tree.menu.menu_special.menu_category.splice(categoryIndex+modifier,0,category[0]);
+        } else {
+            var item = tree.menu.menu_special.menu_category[categoryIndex].menu_items.menu_item.splice(itemIndex,1);
+            tree.menu.menu_special.menu_category[categoryIndex].menu_items.menu_item.splice(itemIndex+modifier,0,item[0]);
+        }
+        render();
     };
 
     function render(){
