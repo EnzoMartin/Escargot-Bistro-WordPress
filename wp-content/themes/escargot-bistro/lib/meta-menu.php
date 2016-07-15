@@ -1,5 +1,4 @@
 <?php
-// Add the Meta Box
 function menu_meta_box() {
     add_meta_box(
         'menu_meta_box', // $id
@@ -11,6 +10,16 @@ function menu_meta_box() {
 }
 add_action('add_meta_boxes', 'menu_meta_box');
 
+function menu_editor_box() {
+    add_meta_box(
+        'menu_editor_box', // $id
+        'Fixed Price Menu', // $title
+        'show_menu_editor_box', // $callback
+        'menu', // $page
+        'normal', // $context
+        'high'); // $priority
+}
+add_action('add_meta_boxes', 'menu_editor_box');
 
 // Field Array
 $prefix = 'menus_';
@@ -29,6 +38,14 @@ $menu_meta_fields = array(
         'id'    => $prefix.'season',
         'type'  => 'text'
     ),
+    array(
+        'label'=> '',
+        'default' => '',
+        'desc'  => '',
+        'class' => 'hidden',
+        'id'    => $prefix.'fixed_price',
+        'type'  => 'textarea'
+    ),
 );
 
 // The Callback
@@ -43,7 +60,7 @@ function show_menu_meta_box() {
         // get value of this field if it exists for this post
         $meta = get_post_meta($post->ID, $field['id'], true);
         // begin a table row with
-        echo '<tr>
+        echo '<tr class="' . $field['class'] . '">
                 <th><label for="'.$field['id'].'">'.$field['label'].'</label></th>
                 <td>';
         switch($field['type']) {
@@ -52,10 +69,19 @@ function show_menu_meta_box() {
                 echo '<input type="text" name="'.$field['id'].'" id="'.$field['id'].'" value="'.$meta.'" size="160" />
                     <br /><span class="description">'.$field['desc'].'</span>';
                 break;
+            case 'textarea':
+                echo '<textarea name="'.$field['id'].'" id="'.$field['id'].'" cols="60" rows="4">'.$meta.'</textarea>
+                    <br /><span class="description">'.$field['desc'].'</span>';
+                break;
         } //end switch
         echo '</td></tr>';
     } // end foreach
     echo '</table>'; // end table
+}
+
+
+function show_menu_editor_box() {
+    echo 'Loading..';
 }
 
 // Save the Data

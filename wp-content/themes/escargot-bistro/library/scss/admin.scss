@@ -1,3 +1,5 @@
+@import 'partials/bootstrap/variables';
+
 .hide-wine {
     .wine-price {
         display: none;
@@ -7,5 +9,158 @@
 .show-wine {
     .normal-price {
         display: none;
+    }
+}
+
+.pull-right {
+    float: right;
+}
+
+.button {
+    &.button-danger {
+        color: #FFF;
+        border-color: darken($brand-danger,10%);
+        background-color: darken($brand-danger, 0%);
+
+        &:hover,
+        &:focus {
+            border-color: $brand-danger;
+            background: lighten($brand-danger, 10%);
+            color: #FFF;
+        }
+
+        &:active {
+            border-color: darken($brand-danger,10%);
+            background-color: darken($brand-danger, 3%);
+            color: #FFF;
+        }
+    }
+
+    &.button-info {
+        color: #FFF;
+        border-color: $brand-info;
+        background: lighten($brand-info, 10%);
+
+        &:hover,
+        &:focus {
+            border-color: darken($brand-info,10%);
+            background-color: darken($brand-info, 0%);
+            color: #FFF;
+        }
+
+        &:active {
+            border-color: darken($brand-info,10%);
+            background-color: darken($brand-info, 3%);
+            color: #FFF;
+        }
+    }
+}
+
+.post-type-menu {
+    .form-menu {
+        h3 {
+            margin: 0;
+        }
+
+        th {
+            width: 80px;
+        }
+
+        input,
+        textarea {
+            display: block;
+            width: 100%;
+        }
+
+        .menu-section-categories + tr {
+            thead {
+                .btn-up {
+                    display: none;
+                }
+            }
+        }
+
+        > tbody >  tr:last-of-type {
+            thead {
+                .btn-down {
+                    display: none;
+                }
+            }
+        }
+
+        .col-buttons {
+            width: 50px;
+            vertical-align: middle;
+
+            &.single {
+                padding-top: 0;
+            }
+
+            .button {
+                width: 100%;
+                text-align: center;
+
+                + .button {
+                    margin-top: 8px;
+                }
+            }
+
+            &.align-top {
+                vertical-align: top;
+            }
+        }
+
+        .form-menu {
+            margin: 0 0 16px 0;
+            padding: 8px;
+            border-radius: 2px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.04);
+            background: rgba(0,0,0,0.1);
+            width: 100%;
+
+            tbody {
+                .menu-section-items + .menu-input-row {
+                    .btn-up {
+                        display: none;
+                    }
+                }
+
+                tr:nth-of-type(odd) {
+                    th, td {
+                        padding-top: 2px;
+                        border-bottom: 1px solid #CCC;
+                    }
+
+                    &:last-of-type {
+                        th, td {
+                            border-bottom: none;
+                        }
+                    }
+                }
+
+                tr:nth-of-type(even) {
+                    th, td {
+                        padding-bottom: 2px;
+                    }
+                }
+
+                tr:last-of-type {
+                    .btn-down {
+                        display: none;
+                    }
+                }
+
+                tr.menu-section-items {
+                    td {
+                        padding-left: 0;
+                        border-bottom: none;
+                    }
+
+                    h3 {
+                        border-bottom: 1px solid #CCC;
+                    }
+                }
+            }
+        }
     }
 }
