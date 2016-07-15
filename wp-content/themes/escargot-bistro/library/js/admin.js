@@ -133,8 +133,6 @@ function xmlToJson(xml) {
             tree.menu.menu_special.menu_category = [tree.menu.menu_special.menu_category];
         }
 
-        console.log(JSON.stringify(tree,true,4));
-
         render();
     }
 
@@ -254,11 +252,6 @@ function xmlToJson(xml) {
         var category = typeof id[1] === 'undefined' ? null : id[1];
         var item = typeof id[2] === 'undefined' ? null : id[2];
 
-        console.log('--------------')
-        console.log('modified',name,category,item)
-        console.log(value)
-        console.log('--------------')
-
         switch(name){
             case 'menu_title':
                 tree.menu.menu_title = {'#text': value};
@@ -273,8 +266,6 @@ function xmlToJson(xml) {
                 break;
         }
 
-        console.log(JSON.stringify(tree, true, 4));
-        console.log(json2xml(tree));
         $editor.html(json2xml(tree));
     };
 
