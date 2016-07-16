@@ -268,7 +268,7 @@ if ( ! function_exists('custom_items') ) {
             'label'               => __( 'item', 'text_domain' ),
             'description'         => __( 'A item', 'text_domain' ),
             'labels'              => $labels,
-            'supports'            => array( 'title', 'revisions', 'thumbnail', ),
+            'supports'            => array( 'title', 'revisions', ),
             'taxonomies'          => array( 'item' ),
             'hierarchical'        => false,
             'public'              => true,
