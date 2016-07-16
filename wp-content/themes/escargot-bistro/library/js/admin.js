@@ -272,7 +272,7 @@ function xmlToJson(xml) {
         }
 
         saveTimer = window.setTimeout(function(){
-            render();
+            $editor.html(json2xml(tree));
         },1000);
         $editor.html(json2xml(tree));
     };
