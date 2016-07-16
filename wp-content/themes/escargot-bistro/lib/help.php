@@ -4,6 +4,7 @@ function help_menu() {
     $wp_admin_bar->add_menu(array(
         'id' => 'help-page-top',
         'title' => '<span class="ab-icon"></span><span class="ab-label">'.__('Help & Guides').'</span></span>',
+        'href' => '/wp-admin/admin.php?page=help-page'
     ));
 }
 
