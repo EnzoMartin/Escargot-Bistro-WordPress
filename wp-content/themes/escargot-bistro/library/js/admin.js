@@ -221,14 +221,14 @@ function xmlToJson(xml) {
         switch(type){
             case 'item':
                 tree.menu.menu_special.menu_category[category].menu_items.menu_item.push({
-                    menu_item_title: {},
-                    menu_item_description: {}
+                    menu_item_title: {'#text':''},
+                    menu_item_description: {'#text':''}
                 });
                 break;
             case 'category':
                 tree.menu.menu_special.menu_category.push({
-                    menu_category_title: {},
-                    menu_category_description: {},
+                    menu_category_title: {'#text':''},
+                    menu_category_description: {'#text':''},
                     menu_items: {
                         menu_item: []
                     }
@@ -280,13 +280,14 @@ function xmlToJson(xml) {
     window.handleDeleteItem = function(event,type,category,item){
         if(type === 'category'){
             if(window.confirm('Are you sure you want to delete this category? It will also delete all items in it')){
-                delete tree.menu.menu_special.menu_category[category];
+                tree.menu.menu_special.menu_category.splice(category,1);
             }
         } else {
             if(window.confirm('Are you sure you want to delete this item?')){
-                delete tree.menu.menu_special.menu_category[category].menu_items.menu_item[item];
+                tree.menu.menu_special.menu_category[category].menu_items.menu_item.splice(item,1);
             }
         }
+        $editor.html(json2xml(tree));
         render();
     };
 
@@ -301,6 +302,7 @@ function xmlToJson(xml) {
             var item = tree.menu.menu_special.menu_category[categoryIndex].menu_items.menu_item.splice(itemIndex,1);
             tree.menu.menu_special.menu_category[categoryIndex].menu_items.menu_item.splice(itemIndex+modifier,0,item[0]);
         }
+        $editor.html(json2xml(tree));
         render();
     };
 
