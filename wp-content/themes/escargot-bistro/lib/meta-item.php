@@ -150,32 +150,32 @@ $item_meta_details_fields = array(
         'type'  => 'text'
     ),
 );
-
+$image_url = get_template_directory_uri();
 $item_meta_options_fields = array(
     array(
         'label'=> 'Vegetarian',
-        'desc'  => 'Mark as vegetarian',
+        'desc'  => 'Mark as vegetarian <img class="admin-food-icon" src="' . $image_url . '/library/images/food-icons/vegetarian.png"/>',
         'id'    => $prefix.'vegetarian',
         'className' => 'normal-price',
         'type'  => 'checkbox'
     ),
     array(
         'label'=> 'Vegan',
-        'desc'  => 'Mark as vegan',
+        'desc'  => 'Mark as vegan <img class="admin-food-icon" src="' . $image_url . '/library/images/food-icons/vegan.png"/>',
         'id'    => $prefix.'vegan',
         'className' => 'normal-price',
         'type'  => 'checkbox'
     ),
     array(
         'label'=> 'Gluten free',
-        'desc'  => 'Mark as gluten free',
+        'desc'  => 'Mark as gluten free <img class="admin-food-icon" src="' . $image_url . '/library/images/food-icons/gluten.png"/>',
         'id'    => $prefix.'glutenfree',
         'className' => 'normal-price',
         'type'  => 'checkbox'
     ),
     array(
         'label'=> '"NEW"',
-        'desc'  => 'Mark as a brand new item on the menu',
+        'desc'  => 'Mark as a brand new item on the menu <img class="admin-food-icon" src="' . $image_url . '/library/images/food-icons/new.png"/>',
         'id'    => $prefix.'newitem',
         'type'  => 'checkbox'
     ),
