@@ -152,6 +152,8 @@ add_action( 'customize_register', 'bones_theme_customizer' );
 
 /************* ADMIN ****************/
 
+require_once( 'lib/help.php' );
+
 add_action( 'admin_menu', 'hours_menu' );
 
 function hours_menu() {

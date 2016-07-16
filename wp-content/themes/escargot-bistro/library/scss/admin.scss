@@ -12,6 +12,43 @@
     }
 }
 
+#wpadminbar #wp-admin-bar-root-default .ab-icon:before {
+    content: '\f223';
+    top: 2px;
+}
+
+#footer-thankyou {
+    display: none;
+}
+
+#admin-help-guide {
+    img {
+        max-width: 100%;
+    }
+
+    img + h3 {
+        margin-top: 8px;
+    }
+
+    h3 {
+        font-size: 18px;
+        font-weight: bold;
+        border-bottom: 1px solid #CCC;
+        margin: 0 0 8px;
+        padding-bottom: 6px;
+    }
+
+    p {
+        margin-bottom: 16px;
+    }
+}
+
+.admin-food-icon {
+    width: 20px;
+    vertical-align: middle;
+    margin-left: 3px;
+}
+
 .pull-right {
     float: right;
 }
