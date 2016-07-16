@@ -16,6 +16,11 @@
     float: right;
 }
 
+input.full {
+    display: inline-block;
+    width: 100%;
+}
+
 .button {
     &.button-danger {
         color: #FFF;

@@ -66,11 +66,11 @@ function show_menu_meta_box() {
         switch($field['type']) {
             // text
             case 'text':
-                echo '<input type="text" name="'.$field['id'].'" id="'.$field['id'].'" value="'.$meta.'" size="160" />
-                    <br /><span class="description">'.$field['desc'].'</span>';
+                echo '<input type="text" class="full" name="'.$field['id'].'" id="'.$field['id'].'" value="'.$meta.'" />
+                    <span class="description">'.$field['desc'].'</span>';
                 break;
             case 'textarea':
-                echo '<textarea name="'.$field['id'].'" id="'.$field['id'].'" cols="60" rows="4">'.$meta.'</textarea>
+                echo '<textarea name="'.$field['id'].'" id="'.$field['id'].'" rows="4">'.$meta.'</textarea>
                     <br /><span class="description">'.$field['desc'].'</span>';
                 break;
         } //end switch
