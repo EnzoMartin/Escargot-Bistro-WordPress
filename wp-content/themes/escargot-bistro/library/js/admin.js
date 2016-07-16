@@ -108,6 +108,8 @@ function xmlToJson(xml) {
 
 (function($){
     var $editor = $('#menus_fixed_price');
+    var saveTimer = null;
+
     if($editor.length){
         var $box = $('#menu_editor_box').find('.inside');
         var content = $editor.val();
@@ -245,6 +247,9 @@ function xmlToJson(xml) {
     };
 
     window.handleInputChange = function(event){
+        if(saveTimer){
+            window.clearTimeout(saveTimer);
+        }
         var target = event.target;
         var value = target.value;
         var id = target.id.replace('ci-','').split('-');
@@ -266,6 +271,9 @@ function xmlToJson(xml) {
                 break;
         }
 
+        saveTimer = window.setTimeout(function(){
+            render();
+        },1000);
         $editor.html(json2xml(tree));
     };
 
