@@ -8,8 +8,11 @@ function admin(){
     wp_enqueue_script('admin', get_template_directory_uri() . '/library/js/admin.js', array('jquery'), null, true);
 }
 
+$hours = apply_filters( 'the_content',get_option('hours_of_operation'));
+
 function hours($params, $content=null) {
-    return apply_filters( 'the_content',get_option('hours_of_operation'));
+    global $hours;
+    return $hours;
 }
 add_shortcode('hours', 'hours');
 
