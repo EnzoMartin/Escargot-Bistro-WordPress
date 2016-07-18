@@ -1,3 +1,8 @@
+<?php
+    if ( function_exists( 'wpcf7_enqueue_scripts' ) ) {
+        wpcf7_enqueue_scripts();
+    }
+?>
 <?php get_header(); ?>
 	<div id="content" class="container">
 		<div id="inner-content" class="row">
