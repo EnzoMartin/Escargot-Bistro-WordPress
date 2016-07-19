@@ -48,9 +48,9 @@ module.exports = function(grunt){
         uglify: {
             dist: {
                 options:{
-                    compress:false,
+                    compress:true,
                     sourceMap:false,
-                    mangle:false,
+                    mangle:true,
                     preserveComments: false,
                     screwIE8: true
                 },
