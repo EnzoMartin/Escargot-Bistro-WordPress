@@ -100,7 +100,6 @@ get_header();
 					<a class="address" href="https://www.google.com/maps/place/Escargot+Bistro/@26.1886258,-80.1304127,17z/data=!4m2!3m1!1s0x0000000000000000:0x0da6a02deb22bddf?hl=en" target="_blank">
 						<address>1506 E. Commercial Blvd Oakland Park, FL, 33334</address>
 					</a>
-					<a class="tel hidden-md-up" href="tel:(754)-206-4116">(754)-206-4116</a>
 				</div>
 			</div>
 		</div>
