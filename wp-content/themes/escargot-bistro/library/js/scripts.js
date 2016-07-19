@@ -1,6 +1,7 @@
 (function(win,$){
     var doc = win.document;
     if(!location.hash && win.addEventListener && $(doc.body).hasClass('use-mobile') ){
+        console.log('scroll')
         window.scrollTo(0,1);
         var scrollTop = 1;
         var getScrollTop = function(){
@@ -11,13 +12,16 @@
             if(doc.body){
                 clearInterval(bodycheck);
                 scrollTop = getScrollTop();
+                console.log('top',scrollTop)
                 win.scrollTo(0,scrollTop === 1 ? 0 : 1);
             }
         },15);
 
         win.addEventListener('load',function(){
             setTimeout(function(){
+                console.log('loaded')
                 if(getScrollTop() < 20){
+                    console.log('scrolly',scrollTop)
                     win.scrollTo(0,scrollTop === 1 ? 0 : 1);
                 }
             },0);
