@@ -154,6 +154,7 @@ add_action( 'customize_register', 'bones_theme_customizer' );
 
 require_once( 'lib/help.php' );
 require_once( 'lib/hours.php' );
+require_once( 'lib/notice.php' );
 
 /************* ACTIVE SIDEBARS ********************/
 

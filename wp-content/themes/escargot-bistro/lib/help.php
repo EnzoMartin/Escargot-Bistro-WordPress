@@ -28,6 +28,22 @@ function help_page_content() {
                     <div id="postbox-container-2" class="postbox-container">
                         <div id="normal-sortables" class="meta-box-sortables ui-sortable">
                             <div class="postbox ">
+                                <h2 class="hndle ui-sortable-handle"><span>Notice / Alert</span></h2>
+                                <div class="inside">
+                                    <table class="form-table">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <p>To display a notice on the site, click on the "Notices" menu in the sidebar, enter a message into the box, and select the "Display message" checkbox</p>
+                                                <img src="<?= get_template_directory_uri(); ?>/library/images/notices.png"/>
+                                                <p><strong>If the message text field is empty OR the display message checkbox is not checked, no message will be displayed</strong></p>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="postbox ">
                                 <h2 class="hndle ui-sortable-handle"><span>Homepage Banners</span></h2>
                                 <div class="inside">
                                     <table class="form-table">

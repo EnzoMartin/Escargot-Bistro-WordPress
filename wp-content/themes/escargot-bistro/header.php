@@ -73,6 +73,14 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
 			</div>
 		<?php } ?>
 		<div id="container">
+            <?php
+            if(get_option('notice_active', false)){
+                $notice = get_option( 'notice_message', '' );
+                if($notice){
+                    ?><div id="notice"><span>&#128712;</span> <?= $notice ?></div><?php
+                }
+            }
+            ?>
 			<header class="header container" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 				<div id="inner-header" class="row">
 					<nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement" class="col-xs-12">
