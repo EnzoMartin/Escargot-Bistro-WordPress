@@ -123,6 +123,10 @@ This is for the larger monitors and possibly full screen viewers.
     @import "breakpoints/1030down";
 }
 
+@media only screen and (min-width:1030px) and (max-width: 1200px) {
+    @import "breakpoints/1200down";
+}
+
 // end of media query
 
 /*********************

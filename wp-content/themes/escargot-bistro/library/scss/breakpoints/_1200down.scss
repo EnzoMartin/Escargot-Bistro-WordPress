@@ -1,0 +1,33 @@
+.header {
+    #nav {
+        #nav-left {
+            width: auto;
+        }
+
+        #nav-center {
+            max-width: 200px;
+        }
+
+        #nav-right {
+            width: auto;
+        }
+
+        td {
+            width: auto;
+        }
+    }
+
+    #logo {
+        a {
+            max-width: 200px;
+        }
+    }
+
+    .nav {
+        li {
+            a {
+                font-size: 13px;
+            }
+        }
+    }
+}
