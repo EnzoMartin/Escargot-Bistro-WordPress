@@ -223,6 +223,14 @@ add_image_size('homepage-banner', 1110, 500 );
 
 add_filter( 'image_size_names_choose', 'my_custom_sizes' );
 
+add_filter( 'script_loader_tag', function ( $tag, $handle ) {
+
+    if ( $handle  !== 'bones-js' )
+        return $tag;
+
+    return str_replace( ' src', ' defer="defer" async="async" src', $tag );
+}, 10, 2 );
+
 function my_custom_sizes( $sizes ) {
     return array_merge( $sizes, array(
         'homepage-banner' => __( 'Homepage Banner Image' ),
