@@ -28,7 +28,8 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
 		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/library/images/win8-tile-icon.png?v=1">
         <meta name="theme-color" content="#00897b">
 		<?php wp_head(); ?>
-		<script type="text/javascript" async defer src="<?php echo get_template_directory_uri(); ?>/library/google.js"></script>
+        <script type="text/javascript" defer="defer" src="https://www.google-analytics.com/analytics.js"></script>
+		<script type="text/javascript" defer="defer" src="<?php echo get_template_directory_uri(); ?>/library/google.js"></script>
 	</head>
 	<body <?php body_class($mobile); ?> itemscope itemtype="http://schema.org/WebPage">
 		<?php if ($GLOBALS['is_mobile']) { ?>
