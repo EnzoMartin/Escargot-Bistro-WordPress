@@ -10,6 +10,10 @@ body, html {
     background: transparent none !important;
 }
 
+#notice {
+    display: none;
+}
+
 a, a:visited {
     color: #444 !important;
     text-decoration: underline;
