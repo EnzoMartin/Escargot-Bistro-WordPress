@@ -528,6 +528,11 @@ POSTS & CONTENT STYLES
         display: block;
     }
 
+    > p > span {
+        font-size: 17px;
+        text-decoration: underline;
+    }
+
     h2 {
         position: relative;
         padding: 0 25px;
