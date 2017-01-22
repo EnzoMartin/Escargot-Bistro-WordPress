@@ -61,6 +61,13 @@ module.exports = function(grunt){
                 }
             }
         },
+        clean: {
+            dist: {
+                src: [
+                    scssPath
+                ]
+            }
+        },
         watch: {
             scss: {
                 files: [libPath + '/**/*.scss'],
@@ -75,7 +82,8 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
     grunt.registerTask('default',['sass:dev','watch:scss']);
-    grunt.registerTask('prod',['sass:prod','uglify']);
+    grunt.registerTask('prod',['sass:prod','uglify','clean']);
 };
