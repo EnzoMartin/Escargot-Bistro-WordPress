@@ -76,7 +76,7 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
             if(get_option('notice_active', false)){
                 $notice = get_option( 'notice_message', '' );
                 if($notice){
-                    ?><div id="notice"><span>&#128712;</span> <?= $notice ?></div><?php
+                    ?><div id="notice"><?= $notice ?></div><?php
                 }
             }
             ?>
