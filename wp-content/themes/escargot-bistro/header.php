@@ -20,7 +20,7 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
 		<meta name="description" content="<?= bloginfo('description') ?>" />
 		<meta name="keywords" content="bistro,french,fort lauderdale,oakland park,french cuisine,french bistro,french restaurant,escargot,lunch,dinner,takeout,pickup" />
 		<link rel="apple-touch-icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/library/images/apple-touch-icon.png?v=1">
-		<link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/favicon.png?v=1">
+		<link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/favicon.ico?v=1">
 		<!--[if IE]>
 			<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico?v=1">
 		<![endif]-->
