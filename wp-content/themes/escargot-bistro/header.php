@@ -27,6 +27,69 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
 		<meta name="msapplication-TileColor" content="#f01d4f">
 		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/library/images/win8-tile-icon.png?v=1">
         <meta name="theme-color" content="#00897b">
+        <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "Restaurant",
+          "acceptsReservations": true,
+          "description":"<?= bloginfo('description') ?>",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Oakland Park",
+            "addressRegion": "FL",
+            "postalCode": "33334",
+            "streetAddress": "1506 East Commercial Blvd"
+          },
+          "image":"https://www.escargotbistro.com/wp-content/uploads/2016/05/Interior2.jpg",
+          "menu": "https://www.escargotbistro.com/menu/dinner-menu/",
+          "smokingAllowed": false,
+          "currenciesAccepted": "USD",
+          "email":"contact@parisbakerycafe.com",
+          "paymentAccepted": "Cash, credit card, debit card, gift card",
+          "name": "Escargot Bistro",
+          "openingHours": [
+            "Tu-Sa 11:45-16:30",
+            "Tu-Sa 4:30-21:00"
+          ],
+          "priceRange": "$$",
+          "servesCuisine": [
+            "French",
+            "Bistro",
+            "Mediterranean"
+          ],
+          "telephone": "(754) 206-4116",
+          "url": "https://www.escargotbistro.com",
+          "potentialAction": {
+            "@type": "ViewAction",
+            "target": [
+              {
+                "@type": "EntryPoint",
+                "url":"https://www.yelp.com/biz/escargot-bistro-oakland-park",
+                "description":"Yelp",
+                "contentType": "text/html"
+              },
+              {
+                "@type": "EntryPoint",
+                "url":"https://www.facebook.com/EscargotBistroFL",
+                "description":"Facebook",
+                "contentType": "text/html"
+              },
+              {
+                "@type": "EntryPoint",
+                "url":"https://plus.google.com/+EscargotbistroFlorida/about",
+                "description":"Google+",
+                "contentType": "text/html"
+              },
+              {
+                "@type": "EntryPoint",
+                "url":"https://www.tripadvisor.com/Restaurant_Review-g34495-d8848376-Reviews-Escargot_Bistro-Oakland_Park_Florida.html",
+                "description":"TripAdvisor",
+                "contentType": "text/html"
+              }
+            ]
+          }
+        }
+        </script>
 		<?php wp_head(); ?>
         <script type="text/javascript" defer="defer" src="https://www.google-analytics.com/analytics.js"></script>
 		<script type="text/javascript" defer="defer" src="<?php echo get_template_directory_uri(); ?>/library/google.js"></script>
