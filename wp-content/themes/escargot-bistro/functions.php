@@ -287,7 +287,7 @@ function rename_hentry_class( $classes ) {
     $clases[$key] = 'centry';
 	return $classes;
 }
-add_filter( 'post_class', 'rename_hentry_class' );
+//add_filter( 'post_class', 'rename_hentry_class' );
 
 function deregister_scripts(){
     wp_deregister_script( 'wp-embed' );

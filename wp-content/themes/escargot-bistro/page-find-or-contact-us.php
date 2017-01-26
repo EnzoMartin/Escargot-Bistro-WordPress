@@ -6,13 +6,13 @@
 <?php get_header(); ?>
 	<div id="content" class="container">
 		<div id="inner-content" class="row">
-			<main id="main" class="col-xs-12" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+			<main id="main" class="col-xs-12" role="main">
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-				<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+				<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?>>
 					<header class="article-header">
-						<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
+						<h1 class="page-title"><?php the_title(); ?></h1>
 					</header>
-					<section class="entry-content cf sub" itemprop="articleBody">
+					<section class="entry-content cf sub">
 						<?php get_template_part('social'); ?>
                         <div class="row">
                             <div class="col-xs-12 col-sm-6">

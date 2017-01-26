@@ -1,10 +1,10 @@
 
 
-              <article id="post-<?php the_ID(); ?>" <?php post_class('cf'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+              <article id="post-<?php the_ID(); ?>" <?php post_class('cf'); ?>>
 
                 <header class="article-header">
 
-                  <h1 class="entry-title single-title" itemprop="headline"><?php the_title(); ?></h1>
+                  <h1 class="entry-title single-title"><?php the_title(); ?></h1>
 
                   <p class="byline vcard">
                     <?php printf( __( 'Posted', 'bonestheme' ).' %1$s %2$s',
@@ -17,7 +17,7 @@
 
                 </header> <?php // end article header ?>
 
-                <section class="entry-content cf" itemprop="articleBody">
+                <section class="entry-content cf">
                   <?php get_template_part('social'); ?>
                   <?php
                     // the content (pretty self explanatory huh)

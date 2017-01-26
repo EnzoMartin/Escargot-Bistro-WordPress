@@ -192,7 +192,7 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
 								<tr>
 									<td id="nav-trigger-td"></td>
 									<td>
-										<div id="logo" class="h1" itemscope itemtype="http://schema.org/Organization">
+										<div id="logo" class="h1">
 											<a href="<?php echo home_url(); ?>" rel="nofollow">
 												Escargot Bistro
 											</a>
@@ -221,7 +221,7 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
 									)); ?>
 								</td>
 								<td id="nav-center">
-									<div id="logo" class="h1" itemscope itemtype="http://schema.org/Organization">
+									<div id="logo" class="h1">
 										<a href="<?php echo home_url(); ?>" rel="nofollow">
 											<img src="<?php echo get_template_directory_uri(); ?>/library/images/logo-o-s.png"/>
 										</a>

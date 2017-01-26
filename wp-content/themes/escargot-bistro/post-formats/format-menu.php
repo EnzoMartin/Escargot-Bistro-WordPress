@@ -116,18 +116,18 @@ foreach ($categories as $cat){
 }
 ?>
 
-<article id="post-<?php $menuId; ?>" <?php post_class( 'cf' ); ?> role="article" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
+<article id="post-<?php $menuId; ?>" <?php post_class( 'cf' ); ?>>
 	<header class="article-header entry-header">
 		<table cellspacing="0" cellpadding="0" border="0">
 			<tbody>
 			<tr>
-				<td><h1 class="entry-title single-title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1></td>
+				<td><h1 class="entry-title single-title" rel="bookmark"><?php the_title(); ?></h1></td>
 				<td class="subtitle"><h2 class="entry-title single-title"><?= $menu_meta['menus_hours'][0] ?></h2></td>
 			</tr>
 			</tbody>
 		</table>
 	</header>
-	<section class="entry-content cf sub" itemprop="articleBody">
+	<section class="entry-content cf sub">
 		<?php get_template_part('social'); ?>
 		<div class="row">
 			<div class="col-xs-12 food-icons center">
