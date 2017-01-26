@@ -30,6 +30,7 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
         <script type="application/ld+json">
         {
           "@context": "http://schema.org",
+          "@id":"https://www.escargotbistro.com/",
           "@type": "Restaurant",
           "acceptsReservations": "True",
           "description":"<?= bloginfo('description') ?>",
@@ -38,7 +39,13 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
             "addressLocality": "Oakland Park",
             "addressRegion": "FL",
             "postalCode": "33334",
+            "addressCountry": "US",
             "streetAddress": "1506 East Commercial Blvd"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 26.1886258,
+            "longitude": -80.1304127
           },
           "image":"https://www.escargotbistro.com/wp-content/uploads/2016/05/Interior2.jpg",
           "menu": "https://www.escargotbistro.com/menu/dinner-menu/",
@@ -49,7 +56,33 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
           "name": "Escargot Bistro",
           "openingHours": [
             "Tu-Sa 11:45-16:30",
-            "Tu-Sa 4:30-21:00"
+            "Tu-Sa 16:30-21:00"
+          ],
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+                "Saturday"
+              ],
+              "opens": "11:45",
+              "closes": "16:30"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+                "Saturday"
+              ],
+              "opens": "16:30",
+              "closes": "21:00"
+            }
           ],
           "priceRange": "$$",
           "servesCuisine": [
@@ -57,7 +90,7 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
             "Bistro",
             "Mediterranean"
           ],
-          "telephone": "(754) 206-4116",
+          "telephone": "+17542064116",
           "url": "https://www.escargotbistro.com",
           "sameAs":[
             "https://plus.google.com/+EscargotbistroFlorida/",
