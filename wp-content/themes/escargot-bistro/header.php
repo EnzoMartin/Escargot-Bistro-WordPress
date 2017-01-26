@@ -30,6 +30,38 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
         <script type="application/ld+json">
         {
           "@context": "http://schema.org",
+          "@type": "WebSite",
+          "name": "Escargot Bistro",
+          "url": "https://www.escargotbistro.com/"
+          "logo":"https://www.escargotbistro.com/wp-content/themes/escargot-bistro/library/images/logo_img.png",
+        }
+        </script>
+
+        <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "Organization",
+          "url": "https://www.escargotbistro.com/",
+          "logo": "https://www.escargotbistro.com/wp-content/themes/escargot-bistro/library/images/logo_img.png",
+          "sameAs":[
+            "https://plus.google.com/+EscargotbistroFlorida/",
+            "https://www.facebook.com/EscargotBistroFL",
+            "https://www.yelp.com/biz/escargot-bistro-oakland-park",
+            "https://www.tripadvisor.com/Restaurant_Review-g34495-d8848376-Reviews-Escargot_Bistro-Oakland_Park_Florida.html"
+          ],
+          "contactPoint": [{
+            "@type": "ContactPoint",
+            "telephone": "+17542064116",
+            "contactType": "reservations",
+            "areaServed":"US",
+            "availableLanguage": ["French","English"]
+          }]
+        }
+        </script>
+
+        <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
           "@id":"https://www.escargotbistro.com/",
           "@type": "Restaurant",
           "acceptsReservations": "True",
