@@ -1,5 +1,5 @@
 		<?php if(!is_home() && !is_front_page()){ ?>
-			<footer class="footer container" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+			<footer class="footer container" role="contentinfo">
 				<div class="row">
 					<div class="col-xs-12">
 						<div id="inner-footer">

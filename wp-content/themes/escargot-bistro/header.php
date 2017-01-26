@@ -134,7 +134,7 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
         <script type="text/javascript" defer="defer" src="https://www.google-analytics.com/analytics.js"></script>
 		<script type="text/javascript" defer="defer" src="<?php echo get_template_directory_uri(); ?>/library/google.js"></script>
 	</head>
-	<body <?php body_class($mobile); ?> itemscope itemtype="http://schema.org/WebPage">
+	<body <?php body_class($mobile); ?>>
 		<?php if ($GLOBALS['is_mobile']) { ?>
 			<input type="checkbox" id="nav-trigger" name="nav-trigger" class="nav-trigger hidden-print" title="Open Navigation"/>
 			<label id="nav-trigger-label" for="nav-trigger" class="hidden-print">
@@ -183,9 +183,9 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
                 }
             }
             ?>
-			<header class="header container" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+			<header class="header container" role="banner">
 				<div id="inner-header" class="row">
-					<nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement" class="col-xs-12">
+					<nav role="navigation" class="col-xs-12">
 						<?php if ($GLOBALS['is_mobile']) { ?>
 							<table id="mobile-nav" cellpadding="0" cellspacing="0" border="0">
 								<tbody>
