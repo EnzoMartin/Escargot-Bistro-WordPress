@@ -33,6 +33,7 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
           "@id":"https://www.escargotbistro.com/",
           "@type": "Restaurant",
           "acceptsReservations": "True",
+          "logo":"https://www.escargotbistro.com/wp-content/themes/escargot-bistro/library/images/logo_img.png",
           "description":"<?= bloginfo('description') ?>",
           "address": {
             "@type": "PostalAddress",
