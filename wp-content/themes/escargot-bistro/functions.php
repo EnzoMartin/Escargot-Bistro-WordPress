@@ -282,6 +282,13 @@ function remove_jquery_migrate( &$scripts)
     }
 }
 
+function rename_hentry_class( $classes ) {
+    $key = array_search('hentry', $classes);
+    $clases[$key] = 'centry';
+	return $classes;
+}
+add_filter( 'post_class', 'rename_hentry_class' );
+
 function deregister_scripts(){
     wp_deregister_script( 'wp-embed' );
 }
