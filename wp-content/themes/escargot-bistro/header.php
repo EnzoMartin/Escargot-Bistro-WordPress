@@ -31,7 +31,7 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
         {
           "@context": "http://schema.org",
           "@type": "Restaurant",
-          "acceptsReservations": true,
+          "acceptsReservations": "True",
           "description":"<?= bloginfo('description') ?>",
           "address": {
             "@type": "PostalAddress",
@@ -42,7 +42,7 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
           },
           "image":"https://www.escargotbistro.com/wp-content/uploads/2016/05/Interior2.jpg",
           "menu": "https://www.escargotbistro.com/menu/dinner-menu/",
-          "smokingAllowed": false,
+          "smokingAllowed": "False",
           "currenciesAccepted": "USD",
           "email":"contact@parisbakerycafe.com",
           "paymentAccepted": "Cash, credit card, debit card, gift card",
