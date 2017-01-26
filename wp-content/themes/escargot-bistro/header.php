@@ -59,6 +59,12 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
           ],
           "telephone": "(754) 206-4116",
           "url": "https://www.escargotbistro.com",
+          "sameAs":[
+            "https://plus.google.com/+EscargotbistroFlorida/",
+            "https://www.facebook.com/EscargotBistroFL",
+            "https://www.yelp.com/biz/escargot-bistro-oakland-park",
+            "https://www.tripadvisor.com/Restaurant_Review-g34495-d8848376-Reviews-Escargot_Bistro-Oakland_Park_Florida.html"
+          ],
           "potentialAction": {
             "@type": "ViewAction",
             "target": [
