@@ -32,8 +32,8 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
           "@context": "http://schema.org",
           "@type": "WebSite",
           "name": "Escargot Bistro",
-          "url": "https://www.escargotbistro.com/"
-          "logo":"https://www.escargotbistro.com/wp-content/themes/escargot-bistro/library/images/logo_img.png",
+          "url": "https://www.escargotbistro.com/",
+          "logo":"https://www.escargotbistro.com/wp-content/themes/escargot-bistro/library/images/logo_img.png"
         }
         </script>
 
