@@ -27,6 +27,7 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
 		<meta name="msapplication-TileColor" content="#f01d4f">
 		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/library/images/win8-tile-icon.png?v=1">
         <meta name="theme-color" content="#00897b">
+        <link rel="alternate" href="https://www.escargotbistro.com/" hreflang="en-us" />
         <script type="application/ld+json">
         {
           "@context": "http://schema.org",
