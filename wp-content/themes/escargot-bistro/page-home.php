@@ -70,9 +70,9 @@ get_header();
 					    </ul>
 					</div>
 				    <?php if(count($html) > 1){ ?>
-					    <div class="bannerControlsWpr bannerControlsPrev" title="Previous"><div class="bannerControls"></div></div>
-					    <div class="bannerIndicators"><ul></ul></div>
-					    <div class="bannerControlsWpr bannerControlsNext" title="Next"><div class="bannerControls"></div></div>
+					    <div class="bannerControlsWpr bannerControlsPrev" onClick="ga('send', 'event', 'Banner', 'click', 'Previous')" title="Previous"><div class="bannerControls"></div></div>
+					    <div class="bannerIndicators"><ul onClick="ga('send', 'event', 'Banner', 'click', 'Indicator')"></ul></div>
+					    <div class="bannerControlsWpr bannerControlsNext" onClick="ga('send', 'event', 'Banner', 'click', 'Next')" title="Next"><div class="bannerControls"></div></div>
 				    <?php } ?>
 				</div>
 			</div>
