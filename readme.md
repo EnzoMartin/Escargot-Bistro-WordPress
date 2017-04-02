@@ -1,8 +1,5 @@
 # Escargot Bistro WordPress Theme
 
-https://escargotbistro.com/
+https://www.escargotbistro.com/
 
-#### Built upon Bones
-
-Bones theme designed by Eddie Machado
-http://themble.com/bones
+[Built upon Bones theme](http://themble.com/bones)
