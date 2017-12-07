@@ -2,23 +2,23 @@
 add_action( 'admin_menu', 'notice_menu' );
 
 function notice_menu() {
-	add_menu_page( 'Edit Notices', 'Notices', 'manage_options', 'notices', 'notice_form', 'dashicons-warning', 25 );
+    add_menu_page( 'Edit Notices', 'Notices', 'manage_options', 'notices', 'notice_form', 'dashicons-warning', 25 );
 }
 
 function notice_form() {
-	$message = '';
+    $message = '';
 
-	if(isset($_POST['_wpnonce'])){
-		update_option('notice_message',trim($_POST['notice_message']));
-		update_option('notice_active',$_POST['notice_active'] === 'on');
+    if(isset($_POST['_wpnonce'])){
+        update_option('notice_message',trim($_POST['notice_message']));
+        update_option('notice_active',$_POST['notice_active'] === 'on');
 
-		$message = '<div id="message" class="updated notice notice-success is-dismissible"><p>Notice has been updated.</p></div>';
-	}
+        $message = '<div id="message" class="updated notice notice-success is-dismissible"><p>Notice has been updated.</p></div>';
+    }
 
-	?>
-	<div class="wrap">
-		<?php echo $message; ?>
-		<form method="post">
+    ?>
+    <div class="wrap">
+        <?= $message; ?>
+        <form method="post">
             <?php wp_nonce_field('update-options') ?>
             <div id="poststuff">
                 <div id="post-body" class="metabox-holder columns-2">
@@ -51,10 +51,10 @@ function notice_form() {
                 </div>
                 <br class="clear">
             </div>
-	        <p>
-		        <input type="submit" class="button button-primary button-large" name="Submit" value="Save" />
-	        </p>
-	        <input type="hidden" name="action" value="update" />
-	    </form>
-	</div>
+            <p>
+                <input type="submit" class="button button-primary button-large" name="Submit" value="Save" />
+            </p>
+            <input type="hidden" name="action" value="update" />
+        </form>
+    </div>
 <?php }

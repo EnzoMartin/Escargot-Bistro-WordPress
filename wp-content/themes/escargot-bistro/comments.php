@@ -34,14 +34,14 @@ if ( post_password_required() ) {
     </section>
 
     <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
-    	<nav class="navigation comment-navigation" role="navigation">
-      	<div class="comment-nav-prev"><?php previous_comments_link( __( '&larr; Previous Comments', 'bonestheme' ) ); ?></div>
-      	<div class="comment-nav-next"><?php next_comments_link( __( 'More Comments &rarr;', 'bonestheme' ) ); ?></div>
-    	</nav>
+        <nav class="navigation comment-navigation" role="navigation">
+          <div class="comment-nav-prev"><?php previous_comments_link( __( '&larr; Previous Comments', 'bonestheme' ) ); ?></div>
+          <div class="comment-nav-next"><?php next_comments_link( __( 'More Comments &rarr;', 'bonestheme' ) ); ?></div>
+        </nav>
     <?php endif; ?>
 
     <?php if ( ! comments_open() ) : ?>
-    	<p class="no-comments"><?php _e( 'Comments are closed.' , 'bonestheme' ); ?></p>
+        <p class="no-comments"><?php _e( 'Comments are closed.' , 'bonestheme' ); ?></p>
     <?php endif; ?>
 
   <?php endif; ?>

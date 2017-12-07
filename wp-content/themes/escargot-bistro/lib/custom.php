@@ -157,8 +157,8 @@ add_shortcode( 'menu_category_description', 'make_item_category_description' );
 
 
 function admin_menu_separator() {
-	add_admin_menu_separator(12);
-	add_admin_menu_separator(17);
+    add_admin_menu_separator(12);
+    add_admin_menu_separator(17);
 }
 
 add_action('admin_init','admin_menu_separator');

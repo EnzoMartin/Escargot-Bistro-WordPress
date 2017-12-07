@@ -69,43 +69,43 @@ body {
 }
 
 .simpleBanner {
-	overflow: hidden;
-	position: relative;
-	width: 100%;
-	padding: 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 0;
     border-radius: 3px 0 3px 3px;
     height: 500px;
 
-	ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
         height: 500px;
-	}
+    }
 
     .bannerList {
         transition: margin-left 0.2s ease-in-out;
     }
 
-	.bannerListWpr {
-		clear: both;
-		overflow: hidden;
+    .bannerListWpr {
+        clear: both;
+        overflow: hidden;
 
-		ul {
-			width: 50000px;
-			overflow: hidden;
+        ul {
+            width: 50000px;
+            overflow: hidden;
 
-			li {
-				float: left;
-				width: 1110px;
+            li {
+                float: left;
+                width: 1110px;
                 position: relative;
                 height: 500px;
 
-				img {
-					display: block;
+                img {
+                    display: block;
                     height: 500px;
                     width: 1110px;
-				}
+                }
 
                 .caption-container {
                     position: absolute;
@@ -141,16 +141,16 @@ body {
                         margin: 8px 0 0;
                     }
                 }
-			}
-		}
-	}
+            }
+        }
+    }
 
-	.bannerControlsWpr {
-		cursor: pointer;
-		padding: 10px 9px;
-		position: absolute;
-		top: 42%;
-		background: rgba(0,0,0,0.65);
+    .bannerControlsWpr {
+        cursor: pointer;
+        padding: 10px 9px;
+        position: absolute;
+        top: 42%;
+        background: rgba(0,0,0,0.65);
         box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
         transition: background ease-in-out 0.2s;
 
@@ -168,73 +168,73 @@ body {
             .bannerControls {
                 opacity: 0.6;
             }
-		}
-	}
+        }
+    }
 
-	.bannerControlsPrev {
-		border-radius: 0 5px 5px 0;
-		left: 0;
-		padding-left: 5px;
+    .bannerControlsPrev {
+        border-radius: 0 5px 5px 0;
+        left: 0;
+        padding-left: 5px;
 
-		.bannerControls {
-			background-position: 0 0;
-		}
-	}
+        .bannerControls {
+            background-position: 0 0;
+        }
+    }
 
-	.bannerControlsNext {
-		border-radius: 5px 0 0 5px;
-		right: 0;
-		padding-right: 5px;
+    .bannerControlsNext {
+        border-radius: 5px 0 0 5px;
+        right: 0;
+        padding-right: 5px;
 
-		.bannerControls {
+        .bannerControls {
             background-position: -13px 0;
-		}
-	}
+        }
+    }
 
-	.bannerIndicators {
-		background: transparent;
-		right: 20px;
-		opacity: 0.9;
-		padding: 4px 8px 4px 0;
-		position: absolute;
-		top: 10px;
+    .bannerIndicators {
+        background: transparent;
+        right: 20px;
+        opacity: 0.9;
+        padding: 4px 8px 4px 0;
+        position: absolute;
+        top: 10px;
         height: 15px;
 
-		ul {
-			overflow: hidden;
+        ul {
+            overflow: hidden;
             height: 22px;
             padding: 5px;
-		}
+        }
 
-		.bannerIndicator {
-			background: #5d5d5d;
-			border-radius: 7px 7px 7px 7px;
+        .bannerIndicator {
+            background: #5d5d5d;
+            border-radius: 7px 7px 7px 7px;
             box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
-			cursor: pointer;
-			float: left;
-			height: 13px;
-			margin-left: 8px;
-			width: 13px;
+            cursor: pointer;
+            float: left;
+            height: 13px;
+            margin-left: 8px;
+            width: 13px;
             transition: background ease-in-out 0.2s;
 
-			&:hover {
-				background: $white;
-			}
+            &:hover {
+                background: $white;
+            }
 
-			&.current {
-				background: #ff7e00;
-				cursor: default;
-			}
-		}
-	}
+            &.current {
+                background: #ff7e00;
+                cursor: default;
+            }
+        }
+    }
 
-	&.hiddenArrows .bannerControlsWpr {
-		display: none;
-	}
+    &.hiddenArrows .bannerControlsWpr {
+        display: none;
+    }
 
-	&.hiddenIndicators .bannerIndicators {
-		display: none;
-	}
+    &.hiddenIndicators .bannerIndicators {
+        display: none;
+    }
 }
 
 .home #main {

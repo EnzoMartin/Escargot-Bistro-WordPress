@@ -19,9 +19,9 @@ on retina screens. Let's say we have an icon which dimension are
 like this:
 
 .icon {
-	width: 24px;
-	height: 24px;
-	background: url(img/test.png) no-repeat;
+    width: 24px;
+    height: 24px;
+    background: url(img/test.png) no-repeat;
 }
 
 For retina screens, we have to make some adjustments, so that image
@@ -29,8 +29,8 @@ doesn't look blurry. So, taking into account the image above and the
 dimensions, this is what we would put in our retina stylesheet:
 
 .icon {
-	background: url(img/test@2x.png) no-repeat;
-	background-size: 24px 24px;
+    background: url(img/test@2x.png) no-repeat;
+    background-size: 24px 24px;
 }
 
 So, you would create the same icon, but at double the resolution, meaning 

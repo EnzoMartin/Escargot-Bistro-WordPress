@@ -13,9 +13,9 @@ function help_page() {
 }
 
 function remove_admin_bar_links() {
-	global $wp_admin_bar;
-	$wp_admin_bar->remove_menu('new-content');
-	$wp_admin_bar->remove_menu('comments');
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('new-content');
+    $wp_admin_bar->remove_menu('comments');
 }
 
 function help_page_content() {

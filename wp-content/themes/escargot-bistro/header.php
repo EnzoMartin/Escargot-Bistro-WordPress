@@ -8,26 +8,26 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
 <!--[if (IE 7)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8"><![endif]-->
 <!--[if (IE 8)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9"><![endif]-->
 <!--[if gt IE 8]><!--> <html <?php language_attributes(); ?> class="no-js"><!--<![endif]-->
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title><?php wp_title('|',true,'right'); ?></title>
-		<meta name="HandheldFriendly" content="True">
-		<meta name="MobileOptimized" content="320">
-		<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui"/>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title><?php wp_title('|',true,'right'); ?></title>
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui"/>
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes">
-		<meta name="description" content="<?= bloginfo('description') ?>" />
-		<meta name="keywords" content="bistro,french,fort lauderdale,oakland park,french cuisine,french bistro,french restaurant,escargot,lunch,dinner,takeout,pickup" />
-		<link rel="apple-touch-icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/library/images/apple-touch-icon.png?v=1">
-		<link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/favicon.ico?v=1">
-		<!--[if IE]>
-			<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico?v=1">
-		<![endif]-->
-		<meta name="msapplication-TileColor" content="#f01d4f">
-		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/library/images/win8-tile-icon.png?v=1">
+        <meta name="description" content="<?= bloginfo('description') ?>" />
+        <meta name="keywords" content="bistro,french,fort lauderdale,oakland park,french cuisine,french bistro,french restaurant,escargot,lunch,dinner,takeout,pickup" />
+        <link rel="apple-touch-icon" type="image/png" href="<?= get_template_directory_uri(); ?>/library/images/apple-touch-icon.png?v=1">
+        <link rel="icon" type="image/png" href="<?= get_template_directory_uri(); ?>/favicon.ico?v=1">
+        <!--[if IE]>
+            <link rel="shortcut icon" href="<?= get_template_directory_uri(); ?>/favicon.ico?v=1">
+        <![endif]-->
+        <meta name="msapplication-TileColor" content="#f01d4f">
+        <meta name="msapplication-TileImage" content="<?= get_template_directory_uri(); ?>/library/images/win8-tile-icon.png?v=1">
         <meta name="theme-color" content="#00897b">
-        <link rel="alternate" href="https://www.escargotbistro.com/" hreflang="en-us" />
+        <link rel="alternate" href="https://www.escargotbistro.com<?= $_SERVER['REQUEST_URI'] ?>" hreflang="en-us" />
         <script type="application/ld+json">
         {
           "@context": "http://schema.org",
@@ -162,51 +162,51 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
           }
         }
         </script>
-		<?php wp_head(); ?>
+        <?php wp_head(); ?>
         <script type="text/javascript" defer="defer" src="https://www.google-analytics.com/analytics.js"></script>
-		<script type="text/javascript" defer="defer" src="<?php echo get_template_directory_uri(); ?>/library/google.js"></script>
-	</head>
-	<body <?php body_class($mobile); ?>>
-		<?php if ($GLOBALS['is_mobile']) { ?>
-			<input type="checkbox" id="nav-trigger" name="nav-trigger" class="nav-trigger hidden-print" title="Open Navigation"/>
-			<label id="nav-trigger-label" for="nav-trigger" class="hidden-print">
-				<img
-					src="<?= get_template_directory_uri(); ?>/library/images/1x/menu_white_24dp.png"
-					srcset="<?= get_template_directory_uri(); ?>/library/images/2x/menu_white_24dp.png 2x"
-					alt="" aria-hidden="true">
-			</label>
-			<div id="mobile-nav-menu-container" class="hidden-print">
-				<div id="mobile-nav-menu">
-					<?php wp_nav_menu(array(
-						'container' => false,
-						'container_class' => 'menu cf',
-						'menu' => __( 'Menu Left', 'bonestheme' ),
-						'menu_class' => 'nav top-nav cf',
-						'theme_location' => 'main-nav-left',
-						'before' => '',
-						'after' => '',
-						'link_before' => '',
-						'link_after' => '',
-						'depth' => 0,
-						'fallback_cb' => ''
-					)); ?>
-					<?php wp_nav_menu(array(
-						'container' => false,
-						'container_class' => 'menu cf',
-						'menu' => __( 'Menu Right', 'bonestheme' ),
-						'menu_class' => 'nav top-nav cf',
-						'theme_location' => 'main-nav-right',
-						'before' => '',
-						'after' => '',
-						'link_before' => '',
-						'link_after' => '',
-						'depth' => 0,
-						'fallback_cb' => ''
-					)); ?>
-				</div>
-			</div>
-		<?php } ?>
-		<div id="container">
+        <script type="text/javascript" defer="defer" src="<?= get_template_directory_uri(); ?>/library/google.js"></script>
+    </head>
+    <body <?php body_class($mobile); ?>>
+        <?php if ($GLOBALS['is_mobile']) { ?>
+            <input type="checkbox" id="nav-trigger" name="nav-trigger" class="nav-trigger hidden-print" title="Open Navigation"/>
+            <label id="nav-trigger-label" for="nav-trigger" class="hidden-print">
+                <img
+                    src="<?= get_template_directory_uri(); ?>/library/images/1x/menu_white_24dp.png"
+                    srcset="<?= get_template_directory_uri(); ?>/library/images/2x/menu_white_24dp.png 2x"
+                    alt="" aria-hidden="true">
+            </label>
+            <div id="mobile-nav-menu-container" class="hidden-print">
+                <div id="mobile-nav-menu">
+                    <?php wp_nav_menu(array(
+                        'container' => false,
+                        'container_class' => 'menu cf',
+                        'menu' => __( 'Menu Left', 'bonestheme' ),
+                        'menu_class' => 'nav top-nav cf',
+                        'theme_location' => 'main-nav-left',
+                        'before' => '',
+                        'after' => '',
+                        'link_before' => '',
+                        'link_after' => '',
+                        'depth' => 0,
+                        'fallback_cb' => ''
+                    )); ?>
+                    <?php wp_nav_menu(array(
+                        'container' => false,
+                        'container_class' => 'menu cf',
+                        'menu' => __( 'Menu Right', 'bonestheme' ),
+                        'menu_class' => 'nav top-nav cf',
+                        'theme_location' => 'main-nav-right',
+                        'before' => '',
+                        'after' => '',
+                        'link_before' => '',
+                        'link_after' => '',
+                        'depth' => 0,
+                        'fallback_cb' => ''
+                    )); ?>
+                </div>
+            </div>
+        <?php } ?>
+        <div id="container">
             <?php
             if(get_option('notice_active', false)){
                 $notice = get_option( 'notice_message', '' );
@@ -215,79 +215,79 @@ $mobile = $GLOBALS['is_mobile'] ? 'use-mobile' : 'use-desktop';
                 }
             }
             ?>
-			<header class="header container" role="banner">
-				<div id="inner-header" class="row">
-					<nav role="navigation" class="col-xs-12">
-						<?php if ($GLOBALS['is_mobile']) { ?>
-							<table id="mobile-nav" cellpadding="0" cellspacing="0" border="0">
-								<tbody>
-								<tr>
-									<td id="nav-trigger-td"></td>
-									<td>
-										<div id="logo" class="h1">
-											<a href="<?php echo home_url(); ?>" rel="nofollow">
-												Escargot Bistro
-											</a>
-										</div>
-									</td>
-								</tr>
-								</tbody>
-							</table>
-						<?php } else { ?>
-						<table id="nav" cellpadding="0" cellspacing="0" border="0">
-							<tbody>
-							<tr>
-								<td id="nav-left">
-									<?php wp_nav_menu(array(
-			                                 'container' => false,                           // remove nav container
-			                                 'container_class' => 'menu cf',                 // class of container (should you choose to use it)
-			                                 'menu' => __( 'Menu Left', 'bonestheme' ),  // nav name
-			                                 'menu_class' => 'nav top-nav cf',               // adding custom nav class
-			                                 'theme_location' => 'main-nav-left',                 // where it's located in the theme
-			                                 'before' => '',                                 // before the menu
-			                                   'after' => '',                                  // after the menu
-			                                   'link_before' => '',                            // before each link
-			                                   'link_after' => '',                             // after each link
-			                                   'depth' => 0,                                   // limit the depth of the nav
-			                                 'fallback_cb' => ''                             // fallback function (if there is one)
-									)); ?>
-								</td>
-								<td id="nav-center">
-									<div id="logo" class="h1">
-										<a href="<?php echo home_url(); ?>" rel="nofollow">
-											<img src="<?php echo get_template_directory_uri(); ?>/library/images/logo-o-s.png"/>
-										</a>
-									</div>
-								</td>
-								<td id="nav-right">
-									<?php wp_nav_menu(array(
-			                                 'container' => false,                           // remove nav container
-			                                 'container_class' => 'menu cf',                 // class of container (should you choose to use it)
-			                                 'menu' => __( 'Menu Right', 'bonestheme' ),  // nav name
-			                                 'menu_class' => 'nav top-nav cf',               // adding custom nav class
-			                                 'theme_location' => 'main-nav-right',                 // where it's located in the theme
-			                                 'before' => '',                                 // before the menu
-			                                   'after' => '',                                  // after the menu
-			                                   'link_before' => '',                            // before each link
-			                                   'link_after' => '',                             // after each link
-			                                   'depth' => 0,                                   // limit the depth of the nav
-			                                 'fallback_cb' => ''                             // fallback function (if there is one)
-									)); ?>
-								</td>
-							</tr>
-							</tbody>
-						</table>
-						<?php } ?>
-					</nav>
-				</div>
-			</header>
-			<div id="print-logo-container" class="container">
-				<div class="row">
-					<div class="col-xs-12 center">
-						<img id="print-logo" src="<?php echo get_template_directory_uri(); ?>/library/images/logo-o-s.png"/>
-						<span><strong>(754)-206-4116</strong></span>
-						<span> - 1506 E. Commercial Blvd, Oakland Park, FL, 33334 - </span>
-						<span><em>escargotbistro.com</em></span>
-					</div>
-				</div>
-			</div>
+            <header class="header container" role="banner">
+                <div id="inner-header" class="row">
+                    <nav role="navigation" class="col-xs-12">
+                        <?php if ($GLOBALS['is_mobile']) { ?>
+                            <table id="mobile-nav" cellpadding="0" cellspacing="0" border="0">
+                                <tbody>
+                                <tr>
+                                    <td id="nav-trigger-td"></td>
+                                    <td>
+                                        <div id="logo" class="h1">
+                                            <a href="<?= home_url(); ?>" rel="nofollow">
+                                                Escargot Bistro
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        <?php } else { ?>
+                        <table id="nav" cellpadding="0" cellspacing="0" border="0">
+                            <tbody>
+                            <tr>
+                                <td id="nav-left">
+                                    <?php wp_nav_menu(array(
+                                             'container' => false,                           // remove nav container
+                                             'container_class' => 'menu cf',                 // class of container (should you choose to use it)
+                                             'menu' => __( 'Menu Left', 'bonestheme' ),  // nav name
+                                             'menu_class' => 'nav top-nav cf',               // adding custom nav class
+                                             'theme_location' => 'main-nav-left',                 // where it's located in the theme
+                                             'before' => '',                                 // before the menu
+                                               'after' => '',                                  // after the menu
+                                               'link_before' => '',                            // before each link
+                                               'link_after' => '',                             // after each link
+                                               'depth' => 0,                                   // limit the depth of the nav
+                                             'fallback_cb' => ''                             // fallback function (if there is one)
+                                    )); ?>
+                                </td>
+                                <td id="nav-center">
+                                    <div id="logo" class="h1">
+                                        <a href="<?= home_url(); ?>" rel="nofollow">
+                                            <img src="<?= get_template_directory_uri(); ?>/library/images/logo-o-s.png"/>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td id="nav-right">
+                                    <?php wp_nav_menu(array(
+                                             'container' => false,                           // remove nav container
+                                             'container_class' => 'menu cf',                 // class of container (should you choose to use it)
+                                             'menu' => __( 'Menu Right', 'bonestheme' ),  // nav name
+                                             'menu_class' => 'nav top-nav cf',               // adding custom nav class
+                                             'theme_location' => 'main-nav-right',                 // where it's located in the theme
+                                             'before' => '',                                 // before the menu
+                                               'after' => '',                                  // after the menu
+                                               'link_before' => '',                            // before each link
+                                               'link_after' => '',                             // after each link
+                                               'depth' => 0,                                   // limit the depth of the nav
+                                             'fallback_cb' => ''                             // fallback function (if there is one)
+                                    )); ?>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <?php } ?>
+                    </nav>
+                </div>
+            </header>
+            <div id="print-logo-container" class="container">
+                <div class="row">
+                    <div class="col-xs-12 center">
+                        <img id="print-logo" src="<?= get_template_directory_uri(); ?>/library/images/logo-o-s.png"/>
+                        <span><strong>(754)-206-4116</strong></span>
+                        <span> - 1506 E. Commercial Blvd, Oakland Park, FL, 33334 - </span>
+                        <span><em>escargotbistro.com</em></span>
+                    </div>
+                </div>
+            </div>
