@@ -116,7 +116,7 @@ function xmlToJson(xml) {
         var tree = {};
 
         if(content){
-            var xmlString = content.replace(/\[/g,'<').replace(/\]/g,'>');
+            var xmlString = content.replace(/\[/g,'<').replace(/\]/g,'>').replace(/&&/g,'&').replace(/&/g,'&amp;');
             var xml = $.parseXML(xmlString);
             tree = xmlToJson(xml);
         } else {
@@ -154,7 +154,7 @@ function xmlToJson(xml) {
         }
 
         var html = '<tr class="menu-input-row">';
-        
+
         if(displayButtons){
             html += '<td class="col-buttons align-top"><div class="button button-secondary button-medium btn-up" data-direction="up" onclick="handleMoveItem(event,\'' + type + '\',' + indexes.cat + ',' + indexes.i + ')">Up</div></td>';
         } else if (displayButtons !== null) {
@@ -162,7 +162,7 @@ function xmlToJson(xml) {
         } else {
             html += '<td></td>';
         }
-        
+
         html += '<th><label for="ci-' + name + '">' + label + '</label></th>';
         html += '<td><input type="text" id="ci-' + name + '" name="' + name + '" value="' + decodeURIComponent(value) + '" onkeyup="handleInputChange(event)"/>';
 

@@ -269,7 +269,7 @@ foreach ($categories as $cat){
                 <div class="col-xs-12 center">Eating raw or undercooked fish, seafood, eggs or meat increases the risk of food illnesses</div>
             </div>
             <div class="row">
-                <div class="col-xs-12 center">A 20% service charge will automatically be added to parties of 6 or more people</div>
+                <div class="col-xs-12 center">A 20% service charge will automatically be added to parties of 5 or more people</div>
             </div>
             <div class="row">
                 <div class="col-xs-12 center"><strong>For any split order: $6.00 extra</strong></div>
