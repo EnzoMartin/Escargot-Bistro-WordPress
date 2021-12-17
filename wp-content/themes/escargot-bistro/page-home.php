@@ -86,6 +86,10 @@ get_header();
                     <a class="col-xs-4 center action-dinner" href="/menu/dinner-menu">Dinner</a>
                     <a class="col-xs-4 center action-wine" href="/menu/wine-list">Wine</a>
                 </div>
+                <div class="menu-buttons">
+				    <a class="col-xs-6 center action-lunch" href="/christmas-eve-menu">Christmas Eve Menu</a>
+                    <a class="col-xs-6 center action-wine" href="/nye-menu/">New Year's Eve Menu</a>
+                </div>
             </div>
             <div class="col-xs-12">
                 <div class="operating-hours large">
