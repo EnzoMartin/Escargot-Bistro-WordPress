@@ -256,6 +256,10 @@ header.header {
             border-radius: 1px;
             box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4);
         }
+        
+        .menu-buttons + .menu-buttons {
+            border-top: 1px solid rgb(0 0 0 / 40%);
+        }
 
         a {
             padding: 8px;
